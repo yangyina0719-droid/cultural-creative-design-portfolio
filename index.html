@@ -1,0 +1,1749 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>文化创意与用户体验作品集｜庄浪古堡 × 宜川文创</title>
+<style>
+:root{
+ --ink:#29251f;--paper:#f1eee8;--earth:#9a6942;--soil:#c5a17b;--muted:#81786d;
+ --dark:#191b19;--line:#d7d0c5;--serif:"Songti SC","STSong","Noto Serif CJK SC",Georgia,serif;
+ --sans:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",Arial,sans-serif
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden}
+.app{height:100dvh;display:grid;grid-template-rows:38px 1fr 42px}
+.top,.bottom{display:flex;align-items:center;justify-content:space-between;padding:0 24px;color:#cbc5bb;font-size:12px;letter-spacing:.12em}
+.top .project-name{color:#8f8a81}
+.stage{display:grid;place-items:center;min-height:0}
+.page{display:none;position:relative;container-type:inline-size;width:min(96vw,calc((100dvh - 80px)*1.414));aspect-ratio:297/210;background:var(--paper);overflow:hidden;box-shadow:0 20px 70px #0008}
+.page.active{display:block;animation:fade-in .25s ease both}
+.frame{position:relative;height:100%;padding:5.5% 6%;display:flex;flex-direction:column}
+.page-index{position:absolute;right:4.5%;top:4.5%;font:italic 1.18cqw Georgia,serif;color:#9e9588;z-index:4}
+.kicker{font-size:1.05cqw;letter-spacing:.18em;color:var(--earth);text-transform:uppercase}
+.headline{font:500 3.15cqw/1.18 var(--serif);letter-spacing:.015em;margin:.36em 0 .3em}
+.copy{font-size:1.24cqw;line-height:1.9;color:#655e54;margin:.3em 0}
+.small-note{font-size:1.05cqw;line-height:1.7;color:#8e8579}
+.rule{height:1px;background:var(--line);margin:1.3em 0}
+.footnote{font-size:1.05cqw;color:#92887a;line-height:1.65}
+.footnote a,.source-link{color:#836044;text-decoration:none;border-bottom:1px solid #c8b6a2}
+.footnote a:hover,.source-link:hover{color:#34271d;border-color:#34271d}
+.zoom{cursor:zoom-in}
+.image-label{position:absolute;left:3%;bottom:3%;color:#f2eee7;background:#151716b8;padding:.6em .8em;font-size:1.05cqw;letter-spacing:.12em}
+.tag{font-size:1.05cqw;letter-spacing:.1em;color:#d9d1c6;background:#161815a8;padding:.5em .7em}
+.cover{height:100%;position:relative;background:#151716}
+.cover>img{width:100%;height:100%;object-fit:cover;object-position:center 46%}
+.cover:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,15,14,.76),rgba(13,15,14,.28) 51%,transparent 81%),linear-gradient(0deg,rgba(10,12,11,.52),transparent 42%)}
+.cover-copy{position:absolute;z-index:2;left:7.1%;top:14%;width:49%;color:#f2eee7}
+.cover-copy .kicker{color:#d2aa81}
+.cover h1{font:500 7cqw/1.08 var(--serif);letter-spacing:.035em;margin:.3em 0}
+.cover .english{font:italic 1.2cqw Georgia,serif;letter-spacing:.23em;color:#d5b99b;margin:1.4em 0 2.4em}
+.cover .subtitle{font:1.35cqw/1.7 var(--serif);color:#e5dfd6}
+.cover .meta{font-size:1.05cqw;line-height:1.9;letter-spacing:.12em;color:#c5bdb1;margin-top:3.5em}
+.cover .cover-tag{position:absolute;right:4%;bottom:4%;z-index:2}
+.photo-spread{height:100%;position:relative;background:#1a1d1b;overflow:hidden}
+.photo-spread>img{width:100%;height:100%;object-fit:cover;object-position:center 46%}
+.photo-spread:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,12,11,.55),transparent 56%),linear-gradient(0deg,rgba(10,12,11,.74),transparent 42%)}
+.photo-copy{position:absolute;z-index:2;left:6%;top:9%;width:34%;color:#f4f0e8}
+.photo-copy .kicker{color:#d7af84}
+.photo-copy h2{font:500 3.6cqw/1.2 var(--serif);margin:.35em 0}
+.photo-copy p{font-size:1.05cqw;line-height:1.85;color:#ded7ce}
+.photo-caption{position:absolute;z-index:2;left:6%;bottom:6%;color:#d6cec2;font-size:1.05cqw;letter-spacing:.12em}
+.photo-detail{position:absolute;z-index:3;right:4.5%;bottom:5%;width:37%;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.photo-detail figure{margin:0;min-width:0;background:#121412;border:1px solid #ffffff25;cursor:zoom-in}
+.photo-detail img{display:block;width:100%;height:5.1cqw;object-fit:contain;background:#161816}
+.photo-detail figcaption{padding:6px 7px;color:#ded7cc;font-size:1.05cqw;letter-spacing:.08em}
+.location{height:100%;display:grid;grid-template-columns:1fr 1fr;gap:5.5%;align-items:center}
+.location-map{position:relative;height:87%;background:#e8e2d8;overflow:hidden;padding:8%}
+.contour{position:absolute;inset:0;width:100%;height:100%;opacity:.48}
+.region-title{position:relative;z-index:1}
+.region-title .kicker{color:#9a6942}
+.region-title h2{font:500 3.15cqw/1.2 var(--serif);margin:.4em 0}
+.region-chain{position:absolute;left:12%;right:10%;bottom:13%;display:grid;gap:0}
+.region-step{display:grid;grid-template-columns:3.4cqw 1fr;align-items:center;gap:1.1cqw;position:relative;padding:.78cqw 0;border-top:1px solid #c8beb0}
+.region-step:last-child{border-bottom:1px solid #c8beb0}
+.region-step .num{font:italic 1.18cqw Georgia,serif;color:#9c7250}
+.region-step b{font:500 1.26cqw var(--serif);color:#41372d}
+.region-step small{font-size:1.05cqw;color:#8a7e70;display:block;margin-top:.25em}
+.location-copy{padding:2% 0}
+.location-copy .headline{font-size:2.85cqw}
+.stat-row{display:grid;grid-template-columns:1fr 1fr;gap:1.4cqw;margin:7% 0 5%;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:5% 0}
+.stat b{display:block;font:500 3.8cqw/1 var(--serif);color:#9a6942}
+.stat span{display:block;font-size:1.05cqw;color:#766c60;margin-top:.8em;line-height:1.6}
+.location-facts{display:flex;gap:1.2cqw;margin-top:5%}
+.location-fact{flex:1;border-left:1px solid #c9b9a4;padding-left:1cqw}
+.location-fact b{display:block;font:500 1.36cqw var(--serif);margin-bottom:.45em}
+.location-fact span{font-size:1.05cqw;line-height:1.7;color:#766d62}
+.risk{height:100%;display:grid;grid-template-columns:1.04fr .96fr;background:#20221f;color:#f0ebe3}
+.risk-image{position:relative;min-height:0;overflow:hidden;background:#171916}
+.risk-image img{width:100%;height:100%;object-fit:cover;object-position:center}
+.risk-image:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#1012108a,transparent 52%)}
+.risk-image .image-label{z-index:1}
+.risk-copy{padding:9% 9% 7%;display:flex;flex-direction:column;justify-content:center}
+.risk-copy .kicker{color:#c59a70}
+.risk-copy h2{font:500 3.1cqw/1.25 var(--serif);margin:.4em 0}
+.risk-copy .copy{color:#cbc4b8;font-size:1.05cqw}
+.risk-list{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3cqw;margin:7% 0 5%;padding:4% 0;border-top:1px solid #ffffff32;border-bottom:1px solid #ffffff32}
+.risk-item b{font:500 1.32cqw var(--serif);color:#e1c4a4}
+.risk-item span{display:block;font-size:1.05cqw;line-height:1.65;color:#aaa296;margin-top:.5em}
+.risk-copy .footnote{color:#aaa296}
+.risk-copy .footnote a{color:#d3b28e;border-color:#82745f}
+.workflow{height:100%;display:grid;grid-template-columns:.8fr 1.2fr;gap:5%;align-items:stretch}
+.workflow-copy{display:flex;flex-direction:column;justify-content:center;padding:2% 0}
+.workflow-copy .headline{font-size:3.05cqw}
+.workflow-list{margin-top:5%;border-top:1px solid var(--line)}
+.workflow-step{display:grid;grid-template-columns:2.2cqw 1fr;gap:.8cqw;padding:2.6% 0;border-bottom:1px solid var(--line);align-items:baseline}
+.workflow-step .n{font:italic 1.05cqw Georgia,serif;color:#9a6942}
+.workflow-step b{font:500 1.23cqw var(--serif)}
+.workflow-step p{font-size:1.05cqw;line-height:1.6;color:#7e7468;margin:.35em 0 0}
+.workflow-visual{position:relative;min-height:0;background:#1c2623;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.workflow-visual video{width:100%;height:100%;object-fit:contain;background:#111}
+.workflow-visual .video-title{position:absolute;left:4%;top:4%;z-index:2;color:#efe9df;background:#171916a8;padding:.7em .9em;font-size:1.05cqw;letter-spacing:.09em}
+.workflow-visual .video-source{position:absolute;right:3%;bottom:3%;z-index:2}
+.workflow-under{display:flex;gap:1cqw;margin-top:4%;align-items:center}
+.workflow-under img{width:28%;max-height:5cqw;object-fit:contain;background:#e6dfd5}
+.workflow-under span{font-size:1.05cqw;line-height:1.65;color:#81786c}
+.particles{height:100%;display:grid;grid-template-columns:1.12fr .88fr;gap:4.5%;align-items:center}
+.particle-main{position:relative;height:84%;min-height:0;background:#181b19;overflow:hidden;cursor:zoom-in}
+.particle-main img{width:100%;height:100%;object-fit:contain}
+.particle-main .tag{position:absolute;left:3%;bottom:3%}
+.particle-copy{display:flex;flex-direction:column;justify-content:center}
+.particle-copy h2{font:500 3cqw/1.24 var(--serif);margin:.36em 0 .3em}
+.particle-copy .copy{font-size:1.05cqw}
+.particle-pair{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6%}
+.particle-pair figure{position:relative;margin:0;min-width:0;background:#1b1d1c;cursor:zoom-in;overflow:hidden}
+.particle-pair img{display:block;width:100%;height:8cqw;object-fit:contain}
+.particle-pair figcaption{font-size:1.05cqw;color:#e4ddd2;background:#171916;padding:6px 8px}
+.concept-line{display:flex;align-items:center;gap:.6em;margin-top:5%;font-size:1.05cqw;color:#887d70}
+.concept-line i{display:inline-block;width:6px;height:6px;border-radius:50%;background:#b4855b}
+.timeline{height:100%;display:flex;flex-direction:column;justify-content:center}
+.timeline-head{display:flex;justify-content:space-between;align-items:end;gap:3%;margin-bottom:4%}
+.timeline-head .headline{max-width:57%;margin-bottom:0}
+.timeline-head .copy{max-width:36%;font-size:1.05cqw}
+.timeline-line{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:1.2cqw;margin:5% 0 4%;padding-top:1.2cqw}
+.timeline-line:before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:#b9ac9d}
+.timeline-item{position:relative;padding-top:1.2cqw}
+.timeline-item:before{content:"";position:absolute;width:8px;height:8px;border-radius:50%;background:#9a6942;top:-1.47cqw;left:0}
+.timeline-item time{font:italic 1.75cqw Georgia,serif;color:#9a6942}
+.timeline-item h3{font:500 1.35cqw var(--serif);margin:.7em 0 .3em}
+.timeline-item p{font-size:1.05cqw;line-height:1.72;color:#776d62;margin:0}
+.memory-strip{display:grid;grid-template-columns:.9fr 1.1fr;gap:4%;border-top:1px solid var(--line);padding-top:2.5%;align-items:center}
+.memory-intro strong{font:500 1.24cqw var(--serif);color:#473a2f}
+.memory-intro p{font-size:1.05cqw;line-height:1.6;color:#766d62;margin:.45em 0 0}
+.memory-years{display:grid;grid-template-columns:repeat(7,1fr);gap:.55cqw;align-items:center}
+.memory-years span{font:italic 1.05cqw Georgia,serif;color:#9a6942;border-left:1px solid #c9b9a4;padding-left:.55cqw}
+.exhibition{height:100%;display:grid;grid-template-columns:.88fr 1.12fr;gap:4.3%;align-items:center}
+.exhibition-copy{padding:2% 0}
+.exhibition-copy h2{font:500 2.8cqw/1.23 var(--serif);margin:.3em 0}
+.exhibition-copy .copy{font-size:1.05cqw}
+.unit-list{margin:6% 0 5%;border-top:1px solid var(--line)}
+.unit{display:grid;grid-template-columns:2.6cqw 1fr;gap:1cqw;padding:2.4% 0;border-bottom:1px solid var(--line)}
+.unit .n{font:italic 1.05cqw Georgia,serif;color:#9a6942}
+.unit b{font:500 1.23cqw var(--serif)}
+.unit span{display:block;font-size:1.05cqw;color:#7b7166;line-height:1.55;margin-top:.25em}
+.exhibition-photo{height:83%;position:relative;background:#e6dfd5;display:grid;place-items:center;overflow:hidden;cursor:zoom-in}
+.exhibition-photo img{width:100%;height:100%;object-fit:contain}
+.exhibition-photo .image-label{background:#181916bd}
+.event-date{font:500 1.3cqw var(--serif);color:#594838}
+.viz-showcase{height:100%;display:grid;grid-template-columns:.72fr 1.28fr;background:#171a18;color:#f1ece4}
+.viz-copy{display:flex;flex-direction:column;justify-content:center;padding:10% 10% 9% 12%}
+.viz-copy .kicker{color:#71cbbd}
+.viz-copy h2{font:500 3.05cqw/1.24 var(--serif);margin:.42em 0}
+.viz-copy .copy{font-size:1.05cqw;color:#c9c3b8}
+.viz-note{margin-top:7%;padding-top:5%;border-top:1px solid #ffffff35;font-size:1.05cqw;line-height:1.75;color:#aaa398}
+.viz-screen{position:relative;min-height:0;background:#050706;display:grid;place-items:center}
+.viz-screen video{width:100%;height:100%;object-fit:contain;background:#050706}
+.viz-screen .video-title{position:absolute;left:3%;top:3%;z-index:2;color:#eee8df;background:#111512c9;padding:.65em .85em;font-size:1.05cqw;letter-spacing:.1em;pointer-events:none}
+.wall-page{height:100%;position:relative;background:#171a18;color:#f3eee7;overflow:hidden}
+.wall-viewer{position:absolute;inset:0;display:grid;place-items:center;padding:6.5% 3.5% 5.5%}
+.wall-viewer img{width:100%;height:100%;object-fit:contain;cursor:zoom-in}
+.wall-heading{position:absolute;z-index:2;top:3.2%;left:3.5%;padding:.6em .85em;background:#111512d6;border-left:2px solid #c59a70}
+.wall-heading small{display:block;color:#cbbba8;font:italic 1.05cqw Georgia,serif;letter-spacing:.13em}
+.wall-heading b{display:block;margin-top:.22em;font:500 1.12cqw var(--serif);letter-spacing:.04em}
+.wall-caption{position:absolute;z-index:2;left:3.5%;bottom:2.6%;font-size:1.05cqw;line-height:1.6;color:#e3ddd3;background:#111512cc;padding:.5em .75em}
+.wall-grid-4{position:absolute;inset:10% 3.5% 5.5%;display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(2,1fr);gap:10px}
+.wall-grid-4 figure{position:relative;min-width:0;min-height:0;margin:0;background:#202522;display:grid;place-items:center;overflow:hidden;cursor:zoom-in}
+.wall-grid-4 img{width:100%;height:100%;object-fit:contain}
+.wall-grid-4 figcaption{position:absolute;left:0;right:0;bottom:0;padding:.5em .7em;background:#111512bd;color:#e6dfd4;font-size:1.05cqw;letter-spacing:.08em}
+.activity-page{height:100%;display:flex;flex-direction:column;padding:4.2% 5%;background:#eeeae2}
+.activity-header{display:flex;justify-content:space-between;align-items:end;gap:4%;margin-bottom:2.4%}
+.activity-header h2{font:500 2.45cqw/1.2 var(--serif);margin:.3em 0 0}
+.activity-header p{max-width:38%;font-size:1.05cqw;line-height:1.65;color:#766d62;margin:0 0 .2em}
+.activity-grid{flex:1;min-height:0;display:grid;gap:10px}
+.activity-grid.space{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}
+.activity-grid.people{grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr)}
+.activity-frame{position:relative;min-width:0;min-height:0;margin:0;background:#20221f;display:grid;place-items:center;overflow:hidden;cursor:zoom-in}
+.activity-frame img{width:100%;height:100%;object-fit:contain}
+.activity-frame figcaption{position:absolute;left:0;right:0;bottom:0;padding:.55em .75em;background:#111512ba;color:#f0ebe3;font-size:1.05cqw;letter-spacing:.06em}
+.impact{height:100%;display:grid;grid-template-columns:.86fr 1.14fr;background:#eee9e1}
+.impact-photo{position:relative;min-width:0;min-height:0;background:#24221f;overflow:hidden;display:grid;place-items:center}
+.impact-photo img{width:100%;height:100%;object-fit:cover;object-position:center 52%}
+.impact-photo:after{content:\"\";position:absolute;inset:0;background:linear-gradient(0deg,#1115129c,transparent 45%)}
+.impact-photo .image-label{z-index:1}
+.impact-copy{padding:8% 9% 7%;display:flex;flex-direction:column;justify-content:center}
+.impact-copy .kicker{color:#95663f}
+.impact-copy h2{font:500 2.8cqw/1.22 var(--serif);margin:.38em 0 .28em}
+.impact-copy>.copy{font-size:1.05cqw}
+.press-card{margin:4% 0 3%;padding:4.5% 5%;background:#f8f5ef;border:1px solid #d9d0c5;border-left:3px solid #9a6942}
+.press-card .press-source{font-size:1.05cqw;letter-spacing:.1em;color:#8c7b68}
+.press-card h3{font:500 1.25cqw/1.5 var(--serif);margin:.65em 0 .45em;color:#393128}
+.press-card p{font-size:1.05cqw;line-height:1.75;color:#756b60;margin:.4em 0}
+.press-card a{display:inline-block;margin-top:.65em;color:#8a603f;text-decoration:none;border-bottom:1px solid #c8b6a2;font-size:1.05cqw}
+.impact-facts{display:grid;grid-template-columns:auto 1fr;gap:1.1cqw;align-items:center;border-top:1px solid #cec4b8;padding-top:3.5%;margin-top:1%}
+.impact-facts strong{font:500 2.55cqw Georgia,serif;color:#9a6942}
+.impact-facts span{font-size:1.05cqw;line-height:1.65;color:#756b60}
+.impact-copy .footnote{margin-top:3%;font-size:1.05cqw}
+.sources{height:100%;display:flex;flex-direction:column;justify-content:center}
+.sources-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:4%}
+.sources-head h2{font:500 2.8cqw var(--serif);margin:.3em 0 0}
+.sources-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:5%;row-gap:0;border-top:1px solid var(--line)}
+.source-item{padding:2.2% 0;border-bottom:1px solid var(--line)}
+.source-item h3{font:500 1.18cqw var(--serif);margin:0 0 .4em}
+.source-item p{font-size:1.05cqw;line-height:1.65;color:#766d62;margin:0}
+.source-item a{display:inline-block;font-size:1.05cqw;color:#8a603f;text-decoration:none;border-bottom:1px solid #c8b6a2;margin-top:.6em}
+.source-item a:hover{color:#30251c}
+.sources-bottom{display:flex;justify-content:space-between;gap:4%;margin-top:4%;align-items:end}
+.sources-bottom p{max-width:70%;font:1.35cqw/1.5 var(--serif);color:#534539;margin:0}
+.sources-bottom small{font-size:1.05cqw;line-height:1.7;color:#91877a;text-align:right}
+.yc-page{background:#f2eee6;color:#302820}
+.yc-page .page-index{color:#9a806b}
+.yc-overline{font-size:1.05cqw;letter-spacing:.17em;text-transform:uppercase;color:#95694a}
+.yc-title{font:500 2.75cqw/1.18 var(--serif);letter-spacing:.015em;margin:.34em 0 .22em;color:#33271f}
+.yc-deck{font-size:1.05cqw;line-height:1.78;color:#76695d;margin:.2em 0}
+.yc-pad{height:100%;padding:5.2% 6% 4.5%;display:flex;flex-direction:column}
+.yc-head{display:flex;justify-content:space-between;align-items:end;gap:5%;margin-bottom:3.2%}
+.yc-head .yc-title{margin-bottom:0}
+.yc-head .yc-deck{max-width:38%;margin:0 0 .25em}
+.yc-cover{height:100%;position:relative;background:#211c18;color:#f4eee6;overflow:hidden}
+.yc-cover>img{width:100%;height:100%;object-fit:cover;object-position:center}
+.yc-cover:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#171411e8 0%,#171411b8 34%,transparent 74%),linear-gradient(0deg,#17141188,transparent 34%)}
+.yc-cover-copy{position:absolute;z-index:2;left:7.2%;top:15%;width:44%}
+.yc-cover-copy .yc-overline{color:#d0a67c}
+.yc-cover h1{font:500 6.2cqw/1.1 var(--serif);letter-spacing:.05em;margin:.34em 0 .23em;color:#f5f0e8}
+.yc-cover-sub{font:1.42cqw/1.65 var(--serif);color:#e3d8ca;max-width:74%}
+.yc-cover-meta{margin-top:3.6em;padding-top:1.25em;border-top:1px solid #ffffff4d;font-size:1.05cqw;line-height:1.8;letter-spacing:.1em;color:#c8bdb1}
+.yc-cover-note{position:absolute;z-index:2;right:4.3%;bottom:3.6%;font-size:1.05cqw;letter-spacing:.08em;color:#d7cec2}
+.yc-research{height:100%;display:flex;flex-direction:column;padding:5.4% 6% 4.6%}
+.yc-research-body{display:grid;grid-template-columns:.72fr 1.28fr;gap:6%;flex:1;min-height:0;align-items:stretch}
+.yc-research-stat{display:flex;flex-direction:column;justify-content:center;border-right:1px solid #d2c8bb;padding-right:9%}
+.yc-research-stat strong{font:500 9cqw/.92 var(--serif);color:#a34631;letter-spacing:-.04em}
+.yc-research-stat>span{font:500 1.35cqw var(--serif);margin-top:.7em;color:#43372e}
+.yc-research-methods{margin-top:2.4cqw;border-top:1px solid #d2c8bb}
+.yc-research-methods div{display:flex;justify-content:space-between;gap:1em;padding:.85cqw 0;border-bottom:1px solid #d2c8bb;font-size:1.05cqw;color:#66594e}
+.yc-research-methods b{font-weight:500;color:#3d3026}
+.yc-research-list{display:grid;grid-template-columns:1fr 1fr;align-content:center;column-gap:7%;row-gap:0}
+.yc-research-row{padding:1.15cqw 0;border-bottom:1px solid #d2c8bb}
+.yc-research-row b{font:500 1.22cqw var(--serif);color:#46362b}
+.yc-research-row p{font-size:1.05cqw;line-height:1.7;color:#786c60;margin:.38em 0 0}
+.yc-research-foot{margin-top:2.2%;font-size:1.05cqw;line-height:1.6;color:#938577}
+.yc-resources{height:100%;display:flex;flex-direction:column;padding:5.2% 6% 4.6%}
+.yc-resource-list{margin-top:2.1%;border-top:1px solid #cfc4b7;flex:1;display:flex;flex-direction:column;justify-content:center}
+.yc-resource-row{display:grid;grid-template-columns:4.2cqw 15.5cqw 1fr;gap:1.3cqw;align-items:center;padding:1.55cqw 0;border-bottom:1px solid #cfc4b7}
+.yc-resource-row .n{font:italic 1.25cqw Georgia,serif;color:#ad7760}
+.yc-resource-row b{font:500 1.36cqw var(--serif);color:#3a2e25}
+.yc-resource-row span{font-size:1.05cqw;color:#76695d;line-height:1.65}
+.yc-resource-note{display:flex;justify-content:space-between;gap:4%;margin-top:2.5%;font-size:1.05cqw;line-height:1.65;color:#8b7d6f}
+.yc-screen{height:100%;display:grid;grid-template-columns:.9fr 1.1fr;gap:7%;padding:5.5% 6% 5%}
+.yc-screen-left{display:flex;flex-direction:column;justify-content:center}
+.yc-screen-left .yc-title{max-width:90%}
+.yc-big-number{font:500 8.2cqw/.9 var(--serif);letter-spacing:-.06em;color:#a34631;margin:.25em 0 .15em}
+.yc-big-caption{font:500 1.36cqw var(--serif);color:#504238}
+.yc-criteria{border-top:1px solid #d0c5b8;margin-top:2.4cqw}
+.yc-criterion{display:grid;grid-template-columns:1fr auto;gap:1em;padding:.8cqw 0;border-bottom:1px solid #d0c5b8;align-items:center}
+.yc-criterion span{font-size:1.05cqw;color:#685b4f}
+.yc-criterion b{font:500 1.35cqw Georgia,serif;color:#9d563d}
+.yc-screen-right{display:flex;flex-direction:column;justify-content:center;padding:2% 0}
+.yc-screen-right h3{font:500 1.45cqw var(--serif);margin:0 0 .3em;color:#3d3026}
+.yc-screen-right>p{font-size:1.05cqw;color:#8a7c6f;margin:0 0 2.4cqw}
+.yc-bar-row{display:grid;grid-template-columns:7.5cqw 1fr 4.6cqw;gap:1.2cqw;align-items:center;margin:1.05cqw 0}
+.yc-bar-row span{font-size:1.05cqw;color:#625448}
+.yc-bar{height:.42cqw;background:#e0d8ce;position:relative}
+.yc-bar i{display:block;height:100%;background:#a34631}
+.yc-bar-row b{font:500 1.3cqw Georgia,serif;color:#503b30;text-align:right}
+.yc-screen-note{border-top:1px solid #d0c5b8;margin-top:2.8cqw;padding-top:1.3cqw;font-size:1.05cqw;line-height:1.65;color:#938577}
+.yc-translation{height:100%;display:flex;flex-direction:column;padding:5.1% 5.7% 4.4%}
+.yc-translation-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5cqw;flex:1;min-height:0;margin-top:1.8%}
+.yc-translation-card{min-width:0;display:flex;flex-direction:column;background:#e9e3d9}
+.yc-translation-card img{display:block;width:100%;height:21cqw;object-fit:contain;background:#2b241e}
+.yc-translation-copy{padding:1.2cqw 1.2cqw 1cqw}
+.yc-translation-copy small{font-size:1.05cqw;letter-spacing:.12em;color:#a34631}
+.yc-translation-copy h3{font:500 1.42cqw var(--serif);margin:.55em 0 .4em;color:#382c23}
+.yc-translation-copy p{font-size:1.05cqw;line-height:1.65;color:#75695d;margin:0}
+.yc-feature{height:100%;display:flex;flex-direction:column;background:#211c18;color:#f2eee7}
+.yc-feature-photo{height:66%;min-height:0;display:grid;place-items:center;background:#261f1a;overflow:hidden}
+.yc-feature-photo img{width:100%;height:100%;object-fit:contain}
+.yc-feature-copy{flex:1;display:grid;grid-template-columns:.94fr 1.06fr;gap:5%;align-items:center;padding:2.8% 6% 3.4%}
+.yc-feature-copy .yc-overline{color:#d1a57c}
+.yc-feature-copy h2{font:500 2.55cqw/1.22 var(--serif);margin:.34em 0 .18em;color:#f4efe6}
+.yc-feature-copy p{font-size:1.05cqw;line-height:1.8;color:#cec4b8;margin:0}
+.yc-feature-copy .yc-feature-aside{border-left:1px solid #ffffff3c;padding-left:6%}
+.yc-feature-copy .yc-feature-aside strong{display:block;font:500 1.24cqw var(--serif);color:#e3c8aa;margin-bottom:.55em}
+.yc-feature-copy .yc-feature-aside small{display:block;font-size:1.05cqw;line-height:1.7;color:#aaa094;margin-top:1em}
+.yc-duo{height:100%;display:flex;flex-direction:column;padding:5.2% 5.7% 4.4%}
+.yc-duo-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.7cqw;flex:1;min-height:0;margin-top:1.2%}
+.yc-duo-card{min-width:0;display:flex;flex-direction:column}
+.yc-duo-photo{height:24cqw;min-height:0;background:#d9d0c4;overflow:hidden;display:grid;place-items:center}
+.yc-duo-photo img{width:100%;height:100%;object-fit:contain}
+.yc-duo-card figcaption{padding:1.05cqw 0 0;display:flex;justify-content:space-between;gap:1em;align-items:baseline}
+.yc-duo-card figcaption b{font:500 1.36cqw var(--serif);color:#3e3026}
+.yc-duo-card figcaption span{font-size:1.05cqw;color:#806f60}
+.yc-duo-card p{font-size:1.05cqw;line-height:1.65;color:#77695d;margin:.45em 0 0;max-width:90%}
+.yc-ai-inline{font-size:1.05cqw;color:#9a8978;letter-spacing:.07em;margin-top:.55em}
+.yc-wine{height:100%;display:flex;flex-direction:column;padding:4.6% 5.5% 4%}
+.yc-wine-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:1.2%}
+.yc-wine-head .yc-title{margin-bottom:0}
+.yc-wine-photo{flex:1;min-height:0;background:#26221f;display:grid;place-items:center;overflow:hidden}
+.yc-wine-photo img{width:100%;height:100%;object-fit:contain}
+.yc-wine-caption{display:grid;grid-template-columns:1fr 1.15fr;gap:5%;align-items:center;padding-top:1.7%}
+.yc-wine-caption strong{font:500 1.27cqw var(--serif);color:#46372c}
+.yc-wine-caption p{font-size:1.05cqw;line-height:1.65;color:#77695c;margin:0}
+.yc-packaging{height:100%;display:flex;flex-direction:column;padding:5% 5.6% 4.4%}
+.yc-pack-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:3.2%;flex:1;min-height:0;align-items:stretch;margin-top:1.2%}
+.yc-pack-left{display:flex;flex-direction:column;justify-content:center;padding:0 5% 0 0}
+.yc-pack-left .yc-title{font-size:2.5cqw}
+.yc-pack-left p{font-size:1.05cqw;line-height:1.8;color:#75695e}
+.yc-pack-keywords{display:flex;gap:1.5cqw;margin-top:2cqw;padding-top:1.2cqw;border-top:1px solid #cec3b6}
+.yc-pack-keywords span{font-size:1.05cqw;color:#98725b}
+.yc-pack-visuals{display:grid;grid-template-columns:1fr 1fr;gap:1cqw;align-items:center}
+.yc-pack-visuals figure{margin:0;min-width:0;background:#e9e3d9;display:flex;flex-direction:column;justify-content:center;height:100%}
+.yc-pack-visuals img{width:100%;height:100%;max-height:33cqw;object-fit:contain}
+.yc-pack-visuals figcaption{padding:.65cqw .8cqw;color:#85776a;font-size:1.05cqw;border-top:1px solid #d8cfc4}
+.yc-red{height:100%;display:flex;flex-direction:column;padding:4.8% 5.5% 4%}
+.yc-red-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:1.8%}
+.yc-red-head .yc-title{margin-bottom:0}
+.yc-red-grid{display:grid;grid-template-columns:1.15fr 1fr;grid-template-rows:1fr 1fr;gap:.9cqw;flex:1;min-height:0}
+.yc-red-grid figure{position:relative;min-width:0;min-height:0;margin:0;background:#e8dfd4;overflow:hidden;cursor:zoom-in}
+.yc-red-grid figure:first-child{grid-row:span 2;background:#e0d6ca}
+.yc-red-grid img{width:100%;height:100%;object-fit:contain;display:block}
+.yc-red-grid figure:first-child img{object-fit:contain}
+.yc-red-grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:.6cqw .75cqw;background:linear-gradient(0deg,#211712c9,transparent);color:#f4eee7;font-size:1.05cqw;letter-spacing:.04em}
+.yc-red-note{margin-top:1.3%;display:flex;justify-content:space-between;font-size:1.05cqw;color:#8b7d6f}
+.yc-game{height:100%;display:grid;grid-template-columns:.82fr 1.18fr;gap:5%;padding:5.4% 5.8% 4.8%;background:#f1eee8}
+.yc-game-copy{display:flex;flex-direction:column;justify-content:center}
+.yc-game-copy .yc-title{font-size:2.65cqw}
+.yc-game-copy p{font-size:1.05cqw;line-height:1.8;color:#75695d}
+.yc-game-steps{margin-top:2.1cqw;border-top:1px solid #cec4b8}
+.yc-game-step{display:grid;grid-template-columns:2.8cqw 1fr;gap:.8cqw;padding:.8cqw 0;border-bottom:1px solid #cec4b8;align-items:baseline}
+.yc-game-step i{font:italic 1.05cqw Georgia,serif;color:#a34631}
+.yc-game-step span{font-size:1.05cqw;color:#64584d}
+.yc-game-visual{position:relative;min-width:0;min-height:0;background:#d9e1e7;overflow:hidden;display:grid;place-items:center}
+.yc-game-visual img{width:100%;height:100%;object-fit:cover;object-position:88% center}
+.yc-game-visual small{position:absolute;left:1.2cqw;bottom:1.1cqw;background:#f2eee6e8;color:#665849;padding:.48em .72em;font-size:1.05cqw;letter-spacing:.08em}
+.yc-close{height:100%;display:grid;grid-template-columns:.88fr 1.12fr;background:#25211e;color:#f1ece4}
+.yc-close-copy{display:flex;flex-direction:column;justify-content:center;padding:9% 9% 9% 12%}
+.yc-close-copy .yc-overline{color:#d0a57b}
+.yc-close-copy h2{font:500 3.05cqw/1.25 var(--serif);margin:.42em 0 .3em;color:#f3eee6}
+.yc-close-copy p{font-size:1.05cqw;line-height:1.8;color:#c6bdb1}
+.yc-close-list{margin-top:2.1cqw;border-top:1px solid #ffffff3a}
+.yc-close-list div{display:flex;justify-content:space-between;gap:1em;padding:.65cqw 0;border-bottom:1px solid #ffffff3a;font-size:1.05cqw;color:#d8cec2}
+.yc-close-list b{font-weight:500;color:#e2bd98}
+.yc-close-gallery{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:5px;min-width:0;min-height:0;background:#191714}
+.yc-close-gallery figure{position:relative;margin:0;min-width:0;min-height:0;overflow:hidden;background:#312920;cursor:zoom-in}
+.yc-close-gallery figure:first-child{grid-row:auto}
+.yc-close-gallery img{width:100%;height:100%;object-fit:contain;display:block}
+.yc-close-gallery figure:first-child img{object-position:64% center}
+.yc-close-gallery figcaption{position:absolute;left:0;bottom:0;padding:.5cqw .7cqw;background:#171512b5;color:#eee7dc;font-size:1.05cqw}
+.y2-page{height:100%;padding:4.6% 5.6% 4.1%;display:flex;flex-direction:column;background:#f2eee6;color:#302820}
+.y2-head{display:flex;justify-content:space-between;align-items:end;gap:4%;margin-bottom:2.1%;flex:none}
+.y2-head h2{font:500 2.55cqw/1.16 var(--serif);margin:.3em 0 0;color:#33271f}
+.y2-head p{max-width:43%;font-size:1.05cqw;line-height:1.7;color:#76695d;margin:0}
+.y2-label{font-size:1.05cqw;letter-spacing:.17em;color:#95694a;text-transform:uppercase}
+.y2-body{flex:1;min-height:0}
+.y2-note{font-size:1.05cqw;line-height:1.65;color:#918577}
+.y2-literature-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,minmax(0,1fr));gap:.9cqw;flex:1;min-height:0}
+.y2-literature-grid article{display:flex;flex-direction:column;justify-content:center;padding:1.6cqw 1.7cqw!important}
+.y2-resource-layout,.y2-matrix-layout{display:flex;flex-direction:column}
+.y2-caption{display:flex;justify-content:space-between;align-items:baseline;gap:1em;margin-top:.55cqw;color:#76695d;font-size:1.05cqw}
+.y2-caption b{font:500 1.16cqw var(--serif);color:#43362b}
+.y2-fit{display:block;width:100%;height:100%;object-fit:contain}
+.y2-figure{margin:0;min-width:0;min-height:0;background:#e7e0d5;display:flex;flex-direction:column;overflow:hidden;cursor:zoom-in}
+.y2-figure .y2-fit{flex:1;min-height:0}
+.y2-figure figcaption{padding:.55cqw .72cqw;border-top:1px solid #d6ccbf;font-size:1.05cqw;line-height:1.4;color:#776a5e}
+.y2-cover{position:relative;height:100%;overflow:hidden;background:#211c18;color:#f4eee6}
+.y2-cover>img{width:100%;height:100%;object-fit:cover;object-position:center}
+.y2-cover:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#171411ee 0%,#171411b8 37%,transparent 78%),linear-gradient(0deg,#1714118c,transparent 45%)}
+.y2-cover-copy{position:absolute;z-index:2;left:7%;top:13%;width:48%}
+.y2-cover-copy h1{font:500 6.15cqw/1.06 var(--serif);letter-spacing:.04em;margin:.3em 0 .22em;color:#f5f0e8}
+.y2-cover-copy p{font:1.25cqw/1.65 var(--serif);color:#e2d8cc;max-width:72%;margin:0}
+.y2-cover-meta{margin-top:3.3cqw;padding-top:1.15cqw;border-top:1px solid #ffffff4a;font-size:1.05cqw;line-height:1.85;letter-spacing:.08em;color:#c8bdb1}
+.y2-cover-note{position:absolute;z-index:2;right:4%;bottom:3.6%;font-size:1.05cqw;color:#d7cec2;letter-spacing:.06em}
+.y2-intro{display:grid;grid-template-columns:.9fr 1.1fr;gap:4.5%;align-items:stretch}
+.y2-intro-stat{display:flex;flex-direction:column;justify-content:center;padding-right:7%;border-right:1px solid #cec3b6}
+.y2-intro-stat strong{font:500 8.6cqw/.9 var(--serif);color:#a34631;letter-spacing:-.06em}
+.y2-intro-stat b{font:500 1.25cqw var(--serif);margin:.7em 0 .35em;color:#44372d}
+.y2-intro-stat p{font-size:1.05cqw;line-height:1.8;color:#76695d;margin:0}
+.y2-intro-right{display:flex;flex-direction:column;justify-content:stretch}
+.y2-insight-row{display:grid;grid-template-columns:5.3cqw 1fr;gap:1.2cqw;padding:1.05cqw 0;border-bottom:1px solid #d2c8bc;align-items:center;flex:1}
+.y2-insight-row:first-child{border-top:1px solid #d2c8bc}
+.y2-insight-row b{font:500 1.18cqw var(--serif);color:#49392d}
+.y2-insight-row p{font-size:1.05cqw;line-height:1.65;color:#776b60;margin:0}
+.y2-research-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,minmax(0,1fr));gap:.9cqw;height:100%}
+.y2-research-card{position:relative;min-width:0;min-height:0;overflow:hidden;background:#e9e2d8}
+.y2-research-card figure{position:absolute;inset:0;margin:0;background:#d8d0c5;display:grid;place-items:center;overflow:hidden;cursor:zoom-in}
+.y2-research-card img{width:100%;height:100%;object-fit:contain}
+.y2-research-card div{position:absolute;z-index:1;left:0;right:0;bottom:0;padding:.8cqw 1.05cqw;background:linear-gradient(0deg,#211914e8,transparent);color:#f4eee6}
+.y2-research-card small{font-size:1.05cqw;letter-spacing:.1em;color:#e2bc98}
+.y2-research-card h3{font:500 1.25cqw var(--serif);margin:.35em 0 .22em;color:#fffaf3}
+.y2-research-card p{font-size:1.05cqw;line-height:1.55;color:#e1d7cb;margin:0}
+.y2-interviews{display:grid;grid-template-columns:1.1fr .9fr;gap:3.5%;align-items:stretch}
+.y2-interview-photo{display:grid;grid-template-columns:1fr;grid-template-rows:repeat(2,minmax(0,1fr));gap:.9cqw;min-width:0;min-height:0}
+.y2-interview-photo figure{margin:0;min-width:0;min-height:0;background:#e6ded3;display:grid;place-items:center;overflow:hidden;cursor:zoom-in}
+.y2-interview-photo img{width:100%;height:100%;object-fit:contain}
+.y2-interview-copy{display:flex;flex-direction:column;justify-content:center}
+.y2-interview-copy h3{font:500 1.45cqw var(--serif);margin:0 0 .75em;color:#43352a}
+.y2-interview-list{border-top:1px solid #cec3b6}
+.y2-interview-list div{padding:.7cqw 0;border-bottom:1px solid #cec3b6;font-size:1.05cqw;line-height:1.5;color:#75695d}
+.y2-interview-list b{display:inline-block;width:8.5cqw;font-weight:500;color:#47382c}
+.y2-opportunity{margin-top:1.3cqw;padding:1cqw 1.2cqw;background:#e5ddd2;border-left:3px solid #a34631;font:1.2cqw/1.6 var(--serif);color:#594638}
+.y2-transition{display:grid;grid-template-columns:.92fr 1.08fr;gap:4%;align-items:stretch}
+.y2-transition-left{display:flex;flex-direction:column;justify-content:center}
+.y2-transition-left .big{font:500 7.8cqw/.92 var(--serif);letter-spacing:-.06em;color:#a34631}
+.y2-transition-left h2{font:500 2.25cqw/1.2 var(--serif);color:#362a21;margin:.45em 0}
+.y2-transition-left p{font-size:1.05cqw;line-height:1.75;color:#76695d;max-width:85%}
+.y2-flow{display:flex;flex-direction:column;justify-content:center}
+.y2-flow-step{display:grid;grid-template-columns:3.8cqw 1fr auto;gap:1.2cqw;align-items:center;padding:1.1cqw .3cqw;border-bottom:1px solid #cfc4b8}
+.y2-flow-step:first-child{border-top:1px solid #cfc4b8}
+.y2-flow-step i{font:italic 1.3cqw Georgia,serif;color:#ac765a}
+.y2-flow-step b{font:500 1.27cqw var(--serif);color:#46372c}
+.y2-flow-step span{font-size:1.05cqw;color:#806f60}
+.y2-resource-table{border-top:1px solid #cfc4b8;display:flex;flex-direction:column;justify-content:space-between;flex:1;min-height:0}
+.y2-resource-row{display:grid;grid-template-columns:4.5cqw 14cqw 1fr 1.18fr;gap:1.4cqw;align-items:center;padding:1.12cqw .15cqw;border-bottom:1px solid #d3c9bd;flex:1}
+.y2-resource-row .n{font:italic 1.24cqw Georgia,serif;color:#ad7760}
+.y2-resource-row b{font:500 1.18cqw var(--serif);color:#423329}
+.y2-resource-row span{font-size:1.05cqw;line-height:1.58;color:#75695d}
+.y2-resource-head{display:grid;grid-template-columns:4.5cqw 14cqw 1fr 1.18fr;gap:1.4cqw;padding:.55cqw .15cqw;color:#9a8876;font-size:1.05cqw;letter-spacing:.12em}
+.y2-schema{display:grid;grid-template-columns:.78fr 1.22fr;gap:4%;align-items:stretch}
+.y2-schema-fields{display:flex;flex-direction:column;justify-content:center}
+.y2-schema-fields h3{font:500 1.38cqw var(--serif);margin:0 0 .8em;color:#44362c}
+.y2-field-tags{display:flex;flex-wrap:wrap;gap:.55cqw}
+.y2-field-tags span{padding:.5em .75em;border:1px solid #cfc4b8;color:#6d5d50;font-size:1.05cqw}
+.y2-schema-example{display:flex;flex-direction:column;justify-content:center}
+.y2-schema-example table{border-collapse:collapse;width:100%;height:100%;font-size:1.05cqw;line-height:1.5}
+.y2-schema-example th{text-align:left;font-weight:500;color:#9a7054;padding:.65cqw .5cqw;border-bottom:1px solid #bfae9e}
+.y2-schema-example td{padding:.78cqw .5cqw;border-bottom:1px solid #d3c9bd;color:#6b5e52;vertical-align:top}
+.y2-schema-example td:first-child{font:500 1.05cqw var(--serif);color:#46372c;white-space:nowrap}
+.y2-score{display:grid;grid-template-columns:.8fr 1.2fr;gap:5%;align-items:stretch}
+.y2-score-number{display:flex;flex-direction:column;justify-content:center;border-right:1px solid #d0c5b8;padding-right:9%}
+.y2-score-number strong{font:500 9cqw/.9 var(--serif);letter-spacing:-.06em;color:#a34631}
+.y2-score-number b{font:500 1.25cqw var(--serif);color:#493a2f;margin:.7em 0 .4em}
+.y2-score-number p{font-size:1.05cqw;line-height:1.7;color:#786b5f;margin:0}
+.y2-weight-list{display:flex;flex-direction:column;justify-content:center}
+.y2-weight{display:grid;grid-template-columns:8cqw 1fr 4.5cqw;gap:1.1cqw;align-items:center;padding:1.25cqw 0;border-bottom:1px solid #d2c8bc}
+.y2-weight span{font-size:1.05cqw;color:#67594e}
+.y2-weight .track{height:.5cqw;background:#e1d9cf}
+.y2-weight .track i{display:block;height:100%;background:#a34631}
+.y2-weight b{font:500 1.32cqw Georgia,serif;text-align:right;color:#4b3a2e}
+.y2-preference{display:flex;flex-direction:column;justify-content:center}
+.y2-pref-row{display:grid;grid-template-columns:9cqw 1fr 5.2cqw;gap:1.4cqw;align-items:center;padding:1.55cqw 0;border-bottom:1px solid #d1c7bb}
+.y2-pref-row span{font:500 1.24cqw var(--serif);color:#4a392e}
+.y2-pref-row .track{height:.72cqw;background:#e2dad0}
+.y2-pref-row i{display:block;height:100%;background:#a34631}
+.y2-pref-row b{font:500 1.32cqw Georgia,serif;color:#8f523b;text-align:right}
+.y2-pref-note{padding-top:1.2cqw;font-size:1.05cqw;line-height:1.6;color:#918476}
+.y2-matrix{border-top:1px solid #cfc4b8;display:flex;flex-direction:column;justify-content:space-between;min-height:0;flex:1}
+.y2-matrix-row{display:grid;grid-template-columns:.95fr .95fr 1.2fr 1.25fr;gap:1.25cqw;align-items:center;padding:1.05cqw .1cqw;border-bottom:1px solid #d2c8bc}
+.y2-matrix .y2-matrix-row{flex:1}
+.y2-matrix-row b{font:500 1.12cqw var(--serif);color:#49382d}
+.y2-matrix-row span{font-size:1.05cqw;line-height:1.55;color:#75685d}
+.y2-matrix-head{font-size:1.05cqw;letter-spacing:.13em;color:#9b8877}
+.y2-index{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,minmax(0,1fr));gap:.9cqw;min-height:0;height:100%}
+.y2-index-card{position:relative;min-width:0;min-height:0;background:#e8e0d5;overflow:hidden;display:flex;align-items:end}
+.y2-index-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:1cqw;opacity:.86}
+.y2-index-card span{position:relative;z-index:1;width:100%;padding:.7cqw .9cqw;background:linear-gradient(0deg,#211914dd,transparent);font:500 1.05cqw var(--serif);color:#fffaf3}
+.y2-index-card:first-child,.y2-index-card:nth-child(6){grid-column:auto}
+.y2-product-split{display:grid;grid-template-columns:.85fr 1.15fr;gap:3.5%;align-items:stretch}
+.y2-product-copy{display:flex;flex-direction:column;justify-content:center;padding-right:5%}
+.y2-product-copy h3{font:500 1.5cqw/1.25 var(--serif);margin:.4em 0;color:#403126}
+.y2-product-copy p{font-size:1.05cqw;line-height:1.8;color:#75695d}
+.y2-product-copy ul{list-style:none;padding:0;margin:1.1cqw 0 0;border-top:1px solid #cec3b6}
+.y2-product-copy li{padding:.65cqw 0;border-bottom:1px solid #cec3b6;font-size:1.05cqw;color:#716255}
+.y2-product-copy li b{display:inline-block;width:7cqw;font-weight:500;color:#a34631}
+.y2-product-image{display:grid;place-items:center;min-height:0;background:#e7dfd4;overflow:hidden;cursor:zoom-in}
+.y2-product-image img{width:100%;height:100%;object-fit:contain}
+.y2-pair{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:minmax(0,1fr);gap:1.2cqw;min-height:0;height:100%}
+.y2-pair figure{margin:0;min-width:0;min-height:0;background:#e4ddd2;display:flex;flex-direction:column;overflow:hidden;cursor:zoom-in}
+.y2-pair img{width:100%;height:100%;min-height:0;object-fit:contain}
+.y2-pair figcaption{padding:.55cqw .75cqw;border-top:1px solid #d2c8bc;font-size:1.05cqw;color:#75695d}
+.y2-concepts{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,minmax(0,1fr));gap:1cqw;min-height:0;height:100%}
+.y2-concept{margin:0;min-width:0;min-height:0;background:#e7dfd4;display:flex;flex-direction:column;overflow:hidden;cursor:zoom-in}
+.y2-concept img{width:100%;height:100%;min-height:0;object-fit:contain}
+.y2-concept figcaption{padding:.75cqw .8cqw;border-top:1px solid #d1c7bb}
+.y2-concept b{display:block;font:500 1.05cqw var(--serif);color:#45362b}
+.y2-concept span{font-size:1.05cqw;color:#847568}
+.y2-board{display:grid;place-items:center;flex:1;min-height:0;background:#e5ddd2;overflow:hidden;cursor:zoom-in}
+.y2-board img{width:100%;height:100%;object-fit:contain}
+.y2-board-note{display:flex;justify-content:space-between;gap:3%;margin-top:.8cqw;color:#817366;font-size:1.05cqw;line-height:1.5}
+.y2-red-art{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,minmax(0,1fr));gap:.8cqw;min-height:0;flex:1}
+.y2-red-art figure{margin:0;min-width:0;min-height:0;background:#e7dfd4;display:grid;place-items:center;overflow:hidden;cursor:zoom-in}
+.y2-red-art img{width:100%;height:100%;object-fit:contain}
+.y2-products{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,minmax(0,1fr));gap:1cqw;min-height:0;height:100%}
+.y2-product{margin:0;min-width:0;min-height:0;background:#e5ddd2;display:flex;flex-direction:column;overflow:hidden;cursor:zoom-in}
+.y2-product img{width:100%;height:100%;min-height:0;object-fit:contain}
+.y2-product figcaption{padding:.7cqw .78cqw;background:#ebe5db;font:500 1.05cqw var(--serif);color:#493a2f}
+.y2-close{height:100%;display:grid;grid-template-columns:.9fr 1.1fr;background:#25211e;color:#f1ece4}
+.y2-close-copy{display:flex;flex-direction:column;justify-content:center;padding:8% 9% 8% 12%}
+.y2-close-copy .y2-label{color:#d0a57b}
+.y2-close-copy h2{font:500 2.9cqw/1.23 var(--serif);margin:.4em 0 .3em;color:#f3eee6}
+.y2-close-copy p{font-size:1.05cqw;line-height:1.8;color:#c6bdb1}
+.y2-close-list{margin-top:1.6cqw;border-top:1px solid #ffffff3a}
+.y2-close-list div{display:flex;justify-content:space-between;gap:1em;padding:.6cqw 0;border-bottom:1px solid #ffffff3a;font-size:1.05cqw;color:#d8cec2}
+.y2-close-list b{font-weight:500;color:#e2bd98}
+.y2-close-gallery{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:5px;min-width:0;min-height:0;background:#191714}
+.y2-close-gallery figure{position:relative;margin:0;min-width:0;min-height:0;overflow:hidden;background:#312920;cursor:zoom-in}
+.y2-close-gallery img{width:100%;height:100%;object-fit:contain;display:block}
+.y2-close-gallery figcaption{position:absolute;left:0;bottom:0;padding:.5cqw .7cqw;background:#171512b5;color:#eee7dc;font-size:1.05cqw}
+.lightbox{display:none;position:fixed;z-index:20;inset:0;background:#0e100ef5;align-items:center;justify-content:center;padding:3vh 3vw;cursor:zoom-out}
+.lightbox.open{display:flex}
+.lightbox img{max-width:94vw;max-height:94vh;object-fit:contain}
+.lightbox button{position:absolute;right:22px;top:14px;background:none;border:0;color:#f5f1eb;font-size:30px;cursor:pointer}
+.bottom .controls{display:flex;align-items:center;gap:14px}
+.bottom button{color:#cbc5bb;background:none;border:0;padding:8px 0;cursor:pointer;font:12px var(--sans);letter-spacing:.1em}
+.bottom button:hover{color:#fff}
+.counter{font:italic 13px Georgia,serif;color:#a59d92;min-width:40px;text-align:center}
+.progress{height:1px;width:90px;background:#555650}
+.progress i{display:block;height:100%;width:11%;background:#c18f60;transition:width .25s}
+@keyframes fade-in{from{opacity:.65;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media(max-width:700px){
+ .app{grid-template-rows:34px 1fr 36px}.top,.bottom{padding:0 12px}.top .project-name{display:none}.page{width:97vw}.frame{padding:5%}.headline{font-size:4cqw}.copy{font-size:1.35cqw}.cover-copy{width:58%}
+}
+@media print{
+ @page{size:A4 landscape;margin:0}
+ html,body{height:auto;overflow:visible;background:white}
+ .app{height:auto;display:block}
+ .top,.bottom{display:none}
+ .stage{display:block}
+ .page,.page.active{display:block!important;width:297mm;height:210mm;aspect-ratio:auto;box-shadow:none;break-after:page;page-break-after:always;animation:none}
+ .page:last-child{break-after:auto}
+ .frame{padding:14mm 17mm}
+}
+
+/* Readable A4 typography and image framing refinements */
+.top,.bottom{font-size:12px}
+.bottom button{font-size:12px}
+.counter{font-size:13px}
+.y2-cover>img{object-position:72% center}
+.y2-intro-images{height:34%;min-height:10cqw;margin-top:1.4cqw;display:grid;grid-template-columns:1fr 1fr;gap:.65cqw}
+.y2-intro-images figure{display:flex;flex-direction:column;min-width:0;min-height:0;margin:0;background:#e5ddd2;overflow:hidden}
+.y2-intro-images figure>a{display:block;flex:1;min-height:0;overflow:hidden}
+.y2-intro-images img{display:block;width:100%;height:100%;object-fit:cover}
+.y2-intro-images figcaption{padding:.28cqw .35cqw;background:#e8e0d5;color:#76695d;font-size:1cqw;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.y2-intro-images figcaption a{color:inherit;text-decoration:none}
+.y2-index-card img{object-fit:cover;padding:0;opacity:1}
+.y2-index-card:nth-child(3) img{object-position:78% center}
+.y2-index-card span{padding:.85cqw 1cqw;background:linear-gradient(0deg,#211914eb 0%,#21191499 66%,transparent 100%)}
+.y2-red-art figure{padding:1.1cqw;background:#faf8f3}
+.y2-red-art img{object-fit:contain;object-position:center;background:#fff}
+.y2-close-gallery{grid-template-rows:repeat(4,minmax(0,1fr))}
+.y2-close-gallery img{object-fit:cover}
+.y2-close-gallery figure:nth-child(7) img{object-fit:contain;background:#302923;padding:.4cqw}
+
+.original-slide-page{width:min(96vw,calc((100dvh - 80px)*16/9));aspect-ratio:16/9;background:var(--paper)}
+.original-slide-image{display:block;width:100%;height:100%;object-fit:contain;background:var(--paper);cursor:zoom-in}
+
+/* Four selected Yichuan pages translated into the same restrained A4 system as Project 01 */
+.yichuan-unified{background:var(--paper);color:var(--ink)}
+.yu-inner{height:100%;padding:5.2% 6% 4.2%;display:flex;flex-direction:column;position:relative}
+.yu-kicker{font-size:1.05cqw;line-height:1.4;letter-spacing:.18em;color:var(--earth);text-transform:uppercase}
+.yu-rule{height:1px;background:var(--line);margin:1.1cqw 0 0}
+.yu-foot{display:flex;justify-content:space-between;align-items:center;gap:1em;border-top:1px solid var(--line);padding-top:.85cqw;color:var(--muted);font-size:1.05cqw;letter-spacing:.08em}
+.yu-opener-grid{flex:1;min-height:0;display:flex;flex-direction:column;gap:1.4cqw;padding:2.2cqw 0 1.5cqw}
+.yu-opener-copy{display:grid;grid-template-columns:auto auto 1fr;grid-template-rows:auto auto;align-items:end;gap:.2cqw 1.5cqw;min-width:0}
+.yu-opener-number{grid-column:1;grid-row:1 / 3;font:400 5.7cqw/.9 Georgia,serif;color:var(--earth);letter-spacing:-.045em;margin:0}
+.yu-opener-copy h1{font:500 4.05cqw/1.18 var(--serif);letter-spacing:.04em;margin:0;color:var(--ink)}
+.yu-opener-en{grid-column:2;grid-row:2;margin-top:.35cqw;font:italic 1.12cqw Georgia,serif;letter-spacing:.18em;color:#8d8172}
+.yu-opener-copy .yu-rule{display:none}
+.yu-opener-sub{grid-column:3;grid-row:1 / 3;justify-self:end;align-self:end;font:1.18cqw/1.8 var(--serif);color:#655e54;margin:0;max-width:95%;text-align:right}
+.yu-photo{margin:0;min-width:0;min-height:0;overflow:hidden;background:#e5ddd2;position:relative}
+.yu-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.yu-photo figcaption{position:absolute;left:0;bottom:0;padding:.75cqw 1cqw;color:#f2eee7;background:linear-gradient(0deg,#171714b8,transparent);font-size:1.02cqw;letter-spacing:.08em;width:100%}
+.yu-opener-image{flex:1;min-height:0;background:#e5ddd2}
+.yu-opener-image img{object-fit:contain;background:#e5ddd2}
+.yu-wine-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2cqw;padding:0 0 1.15cqw;border-bottom:1px solid var(--line)}
+.yu-wine-head h1{font:500 3.45cqw/1.2 var(--serif);margin:.35em 0 0;letter-spacing:.035em}
+.yu-wine-head p{font-size:1.12cqw;line-height:1.7;color:#71675b;margin:0 0 .2em;text-align:right}
+.yu-wine-visual{flex:1;min-height:0;margin:1.5cqw 0 1.2cqw;background:#e6dfd5;display:grid;place-items:center;overflow:hidden}
+.yu-wine-visual img{display:block;width:100%;height:100%;object-fit:contain;cursor:zoom-in}
+.yu-fruit-layout,.yu-red-layout{flex:1;min-height:0;display:grid;grid-template-columns:.74fr 1.26fr;gap:4.2%;align-items:stretch;padding:2.8cqw 0 1.8cqw}
+.yu-fruit-copy,.yu-red-copy{display:flex;flex-direction:column;justify-content:center;min-width:0}
+.yu-fruit-title{font:500 3.25cqw/1.28 var(--serif);margin:.45em 0 .65em;letter-spacing:.025em}
+.yu-fruit-sub{font:1.3cqw/1.7 var(--serif);color:#60584e;margin:0;padding-left:1cqw;border-left:2px solid var(--earth)}
+.yu-fruit-list{display:flex;flex-wrap:wrap;gap:.65cqw 1.05cqw;margin-top:2.1cqw;color:#766b5f;font:1.08cqw/1.5 var(--serif)}
+.yu-fruit-list span{white-space:nowrap}
+.yu-fruit-photo img{object-position:79% center}
+.yu-red-copy h1{font:500 4.05cqw/1.25 var(--serif);margin:.55em 0 0;letter-spacing:.05em}
+.yu-red-accent{width:3.6cqw;height:2px;background:#9f3e30;margin:1.45cqw 0 1.15cqw}
+.yu-red-copy p{font:1.18cqw/1.8 var(--serif);color:#71675b;margin:0}
+.yu-red-photo img{object-position:center 50%}
+@media(max-width:760px){.yu-opener-grid{grid-template-columns:.9fr 1.1fr}.yu-fruit-layout,.yu-red-layout{grid-template-columns:.8fr 1.2fr}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top"><span>杨祎娜　/　文化创意与用户体验作品集</span><span class="project-name">庄浪古堡数字保护　·　宜川文创产品设计</span></header>
+<main class="stage" id="stage">
+
+<section class="page active" aria-label="封面">
+ <div class="cover">
+  <img class="zoom" data-zoom="assets/fort-zhaojiashan.jpg" src="assets/fort-zhaojiashan.jpg" alt="赵家山堡无人机实景影像">
+  <span class="page-index" style="color:#ddd4c8">01</span>
+  <div class="cover-copy">
+   <div class="kicker">CULTURAL HERITAGE · DIGITAL ARCHIVE</div>
+   <h1>从夯土<br>到云端</h1>
+   <div class="english">FROM EARTH TO CLOUD</div>
+   <div class="subtitle">庄浪县古城堡<br>数字保护调查影像展</div>
+   <div class="meta">团队项目　/　庄浪县博物馆　/　2025<br>遗产调查 · 数字记录 · 展览叙事</div>
+  </div>
+  <div class="tag cover-tag">项目现场影像</div>
+ </div>
+</section>
+
+<section class="page" aria-label="古堡现场影像">
+ <div class="photo-spread">
+  <img class="zoom" data-zoom="assets/fort-zhaojiashan.jpg" src="assets/fort-zhaojiashan.jpg" alt="赵家山堡航拍全景">
+  <span class="page-index" style="color:#ddd4c8">02</span>
+  <div class="photo-copy">
+   <div class="kicker">01 / THE FORTS</div>
+   <h2>先看见<br>古堡</h2>
+   <p>夯土城墙从梁峁上环抱而下，城门、墙体与村庄相连。庄浪古堡不是孤立的遗址，它们仍在黄土沟壑与日常生活之间。</p>
+  </div>
+  <div class="photo-caption">赵家山堡　/　项目现场航拍影像</div>
+  <div class="photo-detail">
+   <figure data-zoom="assets/fort-qifeng.jpg"><img src="assets/fort-qifeng.jpg" alt="旗峰堡航拍"><figcaption>旗峰堡</figcaption></figure>
+   <figure data-zoom="assets/fort-tongbian.jpg"><img src="assets/fort-tongbian.jpg" alt="通边堡航拍"><figcaption>通边堡</figcaption></figure>
+   <figure data-zoom="assets/fort-dianshan.jpg"><img src="assets/fort-dianshan.jpg" alt="颠山堡航拍"><figcaption>颠山堡</figcaption></figure>
+  </div>
+ </div>
+</section>
+
+<section class="page" aria-label="地理区位与价值">
+ <div class="frame">
+  <span class="page-index">03</span>
+  <div class="location">
+   <div class="location-map">
+    <svg class="contour" viewBox="0 0 800 700" preserveAspectRatio="none" aria-hidden="true">
+     <g fill="none" stroke="#c3b6a5" stroke-width="1">
+      <path d="M-30 160C95 80 191 148 255 89S410 22 527 68s195-2 315-67"/>
+      <path d="M-30 205C83 124 188 185 260 127S412 66 530 110s194-1 315-60"/>
+      <path d="M-30 254C75 173 181 229 269 171S410 110 533 156s195 0 310-54"/>
+      <path d="M-20 500C76 432 200 473 282 413s175-78 293-22 174 49 269-6"/>
+      <path d="M-25 548C74 478 202 523 287 460s175-78 295-23 169 47 264-11"/>
+      <path d="M-25 596C74 527 205 571 294 508s176-80 296-24 165 44 260-17"/>
+     </g>
+     <path d="M66 350C153 255 286 277 362 241c75-36 158-44 221 7 63 50 103 119 64 188-39 69-123 83-184 75-61-8-105 42-194 26-89-16-154-85-203-187Z" fill="#d8c5ad" opacity=".36"/>
+     <path d="M121 368C201 301 295 310 369 282c74-29 138-19 189 26 51 44 78 101 43 148-34 47-105 58-162 49-57-9-105 30-175 18-70-12-113-64-143-155Z" fill="none" stroke="#b18a64" stroke-width="2" opacity=".8"/>
+     <circle cx="476" cy="369" r="7" fill="#965f38"/><circle cx="476" cy="369" r="18" fill="none" stroke="#965f38" opacity=".45"/>
+    </svg>
+    <div class="region-title">
+     <div class="kicker">LOCATION / LANDSCAPE</div>
+     <h2>黄土高原<br>丘陵沟壑之间</h2>
+     <div class="small-note">甘肃中东部 · 平凉市 · 庄浪县<br>区位递进示意，非比例地图</div>
+    </div>
+    <div class="region-chain">
+     <div class="region-step"><span class="num">01</span><div><b>甘肃中东部</b><small>六盘山西麓</small></div></div>
+     <div class="region-step"><span class="num">02</span><div><b>平凉市</b><small>黄土高原丘陵沟壑区</small></div></div>
+     <div class="region-step"><span class="num">03</span><div><b>庄浪县</b><small>古堡散布在梁峁、山巅与村落之间</small></div></div>
+    </div>
+   </div>
+   <div class="location-copy">
+    <div class="kicker">02 / A LIVING HERITAGE LANDSCAPE</div>
+    <h2 class="headline">这里保存的<br>是一整个古堡谱系</h2>
+    <p class="copy">当地古堡以人力夯土筑成，墙体、女墙、垛口、城楼、角楼与城门共同构成防御空间。官堡与民堡并存，尺度和形制各异，与山地、河谷和聚落紧密相连。</p>
+    <div class="stat-row">
+     <div class="stat"><b>320+</b><span>据媒体粗略统计<br>历史上曾有古堡数量</span></div>
+     <div class="stat"><b>200+</b><span>不同历史时期<br>现存古堡遗存数量</span></div>
+    </div>
+    <div class="location-facts">
+     <div class="location-fact"><b>地形</b><span>六盘山西麓<br>黄土丘陵沟壑</span></div>
+     <div class="location-fact"><b>建造</b><span>就地取土<br>分层夯筑</span></div>
+     <div class="location-fact"><b>价值</b><span>军事、聚落<br>与地方生活史</span></div>
+    </div>
+    <p class="footnote">数量为甘肃日报报道中的粗略统计，非本项目普查结果。地理信息据庄浪县人民政府资料。<br><a href="https://manage.gsei.com.cn/html/1654/2021-04-15/content-318178.html" target="_blank" rel="noreferrer">阅读甘肃日报报道</a>　<a href="https://www.gszhuanglang.gov.cn/zjzl/ZLGK/art/2022/art_9e9cec78ed964189b8ed35dabb8cf764.html" target="_blank" rel="noreferrer">庄浪县地理简介</a></p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="page" aria-label="数字化保护缘起">
+ <div class="risk">
+  <span class="page-index" style="color:#ddd4c8">04</span>
+  <div class="risk-image">
+   <img class="zoom" data-zoom="assets/render-macro.jpg" src="assets/render-macro.jpg" alt="夯土肌理转化为点云的概念渲染">
+   <span class="image-label">概念渲染　/　夯土肌理向点云转化</span>
+  </div>
+  <div class="risk-copy">
+   <div class="kicker">03 / WHY RECORD</div>
+   <h2>风雨会改写<br>夯土的边界</h2>
+   <p class="copy">土堡长期暴露在自然环境中，水、温度与风会使夯土发生剥蚀、裂隙、冲沟等变化。许多古堡还与村落紧邻，时间、使用与环境共同改变着它们的形态。</p>
+   <div class="risk-list">
+    <div class="risk-item"><b>水</b><span>降雨、径流<br>冲刷墙体表面</span></div>
+    <div class="risk-item"><b>温差</b><span>干湿与冻融<br>促成裂隙、剥落</span></div>
+    <div class="risk-item"><b>风</b><span>松散颗粒<br>沿夯层逐渐流失</span></div>
+   </div>
+   <p class="copy">数字化记录把形体、肌理与场地关系保存为可回看、可比较的资料，为后续研究、保护和公众理解留下参照。</p>
+   <p class="footnote">此处以现场影像与夯土遗址风化研究说明保存风险，不代表对某一座古堡作了病害鉴定。<br><a href="https://cjournal.hep.com.cn/1000-2383/CN/PDF/10.3799/dqkx.2024.141" target="_blank" rel="noreferrer">《夯土遗址风化病害类型、机理与保护加固：现状和展望》</a></p>
+  </div>
+ </div>
+</section>
+
+<section class="page" aria-label="数字采集过程">
+ <div class="frame">
+  <span class="page-index">05</span>
+  <div class="workflow">
+   <div class="workflow-copy">
+    <div class="kicker">04 / FROM SITE TO DATA</div>
+    <h2 class="headline">把现场<br>变成数字档案</h2>
+    <p class="copy">先理解遗址的空间与环境，再选择采集方式。无人机影像、地面扫描与现场校核共同建立可用于建模的原始数据。</p>
+    <div class="workflow-list">
+     <div class="workflow-step"><span class="n">01</span><div><b>航线与像控布置</b><p>结合地形和扫描范围规划飞行路线，布置控制点与检查点。</p></div></div>
+     <div class="workflow-step"><span class="n">02</span><div><b>影像与空间数据采集</b><p>无人机获取 POS 与原始影像；按遗址情况进行地面补拍、三维扫描。</p></div></div>
+     <div class="workflow-step"><span class="n">03</span><div><b>数据检查与建模</b><p>检查影像质量、重叠度与控制点，生成点云并进行三维实景建模。</p></div></div>
+     <div class="workflow-step"><span class="n">04</span><div><b>数字内容转译</b><p>把模型、影像与历史信息组织成信息可视化与展览内容。</p></div></div>
+    </div>
+    <div class="workflow-under"><img src="assets/unit04-wall.jpg" alt="第四单元数字采集流程展墙"><span>展墙记录了项目采用的采集设备与基本流程。<br>点击右侧视频可播放扫描过程影像。</span></div>
+   </div>
+   <div class="workflow-visual">
+    <video controls preload="metadata" poster="assets/viz-still.jpg" aria-label="庄浪古堡三维扫描过程视频">
+     <source src="assets/scan-process.mp4" type="video/mp4">
+     当前浏览器暂不支持内嵌视频。
+    </video>
+    <div class="video-title">项目原始影像　/　三维扫描过程</div>
+    <span class="tag video-source">播放控件可查看完整视频</span>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="page" aria-label="古堡信息可视化视频">
+ <div class="viz-showcase">
+  <span class="page-index" style="color:#ddd4c8">06</span>
+  <div class="viz-copy">
+   <div class="kicker">05 / INFORMATION VISUALIZATION</div>
+   <h2>让古堡<br>被重新读懂</h2>
+   <p class="copy">从三维采集得到的空间数据出发，项目进一步把古堡的历史、形制与地域信息转译为动态视觉内容。信息可视化视频让原本分散的资料在时间中建立联系。</p>
+   <div class="viz-note">项目原始视频<br>《庄浪古堡信息可视化》<br>封面为场景概念图，视频内容为项目原始素材。</div>
+  </div>
+  <div class="viz-screen">
+   <video controls preload="metadata" poster="assets/information-visualization-cover.png" aria-label="庄浪古堡信息可视化视频">
+    <source src="assets/information-visualization.mp4" type="video/mp4">
+    当前浏览器暂不支持内嵌视频。
+   </video>
+   <div class="video-title">PROJECT FILM　/　INFORMATION VISUALIZATION</div>
+  </div>
+ </div>
+</section>
+
+<section class="page" aria-label="点云视觉表达">
+ <div class="frame">
+  <span class="page-index">07</span>
+  <div class="particles">
+   <div class="particle-main" data-zoom="assets/particle-qifeng-1.png"><img src="assets/particle-qifeng-1.png" alt="旗峰堡粒子效果图一"><span class="tag">旗峰堡　/　项目粒子效果图</span></div>
+   <div class="particle-copy">
+    <div class="kicker">06 / POINT CLOUD</div>
+    <h2>让遗址的形体<br>重新显影</h2>
+    <p class="copy">点云把墙体的起伏、缺口和空间轮廓转为可视的数据。旗峰堡与通边堡的粒子图像，将技术记录转成可被观看的视觉语言。</p>
+    <div class="particle-pair">
+     <figure data-zoom="assets/particle-qifeng-2.png"><img src="assets/particle-qifeng-2.png" alt="旗峰堡粒子效果图二"><figcaption>旗峰堡　/　粒子效果 02</figcaption></figure>
+     <figure data-zoom="assets/particle-tongbian-4.png"><img src="assets/particle-tongbian-4.png" alt="通边堡粒子效果图"><figcaption>通边堡　/　粒子效果</figcaption></figure>
+    </div>
+    <p class="copy">从真实采集，到数据整理，再到展览视觉，每一步都在回答同一个问题：怎样让正在变化的遗址，仍能被准确地看见。</p>
+    <div class="concept-line"><i></i><span>右侧粒子图为项目素材；土层转化图为概念渲染</span></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="page" aria-label="庄浪古堡历史沿革">
+ <div class="frame">
+  <span class="page-index">08</span>
+  <div class="timeline">
+   <div class="timeline-head">
+    <div>
+     <div class="kicker">07 / HISTORICAL EVOLUTION</div>
+     <h2 class="headline">城与堡，沿着时间改变功能</h2>
+    </div>
+    <p class="copy">水洛城的城史与每一座古堡的建造年代并不相同。结合展墙沿革与县志资料，我们把庄浪古堡放回更长的地方历史中理解。</p>
+   </div>
+   <div class="timeline-line">
+    <article class="timeline-item"><time>411</time><h3>水洛城见于史册</h3><p>庄浪县政府所载早期史料提及水洛城，是现存地名见于史册的重要节点。</p></article>
+    <article class="timeline-item"><time>1043</time><h3>宋代边防城址</h3><p>庆历三年，刘沪收复水洛城；城址连接秦、渭地区，具有重要军事与交通意义。</p></article>
+    <article class="timeline-item"><time>1142</time><h3>金设水洛、通边县</h3><p>宋金时期，水洛、通边及多处据险而建的城堡共同构成区域防御脉络。</p></article>
+    <article class="timeline-item"><time>1367</time><h3>庄浪城重建</h3><p>展墙记述元至正二十七年重建庄浪城，城池与堡寨在不同历史阶段持续演变。</p></article>
+    <article class="timeline-item"><time>明清—民国</time><h3>从要塞到家园</h3><p>堡寨扩展并融入村落生活。展墙将其功能变化概括为居住与庇护。</p></article>
+   </div>
+   <div class="memory-strip">
+    <div class="memory-intro"><strong>当代回响：把故事落到人的生活里</strong><p>第三单元以“民间记忆”和“精神传承”为线索，将地方器物与集体记忆带回观众眼前。</p></div>
+    <div class="memory-years" aria-label="第三单元展墙时间轴节点"><span>1840</span><span>1921</span><span>1949</span><span>60年代</span><span>70年代</span><span>1978</span><span>90年代</span></div>
+   </div>
+   <p class="footnote">411年据庄浪县人民政府《历史沿革》；1043年据县志资料及展墙；1142、1367与“居住/庇护”节点据第二单元展墙文字整理。墙上年代针对城址与区域沿革，不能直接等同于所有古堡的始建年代。<br><a href="https://www.gszhuanglang.gov.cn/zjzl/LSYG/art/2022/art_f3091ce67e964189aa973000728cd0cfa.html" target="_blank" rel="noreferrer">庄浪县人民政府：历史沿革</a>　<a href="https://www.gsdfszw.org.cn/gsxz/pls_267/zlx/202101/P020210129644329366218.pdf" target="_blank" rel="noreferrer">《庄浪县志（1991—2010）》相关条目</a></p>
+  </div>
+ </div>
+</section>
+
+<section class="page" aria-label="展览叙事与落地">
+ <div class="frame">
+  <span class="page-index">09</span>
+  <div class="exhibition">
+   <div class="exhibition-copy">
+    <div class="kicker">08 / FROM RESEARCH TO EXPERIENCE</div>
+    <h2>四个单元<br>把遗产讲给公众</h2>
+    <p class="copy">展览把“古堡是什么、经历过什么、如何进入当代生活、怎样面向未来”组织成连续的观看路径。</p>
+    <div class="unit-list">
+     <div class="unit"><span class="n">01</span><div><b>庄浪古城堡</b><span>区位、发展脉络与整体风貌</span></div></div>
+     <div class="unit"><span class="n">02</span><div><b>历史印记</b><span>沿历史时序呈现城与堡的演变、建筑与功能</span></div></div>
+     <div class="unit"><span class="n">03</span><div><b>当代回响</b><span>从文字与实物中读出集体记忆和生活变化</span></div></div>
+     <div class="unit"><span class="n">04</span><div><b>未来已来</b><span>以数字扫描、VR全景等方式扩展体验</span></div></div>
+    </div>
+    <div class="event-date">2025.08.19　庄浪县博物馆开展</div>
+    <p class="footnote">展览单元名称、内容结构与开展时间据南开大学公开报道；墙面图像为项目原始设计资料。<br><a href="https://wxy.nankai.edu.cn/2025/0825/c15950a576362/page.htm" target="_blank" rel="noreferrer">南开大学文学院：庄浪县古城堡数字保护调查影像展启幕</a></p>
+   </div>
+   <div class="exhibition-photo" data-zoom="assets/exhibition-install.jpg">
+    <img src="assets/exhibition-install.jpg" alt="庄浪县博物馆展览中的夯土墙装置">
+    <span class="image-label">博物馆展览现场　/　夯土墙装置与第四单元展墙</span>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="page" aria-label="第一单元展墙设计一">
+ <div class="wall-page">
+  <span class="page-index" style="color:#ddd4c8">10</span>
+  <div class="wall-viewer"><img class="zoom" data-zoom="assets/unit01-a.jpg" src="assets/unit01-a.jpg" alt="第一单元展墙设计：序言、古城堡概述与庄浪区位"></div>
+  <div class="wall-heading"><small>EXHIBITION WALL　/　UNIT 01</small><b>庄浪古城堡　·　概述与区位</b></div>
+  <div class="wall-caption">第一单元展板 01　/　以县域地理与古堡概述建立观看起点　/　点击放大</div>
+ </div>
+</section>
+
+<section class="page" aria-label="第一单元展墙设计二">
+ <div class="wall-page">
+  <span class="page-index" style="color:#ddd4c8">11</span>
+  <div class="wall-viewer"><img class="zoom" data-zoom="assets/unit01-b.jpg" src="assets/unit01-b.jpg" alt="第一单元展墙设计：古堡营造工艺"></div>
+  <div class="wall-heading"><small>EXHIBITION WALL　/　UNIT 01</small><b>古堡营造　·　从选址到成墙</b></div>
+  <div class="wall-caption">第一单元展板 02　/　以图解呈现传统夯土营造过程　/　点击放大</div>
+ </div>
+</section>
+
+<section class="page" aria-label="第二单元展墙设计">
+ <div class="wall-page">
+  <span class="page-index" style="color:#ddd4c8">12</span>
+  <div class="wall-viewer"><img class="zoom" data-zoom="assets/unit02.jpg" src="assets/unit02.jpg" alt="第二单元展墙设计：历史印记"></div>
+  <div class="wall-heading"><small>EXHIBITION WALL　/　UNIT 02</small><b>历史印记　·　城与堡的演变</b></div>
+  <div class="wall-caption">第二单元完整展墙　/　按时间梳理庄浪古城堡的历史脉络　/　点击放大</div>
+ </div>
+</section>
+
+<section class="page" aria-label="第三单元展墙设计">
+ <div class="wall-page">
+  <span class="page-index" style="color:#ddd4c8">13</span>
+  <div class="wall-viewer"><img class="zoom" data-zoom="assets/unit03.jpg" src="assets/unit03.jpg" alt="第三单元展墙设计：当代回响"></div>
+  <div class="wall-heading"><small>EXHIBITION WALL　/　UNIT 03</small><b>当代回响　·　民间记忆与精神传承</b></div>
+  <div class="wall-caption">第三单元完整展墙　/　以器物、生活记忆与时间节点连接古堡和当下　/　点击放大</div>
+ </div>
+</section>
+
+<section class="page" aria-label="第四单元展墙设计">
+ <div class="wall-page">
+  <span class="page-index" style="color:#ddd4c8">14</span>
+  <div class="wall-heading"><small>EXHIBITION WALL　/　UNIT 04</small><b>未来已来　·　数字化保护与体验</b></div>
+  <div class="wall-grid-4">
+   <figure data-zoom="assets/unit04-a.jpg"><img src="assets/unit04-a.jpg" alt="第四单元展墙：未来已来"><figcaption>未来已来　/　数字古堡展示</figcaption></figure>
+   <figure data-zoom="assets/unit04-b.jpg"><img src="assets/unit04-b.jpg" alt="第四单元展墙：采集装备"><figcaption>采集装备　/　多源数据采集</figcaption></figure>
+   <figure data-zoom="assets/unit04-c.jpg"><img src="assets/unit04-c.jpg" alt="第四单元展墙：VR体验"><figcaption>VR体验　/　线上全景浏览</figcaption></figure>
+   <figure data-zoom="assets/unit04-d.jpg"><img src="assets/unit04-d.jpg" alt="第四单元展墙：数字古堡与设计研究"><figcaption>数字古堡　/　空间设计与保护利用</figcaption></figure>
+  </div>
+ </div>
+</section>
+
+<section class="page" aria-label="展览活动现场一">
+ <span class="page-index">15</span>
+ <div class="activity-page">
+  <div class="activity-header">
+   <div><div class="kicker">EXHIBITION DOCUMENTATION　/　01</div><h2>展厅现场</h2></div>
+   <p>从整体空间到单个展项，记录展墙、实物与数字影像共同构成的观看环境。</p>
+  </div>
+  <div class="activity-grid space">
+   <figure class="activity-frame" data-zoom="assets/event-01.jpg"><img src="assets/event-01.jpg" alt="展厅全景，展示多个主题单元"><figcaption>展厅全景　/　整体空间</figcaption></figure>
+   <figure class="activity-frame" data-zoom="assets/event-02.jpg"><img src="assets/event-02.jpg" alt="展墙与屏幕组成的展陈现场"><figcaption>展陈一角　/　展墙与影像</figcaption></figure>
+   <figure class="activity-frame" data-zoom="assets/event-06.jpg"><img src="assets/event-06.jpg" alt="庄浪县博物馆展厅另一视角"><figcaption>展览现场　/　空间另一视角</figcaption></figure>
+   <figure class="activity-frame" data-zoom="assets/event-10.jpg"><img src="assets/event-10.jpg" alt="展厅中的古堡数字体验装置"><figcaption>数字体验　/　古堡展项</figcaption></figure>
+  </div>
+ </div>
+</section>
+
+<section class="page" aria-label="展览活动现场二">
+ <span class="page-index">16</span>
+ <div class="activity-page">
+  <div class="activity-header">
+   <div><div class="kicker">EXHIBITION DOCUMENTATION　/　02</div><h2>观看与交流</h2></div>
+   <p>活动照片记录观众在展墙、实物与数字展项之间的停留、观看和体验。</p>
+  </div>
+  <div class="activity-grid people">
+   <figure class="activity-frame" data-zoom="assets/event-03.jpg"><img src="assets/event-03.jpg" alt="观众在数字展项前交流"><figcaption>现场交流　/　数字展项</figcaption></figure>
+   <figure class="activity-frame" data-zoom="assets/event-04.jpg"><img src="assets/event-04.jpg" alt="开展活动现场合影"><figcaption>开展活动　/　现场合影</figcaption></figure>
+   <figure class="activity-frame" data-zoom="assets/event-05.jpg"><img src="assets/event-05.jpg" alt="观众观看展览中的地方器物"><figcaption>现场观看　/　地方器物</figcaption></figure>
+   <figure class="activity-frame" data-zoom="assets/event-07.jpg"><img src="assets/event-07.jpg" alt="展览活动纪念合影"><figcaption>活动记录　/　纪念合影</figcaption></figure>
+   <figure class="activity-frame" data-zoom="assets/event-08.jpg"><img src="assets/event-08.jpg" alt="展览现场纪念影像"><figcaption>现场纪念　/　展览主题墙</figcaption></figure>
+   <figure class="activity-frame" data-zoom="assets/event-09.jpg"><img src="assets/event-09.jpg" alt="观众体验数字展项"><figcaption>体验互动　/　数字内容</figcaption></figure>
+  </div>
+ </div>
+</section>
+
+<section class="page" aria-label="展览传播与社会影响">
+ <span class="page-index">17</span>
+ <div class="impact">
+  <div class="impact-photo">
+   <img class="zoom" data-zoom="assets/exhibition-install.jpg" src="assets/exhibition-install.jpg" alt="庄浪县博物馆数字保护调查影像展现场">
+   <span class="image-label">庄浪县博物馆展览现场　/　项目资料中的现场照片</span>
+  </div>
+  <div class="impact-copy">
+   <div class="kicker">PUBLIC REACH　/　EXHIBITION RECORD</div>
+   <h2>让地方遗产<br>进入公共视野</h2>
+   <p class="copy">展览于 2025 年 8 月 19 日在庄浪县博物馆启幕。南开大学与庄浪县官方报道记录了展览内容、合作单位与公众参与，让数字化保护成果从项目现场走向公共传播。</p>
+   <article class="press-card">
+    <span class="press-source">南开大学文学院　/　2025.08.25</span>
+    <h3>庄浪县古城堡数字保护调查影像展启幕</h3>
+    <p>报道介绍展览以“庄浪古城堡、历史印记、当代回响、未来已来”四个单元，呈现古堡数字扫描、VR全景与数字文创等实践。</p>
+    <a href="https://wxy.nankai.edu.cn/2025/0825/c15950a576362/page.htm" target="_blank" rel="noreferrer">阅读南开大学原报道　↗</a>
+   </article>
+   <div class="impact-facts"><strong>100+</strong><span>庄浪县官方报道记载，开展仪式有县文旅、教育系统及院校师生等 100 余人参加。<br><a class="source-link" href="https://www.gszhuanglang.gov.cn/zfxxgk/bmxzxxgk/bmxxgk/zlxwtgdhlyj/fdzdgknr/QTXX/art/2025/art_144ac45846254c4d83dde999d9fb0f4a.html" target="_blank" rel="noreferrer">查看庄浪县官方报道</a></span></div>
+   <p class="footnote">“100余人”指开展仪式参与人数，并非累计观展人数；相关信息据庄浪县人民政府公开报道。</p>
+  </div>
+ </div>
+</section>
+
+<section class="page" aria-label="资料来源与项目说明">
+ <div class="frame">
+  <span class="page-index">18</span>
+  <div class="sources">
+   <div class="sources-head">
+    <div><div class="kicker">REFERENCES & PROJECT MATERIALS</div><h2>资料来源与内容说明</h2></div>
+    <span class="small-note">公开资料用于背景核对<br>历史节点以展墙资料为主</span>
+   </div>
+   <div class="sources-grid">
+    <article class="source-item"><h3>庄浪县人民政府 · 庄浪简介</h3><p>核对庄浪县区位、六盘山西麓、黄土高原丘陵沟壑区等地理信息。</p><a href="https://www.gszhuanglang.gov.cn/zjzl/ZLGK/art/2022/art_9e9cec78ed964189b8ed35dabb8cf764.html" target="_blank" rel="noreferrer">打开政府页面</a></article>
+    <article class="source-item"><h3>甘肃日报 · 庄浪古堡遗迹的“博物馆”</h3><p>核对夯土建造、古堡构成、官堡与民堡类型，以及320余座/现存200余座的粗略统计。</p><a href="https://manage.gsei.com.cn/html/1654/2021-04-15/content-318178.html" target="_blank" rel="noreferrer">打开报道</a></article>
+    <article class="source-item"><h3>庄浪县人民政府 · 历史沿革</h3><p>核对水洛城早期见于史册的时间节点，并与展墙沿革进行区分。</p><a href="https://www.gszhuanglang.gov.cn/zjzl/LSYG/art/2022/art_f3091ce67e964189aa973000728cd0cfa.html" target="_blank" rel="noreferrer">打开政府页面</a></article>
+    <article class="source-item"><h3>《庄浪县志（1991—2010）》</h3><p>参考刘沪收复水洛城及庄浪地方史相关记载。</p><a href="https://www.gsdfszw.org.cn/gsxz/pls_267/zlx/202101/P020210129644329366218.pdf" target="_blank" rel="noreferrer">打开县志 PDF</a></article>
+    <article class="source-item"><h3>南开大学文学院 · 影像展启幕报道</h3><p>核对展览举办日期、地点、合作单位与四个展览单元的公开信息。</p><a href="https://wxy.nankai.edu.cn/2025/0825/c15950a576362/page.htm" target="_blank" rel="noreferrer">打开南开大学报道</a></article>
+    <article class="source-item"><h3>庄浪县人民政府 · 展览开展报道</h3><p>核对开展仪式参与人数与推动展览进校园、进单位的传播倡议。</p><a href="https://www.gszhuanglang.gov.cn/zfxxgk/bmxzxxgk/bmxxgk/zlxwtgdhlyj/fdzdgknr/QTXX/art/2025/art_144ac45846254c4d83dde999d9fb0f4a.html" target="_blank" rel="noreferrer">打开庄浪县报道</a></article>
+    <article class="source-item"><h3>《地球科学》· 夯土遗址风化研究</h3><p>用作夯土在水、温度和风等自然因素下可能发生风化的通用背景，不替代遗址病害调查。</p><a href="https://cjournal.hep.com.cn/1000-2383/CN/PDF/10.3799/dqkx.2024.141" target="_blank" rel="noreferrer">打开论文 PDF</a></article>
+   </div>
+   <div class="sources-bottom">
+    <p>把一座古堡记录下来，<br>也把它所在的时间与生活留了下来。</p>
+    <small>展墙、堡址照片、粒子效果与项目视频<br>来自用户提供的项目资料<br>概念场景图已单独标注</small>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="page yc-page" aria-label="宜川文创项目封面">
+ <div class="y2-cover">
+  <img class="zoom" data-zoom="assets/yichuan-quicksand-hero.jpg" src="assets/yichuan-quicksand-hero.jpg" alt="壶口听涛梯形流沙摆件主效果图">
+  <span class="page-index" style="color:#e2d5c7">19</span>
+  <div class="y2-cover-copy">
+   <div class="y2-label" style="color:#d0a67c">PROJECT 02 / YICHUAN CULTURAL CREATION</div>
+   <h1>宜川<br>文创</h1>
+   <p>从地方文化调研，到资源数据库，再到可使用、可参与的设计方案。</p>
+   <div class="y2-cover-meta">陕西省哲学社会科学研究专项<br>2025 年度宜川县文化旅游融合发展合作研究项目<br>创意产品设计及衍生品开发　/　团队项目</div>
+  </div>
+  <div class="y2-cover-note">壶口听涛梯形流沙摆件主效果图　/　项目原始 PPT</div>
+ </div>
+</section>
+
+<section class="page yc-page" aria-label="宜川项目背景与设计命题">
+ <span class="page-index">20</span>
+ <div class="y2-page">
+  <header class="y2-head"><div><div class="y2-label">01 / PROJECT BACKGROUND</div><h2>地方资源丰富，如何转化为当代体验</h2></div><p>项目围绕宜川县文旅融合展开，以红色文化与地域文化为基础，研究文化创意产品及衍生品的设计方向。</p></header>
+  <div class="y2-body y2-intro">
+   <div class="y2-intro-stat"><strong>300</strong><b>篇相关文献梳理</b><p>研究覆盖红色文化、文创产品设计与地域文化活化，为后续调研和设计建立参考框架。</p><div class="y2-intro-images"><figure><a href="https://www.sxfycc.com/home/Index/library_detail.html?id=114" target="_blank" rel="noreferrer"><img class="zoom" data-zoom="https://www.sxfycc.com/storage/images/2023-05-29/67b0d985de18f0d6199ba03e86dbf989.png" src="https://www.sxfycc.com/storage/images/2023-05-29/67b0d985de18f0d6199ba03e86dbf989.png" onerror="this.onerror=null;this.src='assets/yichuan-research-drum.jpg';this.dataset.zoom=this.src" alt="宜川胸鼓表演"></a><figcaption><a href="https://www.sxfycc.com/home/Index/library_detail.html?id=114" target="_blank" rel="noreferrer">宜川胸鼓　/　陕西省非遗数字博物馆</a></figcaption></figure><figure><a href="https://www.cnr.cn/sx/jdt/20250703/t20250703_527240933.shtml" target="_blank" rel="noreferrer"><img class="zoom" data-zoom="https://mediabluk.cnr.cn/img/cnr/CNRCDP/2025/0703/6c148ab124de5175150406009618015410.jpg?auth=22422a1d9f4e996f3a7b7b318c740a" src="https://mediabluk.cnr.cn/img/cnr/CNRCDP/2025/0703/6c148ab124de5175150406009618015410.jpg?auth=22422a1d9f4e996f3a7b7b318c740a" onerror="this.onerror=null;this.src='assets/yichuan-research-waterfall.jpg';this.dataset.zoom=this.src" alt="宜川壶口瀑布"></a><figcaption><a href="https://www.cnr.cn/sx/jdt/20250703/t20250703_527240933.shtml" target="_blank" rel="noreferrer">黄河壶口瀑布　/　央广网</a></figcaption></figure></div></div>
+   <div class="y2-intro-right">
+    <div class="y2-insight-row"><b>研究对象</b><p>宜川红色遗址、胸鼓与斗鼓、壶口瀑布、地方物产、非遗手工艺及生活场景。</p></div>
+    <div class="y2-insight-row"><b>现实问题</b><p>调研指出，已有文创常见文化符号简单粘贴、产品同质化、本土辨识度不足等情况。</p></div>
+    <div class="y2-insight-row"><b>设计命题</b><p>如何把文化线索变成有地方识别度、适合日常使用或参与的产品与体验？</p></div>
+    <div class="y2-insight-row"><b>项目路径</b><p>文献与实地调研 → 文化元素提取 → 数据库与筛选 → 设计转译 → 产品方案展示。</p></div>
+    <div class="y2-opportunity">核心方向：让红色精神与地方非遗共同进入产品故事、器物形态和使用过程。</div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="page yc-page" aria-label="文献研究与市场问题">
+ <span class="page-index">21</span>
+ <div class="y2-page">
+  <header class="y2-head"><div><div class="y2-label">01 / LITERATURE & MARKET</div><h2>文献研究：从符号表达走向文化转译</h2></div><p>项目梳理与红色文化、文创设计及地域文化活化有关的 300 篇文献，并归纳出四个与宜川设计相关的观察方向。</p></header>
+  <div class="y2-body" style="display:flex;flex-direction:column;justify-content:center">
+   <div class="y2-literature-grid">
+    <article style="padding:1.2cqw 1.1cqw;background:#e8e0d5;border-top:2px solid #a34631"><small class="y2-label">01 / RED CULTURE</small><h3 style="font:500 1.42cqw var(--serif);margin:.7em 0 .35em">情感与基因</h3><p style="font-size:1.05cqw;line-height:1.75;color:#75695d;margin:0">红色文创不止复刻视觉符号，也要呈现人物、事件与精神内核。</p></article>
+    <article style="padding:1.2cqw 1.1cqw;background:#e8e0d5;border-top:2px solid #a34631"><small class="y2-label">02 / LOCAL CULTURE</small><h3 style="font:500 1.42cqw var(--serif);margin:.7em 0 .35em">地方性表达</h3><p style="font-size:1.05cqw;line-height:1.75;color:#75695d;margin:0">非遗、民俗、历史与自然资源共同构成宜川文化的辨识度。</p></article>
+    <article style="padding:1.2cqw 1.1cqw;background:#e8e0d5;border-top:2px solid #a34631"><small class="y2-label">03 / DESIGN METHOD</small><h3 style="font:500 1.42cqw var(--serif);margin:.7em 0 .35em">技术辅助设计</h3><p style="font-size:1.05cqw;line-height:1.75;color:#75695d;margin:0">AIGC 等工具可辅助探索，但文化准确性与设计判断仍需核验。</p></article>
+    <article style="padding:1.2cqw 1.1cqw;background:#e8e0d5;border-top:2px solid #a34631"><small class="y2-label">04 / MARKET</small><h3 style="font:500 1.42cqw var(--serif);margin:.7em 0 .35em">融合与接受度</h3><p style="font-size:1.05cqw;line-height:1.75;color:#75695d;margin:0">产品需要兼顾文化叙事、实际使用和不同场景中的传播。</p></article>
+   </div>
+   <div style="display:grid;grid-template-columns:.8fr 1.2fr;gap:3%;align-items:center;padding:1.4cqw 1.2cqw;margin-top:1.4cqw;background:#dfd5c9">
+    <b style="font:500 1.3cqw var(--serif);color:#4a392d">调研指出的市场缺口</b>
+    <p style="font-size:1.05cqw;line-height:1.7;color:#6f6256;margin:0">现有产品容易停留在表面贴图，红色主题与宜川地域特色的表达不足。设计因此从“可识别”继续推进到“可使用、可记忆、可参与”。</p>
+   </div>
+   <div class="y2-note" style="margin-top:1cqw">以上研究结论据项目汇报 PPT 整理；此处为研究内容摘要，不替代完整文献目录。</div>
+  </div>
+ </div>
+</section>
+
+<section class="page yc-page" aria-label="宜川实地文化调研">
+ <span class="page-index">22</span>
+ <div class="y2-page">
+  <header class="y2-head"><div><div class="y2-label">01 / FIELD RESEARCH</div><h2>走进遗址、非遗现场与地方生活</h2></div><p>实地调研覆盖红色遗址、文化场所、特色市场与地方手工艺，观察文化如何在真实环境中被观看、使用和传承。</p></header>
+  <div class="y2-body y2-research-grid">
+   <article class="y2-research-card"><figure><img class="zoom" data-zoom="assets/yichuan-research-memorial.jpg" src="assets/yichuan-research-memorial.jpg" alt="宜川红色纪念地现场照片"></figure><div><small>HISTORICAL SITE</small><h3>红色遗址</h3><p>秋林抗战纪念地、瓦子街战役烈士陵园等，记录建筑、纪念设施与历史叙事。</p></div></article>
+   <article class="y2-research-card"><figure><img class="zoom" data-zoom="assets/yichuan-research-museum.jpg" src="assets/yichuan-research-museum.jpg" alt="宜川县博物馆展陈与文物调研照片"></figure><div><small>LANDSCAPE</small><h3>博物馆与藏品</h3><p>走访博物馆展陈，梳理地方历史、实物资料与可继续转译的文化信息。</p></div></article>
+   <article class="y2-research-card"><figure><img class="zoom" data-zoom="assets/yichuan-research-drum.jpg" src="assets/yichuan-research-drum.jpg" alt="宜川胸鼓表演场景"></figure><div><small>PERFORMANCE</small><h3>胸鼓与斗鼓</h3><p>记录服饰、鼓具、动作和队形，理解动态非遗的节奏与视觉特征。</p></div></article>
+   <article class="y2-research-card"><figure><img class="zoom" data-zoom="assets/yichuan-research-paper-cut.jpg" src="assets/yichuan-research-paper-cut.jpg" alt="宜川剪纸工艺调研照片"></figure><div><small>CRAFT</small><h3>剪纸与手工艺</h3><p>走访剪纸工作室、葫芦烙画等场景，观察工艺过程、材料和图案语言。</p></div></article>
+  </div>
+ </div>
+</section>
+
+<section class="page yc-page" aria-label="访谈对象与设计机会">
+ <span class="page-index">23</span>
+ <div class="y2-page">
+  <header class="y2-head"><div><div class="y2-label">01 / INTERVIEWS & SYNTHESIS</div><h2>从管理者、讲解者与传承者处理解文化</h2></div><p>访谈与现场观察帮助团队补足文献难以呈现的使用场景、传播问题和地方经验。</p></header>
+  <div class="y2-body y2-interviews">
+   <div class="y2-interview-photo">
+    <figure><img class="zoom" data-zoom="assets/yichuan-research-interview.jpg" src="assets/yichuan-research-interview.jpg" alt="项目团队与地方文化工作者访谈"></figure>
+    <figure><img class="zoom" data-zoom="assets/yichuan-research-interview-team.jpg" src="assets/yichuan-research-interview-team.jpg" alt="项目团队开展调研访谈"></figure>
+   </div>
+   <div class="y2-interview-copy">
+    <h3>调研对象</h3>
+    <div class="y2-interview-list">
+     <div><b>文旅与文化管理</b>宜川县文旅局工作人员</div>
+     <div><b>博物馆与遗址</b>博物馆馆长、讲解员及红色遗址讲解员</div>
+     <div><b>非遗传承</b>剪纸、葫芦烙画等手工艺传承人</div>
+     <div><b>专家与用户</b>地方文化专家及潜在使用者</div>
+    </div>
+    <div class="y2-opportunity">机会判断：从“贴上一个地方符号”，转向把文化放进产品形态、使用过程与故事体验。</div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="page yc-page" aria-label="第二部分数据库建设">
+ <span class="page-index">24</span>
+ <div class="y2-page">
+  <header class="y2-head"><div><div class="y2-label">02 / CULTURAL ELEMENT DATABASE</div><h2>把调研记录整理成可调用的文化元素库</h2></div><p>数据库部分将分散的遗址、非遗、自然风物与生活场景归类，再通过筛选规则把资源连接到设计决策。</p></header>
+  <div class="y2-body y2-transition">
+   <div class="y2-transition-left"><div class="big">412</div><h2>个文化元素<br>进入筛选流程</h2><p>项目将调研所得从“看过、记下”推进到“可比较、可选择、可转译”，为后续设计建立共用的内容底稿。</p></div>
+   <div class="y2-flow">
+    <div class="y2-flow-step"><i>01</i><b>采集与归档</b><span>文献 / 遗址 / 访谈 / 影像</span></div>
+    <div class="y2-flow-step"><i>02</i><b>文化类别标注</b><span>红色 / 鼓舞 / 物产 / 非遗 / 场景</span></div>
+    <div class="y2-flow-step"><i>03</i><b>元素特征提取</b><span>形态 / 色彩 / 动作 / 故事</span></div>
+    <div class="y2-flow-step"><i>04</i><b>评分与需求筛选</b><span>团队 / 地方专家 / 问卷</span></div>
+    <div class="y2-flow-step"><i>05</i><b>连接设计方案</b><span>器物 / 包装 / 纪念 / 互动体验</span></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="page yc-page" aria-label="文化资源数据库分类">
+ <span class="page-index">25</span>
+ <div class="y2-page">
+  <header class="y2-head"><div><div class="y2-label">02 / RESOURCE TAXONOMY</div><h2>五类资源，构成宜川文化底图</h2></div><p>分类既保留资源来源，也为后续选择设计媒介提供线索。</p></header>
+  <div class="y2-body y2-resource-layout">
+   <div class="y2-resource-head"><span>编号</span><span>资源类别</span><span>收录内容</span><span>可转译的设计线索</span></div>
+   <div class="y2-resource-table">
+    <div class="y2-resource-row"><span class="n">01</span><b>红色历史与遗址</b><span>宜川战役、秋林抗战、瓦子街、彭德怀指挥所、革命文物与文献</span><span>建筑轮廓、纪念场所、人物故事、团结与坚韧</span></div>
+    <div class="y2-resource-row"><span class="n">02</span><b>鼓舞文化</b><span>胸鼓、斗鼓、锣鼓、服饰、鼓具、动作与表演阵型</span><span>动作轨迹、节奏、角色形象、鼓面纹样</span></div>
+    <div class="y2-resource-row"><span class="n">03</span><b>地域自然与物产</b><span>壶口瀑布、蟒头山、苹果、酥梨、花椒与稠酒</span><span>水流、岩层、果形、风味与地方特产叙事</span></div>
+    <div class="y2-resource-row"><span class="n">04</span><b>非遗与历史藏品</b><span>剪纸、葫芦烙画、刺绣、石头画、泥塑及博物馆藏品</span><span>工艺肌理、材料特征、图案语汇与手作过程</span></div>
+    <div class="y2-resource-row"><span class="n">05</span><b>民俗与生活场景</b><span>窑洞、蒲剧、羊皮筏、苹果园及地方日常生活</span><span>空间体验、生活器物、民俗故事与场景记忆</span></div>
+   </div>
+   <div class="y2-note" style="margin-top:1cqw">分类依据项目调研总结与原 PPT 中的资源条目整理。</div>
+  </div>
+ </div>
+</section>
+
+<section class="page yc-page" aria-label="文化元素数据库字段">
+ <span class="page-index">26</span>
+ <div class="y2-page">
+  <header class="y2-head"><div><div class="y2-label">02 / DATABASE STRUCTURE</div><h2>让每条文化线索都能继续被设计使用</h2></div><p>把“元素是什么、来自哪里、有什么特征、适合怎样转译”放在同一条记录中，形成清晰的设计检索路径。</p></header>
+  <div class="y2-body y2-schema">
+   <div class="y2-schema-fields"><h3>建议的元素档案字段</h3><div class="y2-field-tags"><span>元素名称</span><span>资源类别</span><span>来源地点</span><span>资料出处</span><span>形态特征</span><span>色彩与材料</span><span>文化故事</span><span>情绪关键词</span><span>用户场景</span><span>转译方向</span><span>关联方案</span><span>图像档案</span></div><p class="y2-note" style="margin-top:1.5cqw">这是根据项目内容整理的数据库展示结构，用于呈现资源如何进入设计判断。</p></div>
+   <div class="y2-schema-example"><table><thead><tr><th>文化元素</th><th>关键信息</th><th>设计转译方向</th></tr></thead><tbody>
+    <tr><td>宜川胸鼓</td><td>表演动作、鼓具、红绸与服饰</td><td>扇面人物、动作节奏、角色周边</td></tr>
+    <tr><td>壶口瀑布</td><td>黄河水势、峡谷层理、沙流</td><td>流沙摆件、器物曲线、地貌香氛石</td></tr>
+    <tr><td>秋林抗战纪念地</td><td>工字形建筑、红旗、牡丹与云纹</td><td>遗址图形、纪念品与日常载体</td></tr>
+    <tr><td>宜川物产</td><td>苹果等地方风物与果香意象</td><td>便携香片、礼赠及产品识别</td></tr>
+   </tbody></table></div>
+  </div>
+ </div>
+</section>
+
+<section class="page yc-page" aria-label="412个文化元素筛选规则">
+ <span class="page-index">27</span>
+ <div class="y2-page">
+  <header class="y2-head"><div><div class="y2-label">02 / ELEMENT SELECTION</div><h2>用代表性、适配度和情感连接筛选</h2></div><p>设计团队评分、地方专家意见与问卷结果共同参与筛选，避免只凭视觉偏好决定资源优先级。</p></header>
+  <div class="y2-body y2-score">
+   <div class="y2-score-number"><strong>412</strong><b>个文化元素进入筛选</b><p>从资料归档到方案选择，形成一套可解释的评估顺序。</p></div>
+   <div class="y2-weight-list">
+    <div class="y2-weight"><span>文化代表性</span><div class="track"><i style="width:40%"></i></div><b>40%</b></div>
+    <div class="y2-weight"><span>设计适配度</span><div class="track"><i style="width:35%"></i></div><b>35%</b></div>
+    <div class="y2-weight"><span>情感连接度</span><div class="track"><i style="width:25%"></i></div><b>25%</b></div>
+    <div class="y2-opportunity" style="margin-top:1.4cqw">评估参与：设计团队　＋　地方专家　＋　问卷反馈</div>
+    <p class="y2-note" style="margin-top:1cqw">筛选权重据项目原始汇报 PPT 整理。</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="page yc-page" aria-label="问卷需求倾向">
+ <span class="page-index">28</span>
+ <div class="y2-page">
+  <header class="y2-head"><div><div class="y2-label">02 / USER PREFERENCE</div><h2>需求倾向提示：装饰与纪念属性更突出</h2></div><p>问卷结果帮助团队判断产品形态的优先级，让设计从“文化能否表达”继续考虑“用户愿不愿意带走、使用或参与”。</p></header>
+  <div class="y2-body y2-preference">
+   <div class="y2-pref-row"><span>装饰类</span><div class="track"><i style="width:59.67%"></i></div><b>59.67%</b></div>
+   <div class="y2-pref-row"><span>纪念类</span><div class="track"><i style="width:57.22%"></i></div><b>57.22%</b></div>
+   <div class="y2-pref-row"><span>实用类</span><div class="track"><i style="width:48.5%"></i></div><b>48.50%</b></div>
+   <div class="y2-pref-row"><span>体验类</span><div class="track"><i style="width:43.32%"></i></div><b>43.32%</b></div>
+   <div class="y2-pref-note">上述为项目 PPT 所列问卷需求比例。原稿未注明样本量，且各项比例不构成互斥分类，因此按需求倾向呈现，不作为市场份额解读。</div>
+  </div>
+ </div>
+</section>
+
+<section class="page yichuan-unified" aria-label="宜川方案展示章节页">
+ <div class="yu-inner">
+  <span class="page-index">29</span>
+  <div class="yu-kicker">05 / DESIGN SHOWCASE</div>
+  <div class="yu-opener-grid">
+   <div class="yu-opener-copy">
+    <div class="yu-opener-number">05</div>
+    <h1>方案展示</h1>
+    <div class="yu-opener-en">SOLUTION PRESENTATION</div>
+    <div class="yu-rule"></div>
+    <p class="yu-opener-sub">宜川文化资源的当代设计转译</p>
+   </div>
+   <figure class="yu-photo yu-opener-image"><img class="zoom" loading="lazy" decoding="async" data-zoom="assets/yichuan-fan-hero.jpg" src="assets/yichuan-fan-hero.jpg" alt="宜川胸鼓主题折扇文创主效果图"><figcaption>宜川非遗文创　/　系列设计效果</figcaption></figure>
+  </div>
+  <div class="yu-foot"><span>宜川文化创意产品设计</span><span>方案展示</span></div>
+ </div>
+</section>
+<section class="page yichuan-unified" aria-label="宜川稠酒系列">
+ <div class="yu-inner">
+  <span class="page-index">30</span>
+  <header class="yu-wine-head"><div><div class="yu-kicker">01 / YICHUAN LIQUOR</div><h1>宜川稠酒系列</h1></div><p>苹果风味　/　原味　/　猕猴桃风味</p></header>
+  <figure class="yu-wine-visual"><img class="zoom" loading="lazy" decoding="async" data-zoom="assets/yichuan-wine-flavors.png" src="assets/yichuan-wine-flavors.png" alt="宜川稠酒苹果风味、原味与猕猴桃风味包装效果图"></figure>
+  <div class="yu-foot"><span>地方饮品　/　风味包装</span><span>系列产品设计</span></div>
+ </div>
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第23页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-023.jpg" src="assets/original-yichuan-ppt/source-slide-023.jpg" alt="宜川项目原PPT第23页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第24页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-024.jpg" src="assets/original-yichuan-ppt/source-slide-024.jpg" alt="宜川项目原PPT第24页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第25页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-025.jpg" src="assets/original-yichuan-ppt/source-slide-025.jpg" alt="宜川项目原PPT第25页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第26页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-026.jpg" src="assets/original-yichuan-ppt/source-slide-026.jpg" alt="宜川项目原PPT第26页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第27页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-027.jpg" src="assets/original-yichuan-ppt/source-slide-027.jpg" alt="宜川项目原PPT第27页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第28页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-028.jpg" src="assets/original-yichuan-ppt/source-slide-028.jpg" alt="宜川项目原PPT第28页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第29页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-029.jpg" src="assets/original-yichuan-ppt/source-slide-029.jpg" alt="宜川项目原PPT第29页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第30页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-030.jpg" src="assets/original-yichuan-ppt/source-slide-030.jpg" alt="宜川项目原PPT第30页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第31页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-031.jpg" src="assets/original-yichuan-ppt/source-slide-031.jpg" alt="宜川项目原PPT第31页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第32页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-032.jpg" src="assets/original-yichuan-ppt/source-slide-032.jpg" alt="宜川项目原PPT第32页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第33页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-033.jpg" src="assets/original-yichuan-ppt/source-slide-033.jpg" alt="宜川项目原PPT第33页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第34页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-034.jpg" src="assets/original-yichuan-ppt/source-slide-034.jpg" alt="宜川项目原PPT第34页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第35页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-035.jpg" src="assets/original-yichuan-ppt/source-slide-035.jpg" alt="宜川项目原PPT第35页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第36页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-036.jpg" src="assets/original-yichuan-ppt/source-slide-036.jpg" alt="宜川项目原PPT第36页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第37页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-037.jpg" src="assets/original-yichuan-ppt/source-slide-037.jpg" alt="宜川项目原PPT第37页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第38页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-038.jpg" src="assets/original-yichuan-ppt/source-slide-038.jpg" alt="宜川项目原PPT第38页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第39页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-039.jpg" src="assets/original-yichuan-ppt/source-slide-039.jpg" alt="宜川项目原PPT第39页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第40页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-040.jpg" src="assets/original-yichuan-ppt/source-slide-040.jpg" alt="宜川项目原PPT第40页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第41页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-041.jpg" src="assets/original-yichuan-ppt/source-slide-041.jpg" alt="宜川项目原PPT第41页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第42页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-042.jpg" src="assets/original-yichuan-ppt/source-slide-042.jpg" alt="宜川项目原PPT第42页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第43页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-043.jpg" src="assets/original-yichuan-ppt/source-slide-043.jpg" alt="宜川项目原PPT第43页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第44页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-044.jpg" src="assets/original-yichuan-ppt/source-slide-044.jpg" alt="宜川项目原PPT第44页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第45页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-045.jpg" src="assets/original-yichuan-ppt/source-slide-045.jpg" alt="宜川项目原PPT第45页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第46页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-046.jpg" src="assets/original-yichuan-ppt/source-slide-046.jpg" alt="宜川项目原PPT第46页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第47页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-047.jpg" src="assets/original-yichuan-ppt/source-slide-047.jpg" alt="宜川项目原PPT第47页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第48页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-048.jpg" src="assets/original-yichuan-ppt/source-slide-048.jpg" alt="宜川项目原PPT第48页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第49页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-049.jpg" src="assets/original-yichuan-ppt/source-slide-049.jpg" alt="宜川项目原PPT第49页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第50页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-050.jpg" src="assets/original-yichuan-ppt/source-slide-050.jpg" alt="宜川项目原PPT第50页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第51页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-051.jpg" src="assets/original-yichuan-ppt/source-slide-051.jpg" alt="宜川项目原PPT第51页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第52页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-052.jpg" src="assets/original-yichuan-ppt/source-slide-052.jpg" alt="宜川项目原PPT第52页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第53页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-053.jpg" src="assets/original-yichuan-ppt/source-slide-053.jpg" alt="宜川项目原PPT第53页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第54页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-054.jpg" src="assets/original-yichuan-ppt/source-slide-054.jpg" alt="宜川项目原PPT第54页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第55页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-055.jpg" src="assets/original-yichuan-ppt/source-slide-055.jpg" alt="宜川项目原PPT第55页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第56页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-056.jpg" src="assets/original-yichuan-ppt/source-slide-056.jpg" alt="宜川项目原PPT第56页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第57页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-057.jpg" src="assets/original-yichuan-ppt/source-slide-057.jpg" alt="宜川项目原PPT第57页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第58页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-058.jpg" src="assets/original-yichuan-ppt/source-slide-058.jpg" alt="宜川项目原PPT第58页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第59页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-059.jpg" src="assets/original-yichuan-ppt/source-slide-059.jpg" alt="宜川项目原PPT第59页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第60页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-060.jpg" src="assets/original-yichuan-ppt/source-slide-060.jpg" alt="宜川项目原PPT第60页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第61页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-061.jpg" src="assets/original-yichuan-ppt/source-slide-061.jpg" alt="宜川项目原PPT第61页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第62页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-062.jpg" src="assets/original-yichuan-ppt/source-slide-062.jpg" alt="宜川项目原PPT第62页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第63页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-063.jpg" src="assets/original-yichuan-ppt/source-slide-063.jpg" alt="宜川项目原PPT第63页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第64页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-064.jpg" src="assets/original-yichuan-ppt/source-slide-064.jpg" alt="宜川项目原PPT第64页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第65页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-065.jpg" src="assets/original-yichuan-ppt/source-slide-065.jpg" alt="宜川项目原PPT第65页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第66页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-066.jpg" src="assets/original-yichuan-ppt/source-slide-066.jpg" alt="宜川项目原PPT第66页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第67页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-067.jpg" src="assets/original-yichuan-ppt/source-slide-067.jpg" alt="宜川项目原PPT第67页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第68页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-068.jpg" src="assets/original-yichuan-ppt/source-slide-068.jpg" alt="宜川项目原PPT第68页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第69页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-069.jpg" src="assets/original-yichuan-ppt/source-slide-069.jpg" alt="宜川项目原PPT第69页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第70页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-070.jpg" src="assets/original-yichuan-ppt/source-slide-070.jpg" alt="宜川项目原PPT第70页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第71页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-071.jpg" src="assets/original-yichuan-ppt/source-slide-071.jpg" alt="宜川项目原PPT第71页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第72页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-072.jpg" src="assets/original-yichuan-ppt/source-slide-072.jpg" alt="宜川项目原PPT第72页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第73页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-073.jpg" src="assets/original-yichuan-ppt/source-slide-073.jpg" alt="宜川项目原PPT第73页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第74页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-074.jpg" src="assets/original-yichuan-ppt/source-slide-074.jpg" alt="宜川项目原PPT第74页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第75页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-075.jpg" src="assets/original-yichuan-ppt/source-slide-075.jpg" alt="宜川项目原PPT第75页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第76页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-076.jpg" src="assets/original-yichuan-ppt/source-slide-076.jpg" alt="宜川项目原PPT第76页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第77页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-077.jpg" src="assets/original-yichuan-ppt/source-slide-077.jpg" alt="宜川项目原PPT第77页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第78页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-078.jpg" src="assets/original-yichuan-ppt/source-slide-078.jpg" alt="宜川项目原PPT第78页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第79页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-079.jpg" src="assets/original-yichuan-ppt/source-slide-079.jpg" alt="宜川项目原PPT第79页">
+</section>
+<section class="page yichuan-unified" aria-label="宜川风物黄河边的果香香片挂件设计">
+ <div class="yu-inner">
+  <span class="page-index">88</span>
+  <div class="yu-kicker">02 / LOCAL FRUIT & SCENT</div>
+  <div class="yu-fruit-layout">
+   <div class="yu-fruit-copy">
+    <div class="yu-kicker">宜川风物</div>
+    <h1 class="yu-fruit-title">黄河边的<br>果香</h1>
+    <p class="yu-fruit-sub">以宜川特产为灵感的<br>香片挂件设计</p>
+    <div class="yu-fruit-list"><span>苹果</span><span>柿子</span><span>酥梨</span><span>石榴</span><span>花椒</span><span>核桃</span><span>猕猴桃</span><span>枣</span></div>
+   </div>
+   <figure class="yu-photo yu-fruit-photo"><img class="zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-090.jpg" src="assets/original-yichuan-ppt/source-slide-090.jpg" alt="宜川酥梨主题香片挂件的车内使用效果"><figcaption>宜川酥梨　/　香片挂件情境效果</figcaption></figure>
+  </div>
+  <div class="yu-foot"><span>宜川风物　/　香片挂件</span><span>产品设计</span></div>
+ </div>
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第81页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-081.jpg" src="assets/original-yichuan-ppt/source-slide-081.jpg" alt="宜川项目原PPT第81页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第82页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-082.jpg" src="assets/original-yichuan-ppt/source-slide-082.jpg" alt="宜川项目原PPT第82页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第83页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-083.jpg" src="assets/original-yichuan-ppt/source-slide-083.jpg" alt="宜川项目原PPT第83页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第84页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-084.jpg" src="assets/original-yichuan-ppt/source-slide-084.jpg" alt="宜川项目原PPT第84页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第85页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-085.jpg" src="assets/original-yichuan-ppt/source-slide-085.jpg" alt="宜川项目原PPT第85页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第86页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-086.jpg" src="assets/original-yichuan-ppt/source-slide-086.jpg" alt="宜川项目原PPT第86页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第87页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-087.jpg" src="assets/original-yichuan-ppt/source-slide-087.jpg" alt="宜川项目原PPT第87页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第88页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-088.jpg" src="assets/original-yichuan-ppt/source-slide-088.jpg" alt="宜川项目原PPT第88页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第89页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-089.jpg" src="assets/original-yichuan-ppt/source-slide-089.jpg" alt="宜川项目原PPT第89页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第90页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-090.jpg" src="assets/original-yichuan-ppt/source-slide-090.jpg" alt="宜川项目原PPT第90页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第91页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-091.jpg" src="assets/original-yichuan-ppt/source-slide-091.jpg" alt="宜川项目原PPT第91页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第92页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-092.jpg" src="assets/original-yichuan-ppt/source-slide-092.jpg" alt="宜川项目原PPT第92页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第93页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-093.jpg" src="assets/original-yichuan-ppt/source-slide-093.jpg" alt="宜川项目原PPT第93页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第94页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-094.jpg" src="assets/original-yichuan-ppt/source-slide-094.jpg" alt="宜川项目原PPT第94页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第95页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-095.jpg" src="assets/original-yichuan-ppt/source-slide-095.jpg" alt="宜川项目原PPT第95页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第96页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-096.jpg" src="assets/original-yichuan-ppt/source-slide-096.jpg" alt="宜川项目原PPT第96页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第97页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-097.jpg" src="assets/original-yichuan-ppt/source-slide-097.jpg" alt="宜川项目原PPT第97页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第98页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-098.jpg" src="assets/original-yichuan-ppt/source-slide-098.jpg" alt="宜川项目原PPT第98页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第99页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-099.jpg" src="assets/original-yichuan-ppt/source-slide-099.jpg" alt="宜川项目原PPT第99页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第100页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-100.jpg" src="assets/original-yichuan-ppt/source-slide-100.jpg" alt="宜川项目原PPT第100页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第101页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-101.jpg" src="assets/original-yichuan-ppt/source-slide-101.jpg" alt="宜川项目原PPT第101页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第102页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-102.jpg" src="assets/original-yichuan-ppt/source-slide-102.jpg" alt="宜川项目原PPT第102页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第103页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-103.jpg" src="assets/original-yichuan-ppt/source-slide-103.jpg" alt="宜川项目原PPT第103页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第104页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-104.jpg" src="assets/original-yichuan-ppt/source-slide-104.jpg" alt="宜川项目原PPT第104页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第105页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-105.jpg" src="assets/original-yichuan-ppt/source-slide-105.jpg" alt="宜川项目原PPT第105页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第106页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-106.jpg" src="assets/original-yichuan-ppt/source-slide-106.jpg" alt="宜川项目原PPT第106页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第107页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-107.jpg" src="assets/original-yichuan-ppt/source-slide-107.jpg" alt="宜川项目原PPT第107页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第108页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-108.jpg" src="assets/original-yichuan-ppt/source-slide-108.jpg" alt="宜川项目原PPT第108页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第109页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-109.jpg" src="assets/original-yichuan-ppt/source-slide-109.jpg" alt="宜川项目原PPT第109页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第110页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-110.jpg" src="assets/original-yichuan-ppt/source-slide-110.jpg" alt="宜川项目原PPT第110页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第111页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-111.jpg" src="assets/original-yichuan-ppt/source-slide-111.jpg" alt="宜川项目原PPT第111页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第112页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-112.jpg" src="assets/original-yichuan-ppt/source-slide-112.jpg" alt="宜川项目原PPT第112页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第113页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-113.jpg" src="assets/original-yichuan-ppt/source-slide-113.jpg" alt="宜川项目原PPT第113页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第114页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-114.jpg" src="assets/original-yichuan-ppt/source-slide-114.jpg" alt="宜川项目原PPT第114页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第115页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-115.jpg" src="assets/original-yichuan-ppt/source-slide-115.jpg" alt="宜川项目原PPT第115页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第116页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-116.jpg" src="assets/original-yichuan-ppt/source-slide-116.jpg" alt="宜川项目原PPT第116页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第117页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-117.jpg" src="assets/original-yichuan-ppt/source-slide-117.jpg" alt="宜川项目原PPT第117页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第118页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-118.jpg" src="assets/original-yichuan-ppt/source-slide-118.jpg" alt="宜川项目原PPT第118页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第119页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-119.jpg" src="assets/original-yichuan-ppt/source-slide-119.jpg" alt="宜川项目原PPT第119页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第120页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-120.jpg" src="assets/original-yichuan-ppt/source-slide-120.jpg" alt="宜川项目原PPT第120页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第121页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-121.jpg" src="assets/original-yichuan-ppt/source-slide-121.jpg" alt="宜川项目原PPT第121页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第122页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-122.jpg" src="assets/original-yichuan-ppt/source-slide-122.jpg" alt="宜川项目原PPT第122页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第123页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-123.jpg" src="assets/original-yichuan-ppt/source-slide-123.jpg" alt="宜川项目原PPT第123页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第124页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-124.jpg" src="assets/original-yichuan-ppt/source-slide-124.jpg" alt="宜川项目原PPT第124页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第125页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-125.jpg" src="assets/original-yichuan-ppt/source-slide-125.jpg" alt="宜川项目原PPT第125页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第126页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-126.jpg" src="assets/original-yichuan-ppt/source-slide-126.jpg" alt="宜川项目原PPT第126页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第127页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-127.jpg" src="assets/original-yichuan-ppt/source-slide-127.jpg" alt="宜川项目原PPT第127页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第128页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-128.jpg" src="assets/original-yichuan-ppt/source-slide-128.jpg" alt="宜川项目原PPT第128页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第129页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-129.jpg" src="assets/original-yichuan-ppt/source-slide-129.jpg" alt="宜川项目原PPT第129页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第130页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-130.jpg" src="assets/original-yichuan-ppt/source-slide-130.jpg" alt="宜川项目原PPT第130页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第131页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-131.jpg" src="assets/original-yichuan-ppt/source-slide-131.jpg" alt="宜川项目原PPT第131页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第132页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-132.jpg" src="assets/original-yichuan-ppt/source-slide-132.jpg" alt="宜川项目原PPT第132页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第133页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-133.jpg" src="assets/original-yichuan-ppt/source-slide-133.jpg" alt="宜川项目原PPT第133页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第134页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-134.jpg" src="assets/original-yichuan-ppt/source-slide-134.jpg" alt="宜川项目原PPT第134页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第135页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-135.jpg" src="assets/original-yichuan-ppt/source-slide-135.jpg" alt="宜川项目原PPT第135页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第136页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-136.jpg" src="assets/original-yichuan-ppt/source-slide-136.jpg" alt="宜川项目原PPT第136页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第137页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-137.jpg" src="assets/original-yichuan-ppt/source-slide-137.jpg" alt="宜川项目原PPT第137页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第138页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-138.jpg" src="assets/original-yichuan-ppt/source-slide-138.jpg" alt="宜川项目原PPT第138页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第139页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-139.jpg" src="assets/original-yichuan-ppt/source-slide-139.jpg" alt="宜川项目原PPT第139页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第140页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-140.jpg" src="assets/original-yichuan-ppt/source-slide-140.jpg" alt="宜川项目原PPT第140页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第141页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-141.jpg" src="assets/original-yichuan-ppt/source-slide-141.jpg" alt="宜川项目原PPT第141页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第142页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-142.jpg" src="assets/original-yichuan-ppt/source-slide-142.jpg" alt="宜川项目原PPT第142页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第143页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-143.jpg" src="assets/original-yichuan-ppt/source-slide-143.jpg" alt="宜川项目原PPT第143页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第144页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-144.jpg" src="assets/original-yichuan-ppt/source-slide-144.jpg" alt="宜川项目原PPT第144页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第145页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-145.jpg" src="assets/original-yichuan-ppt/source-slide-145.jpg" alt="宜川项目原PPT第145页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第146页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-146.jpg" src="assets/original-yichuan-ppt/source-slide-146.jpg" alt="宜川项目原PPT第146页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第147页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-147.jpg" src="assets/original-yichuan-ppt/source-slide-147.jpg" alt="宜川项目原PPT第147页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第148页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-148.jpg" src="assets/original-yichuan-ppt/source-slide-148.jpg" alt="宜川项目原PPT第148页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第149页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-149.jpg" src="assets/original-yichuan-ppt/source-slide-149.jpg" alt="宜川项目原PPT第149页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第150页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-150.jpg" src="assets/original-yichuan-ppt/source-slide-150.jpg" alt="宜川项目原PPT第150页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第151页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-151.jpg" src="assets/original-yichuan-ppt/source-slide-151.jpg" alt="宜川项目原PPT第151页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第152页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-152.jpg" src="assets/original-yichuan-ppt/source-slide-152.jpg" alt="宜川项目原PPT第152页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第153页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-153.jpg" src="assets/original-yichuan-ppt/source-slide-153.jpg" alt="宜川项目原PPT第153页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第154页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-154.jpg" src="assets/original-yichuan-ppt/source-slide-154.jpg" alt="宜川项目原PPT第154页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第155页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-155.jpg" src="assets/original-yichuan-ppt/source-slide-155.jpg" alt="宜川项目原PPT第155页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第156页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-156.jpg" src="assets/original-yichuan-ppt/source-slide-156.jpg" alt="宜川项目原PPT第156页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第157页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-157.jpg" src="assets/original-yichuan-ppt/source-slide-157.jpg" alt="宜川项目原PPT第157页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第158页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-158.jpg" src="assets/original-yichuan-ppt/source-slide-158.jpg" alt="宜川项目原PPT第158页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第159页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-159.jpg" src="assets/original-yichuan-ppt/source-slide-159.jpg" alt="宜川项目原PPT第159页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第160页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-160.jpg" src="assets/original-yichuan-ppt/source-slide-160.jpg" alt="宜川项目原PPT第160页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第161页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-161.jpg" src="assets/original-yichuan-ppt/source-slide-161.jpg" alt="宜川项目原PPT第161页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第162页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-162.jpg" src="assets/original-yichuan-ppt/source-slide-162.jpg" alt="宜川项目原PPT第162页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第163页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-163.jpg" src="assets/original-yichuan-ppt/source-slide-163.jpg" alt="宜川项目原PPT第163页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第164页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-164.jpg" src="assets/original-yichuan-ppt/source-slide-164.jpg" alt="宜川项目原PPT第164页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第165页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-165.jpg" src="assets/original-yichuan-ppt/source-slide-165.jpg" alt="宜川项目原PPT第165页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第166页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-166.jpg" src="assets/original-yichuan-ppt/source-slide-166.jpg" alt="宜川项目原PPT第166页">
+</section>
+<section class="page yichuan-unified" aria-label="宜川红色系列">
+ <div class="yu-inner">
+  <span class="page-index">175</span>
+  <div class="yu-kicker">03 / RED CULTURAL SERIES</div>
+  <div class="yu-red-layout">
+   <div class="yu-red-copy">
+    <div class="yu-kicker">宜川文创</div>
+    <h1>宜川<br>红色系列</h1>
+    <div class="yu-red-accent"></div>
+    <p>红色文化主题衍生设计</p>
+   </div>
+  <figure class="yu-photo yu-red-photo"><img class="zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-171.jpg" src="assets/yichuan-red-keychain.jpg" alt="宜川红色主题纪念地文创钥匙扣效果图"><figcaption>红色主题纪念品　/　产品效果图</figcaption></figure>
+  </div>
+  <div class="yu-foot"><span>宜川红色文化　/　纪念设计</span><span>系列产品展示</span></div>
+ </div>
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第168页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-168.jpg" src="assets/original-yichuan-ppt/source-slide-168.jpg" alt="宜川项目原PPT第168页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第169页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-169.jpg" src="assets/original-yichuan-ppt/source-slide-169.jpg" alt="宜川项目原PPT第169页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第170页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-170.jpg" src="assets/original-yichuan-ppt/source-slide-170.jpg" alt="宜川项目原PPT第170页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第171页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-171.jpg" src="assets/original-yichuan-ppt/source-slide-171.jpg" alt="宜川项目原PPT第171页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第172页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-172.jpg" src="assets/original-yichuan-ppt/source-slide-172.jpg" alt="宜川项目原PPT第172页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第173页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-173.jpg" src="assets/original-yichuan-ppt/source-slide-173.jpg" alt="宜川项目原PPT第173页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第174页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-174.jpg" src="assets/original-yichuan-ppt/source-slide-174.jpg" alt="宜川项目原PPT第174页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第175页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-175.jpg" src="assets/original-yichuan-ppt/source-slide-175.jpg" alt="宜川项目原PPT第175页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第176页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-176.jpg" src="assets/original-yichuan-ppt/source-slide-176.jpg" alt="宜川项目原PPT第176页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第177页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-177.jpg" src="assets/original-yichuan-ppt/source-slide-177.jpg" alt="宜川项目原PPT第177页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第178页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-178.jpg" src="assets/original-yichuan-ppt/source-slide-178.jpg" alt="宜川项目原PPT第178页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第179页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-179.jpg" src="assets/original-yichuan-ppt/source-slide-179.jpg" alt="宜川项目原PPT第179页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第180页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-180.jpg" src="assets/original-yichuan-ppt/source-slide-180.jpg" alt="宜川项目原PPT第180页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第181页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-181.jpg" src="assets/original-yichuan-ppt/source-slide-181.jpg" alt="宜川项目原PPT第181页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第182页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-182.jpg" src="assets/original-yichuan-ppt/source-slide-182.jpg" alt="宜川项目原PPT第182页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第183页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-183.jpg" src="assets/original-yichuan-ppt/source-slide-183.jpg" alt="宜川项目原PPT第183页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第184页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-184.jpg" src="assets/original-yichuan-ppt/source-slide-184.jpg" alt="宜川项目原PPT第184页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第185页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-185.jpg" src="assets/original-yichuan-ppt/source-slide-185.jpg" alt="宜川项目原PPT第185页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第186页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-186.jpg" src="assets/original-yichuan-ppt/source-slide-186.jpg" alt="宜川项目原PPT第186页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第187页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-187.jpg" src="assets/original-yichuan-ppt/source-slide-187.jpg" alt="宜川项目原PPT第187页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第188页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-188.jpg" src="assets/original-yichuan-ppt/source-slide-188.jpg" alt="宜川项目原PPT第188页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第189页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-189.jpg" src="assets/original-yichuan-ppt/source-slide-189.jpg" alt="宜川项目原PPT第189页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第190页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-190.jpg" src="assets/original-yichuan-ppt/source-slide-190.jpg" alt="宜川项目原PPT第190页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第191页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-191.jpg" src="assets/original-yichuan-ppt/source-slide-191.jpg" alt="宜川项目原PPT第191页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第192页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-192.jpg" src="assets/original-yichuan-ppt/source-slide-192.jpg" alt="宜川项目原PPT第192页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第193页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-193.jpg" src="assets/original-yichuan-ppt/source-slide-193.jpg" alt="宜川项目原PPT第193页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第194页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-194.jpg" src="assets/original-yichuan-ppt/source-slide-194.jpg" alt="宜川项目原PPT第194页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第195页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-195.jpg" src="assets/original-yichuan-ppt/source-slide-195.jpg" alt="宜川项目原PPT第195页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第196页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-196.jpg" src="assets/original-yichuan-ppt/source-slide-196.jpg" alt="宜川项目原PPT第196页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第197页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-197.jpg" src="assets/original-yichuan-ppt/source-slide-197.jpg" alt="宜川项目原PPT第197页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第198页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-198.jpg" src="assets/original-yichuan-ppt/source-slide-198.jpg" alt="宜川项目原PPT第198页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第199页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-199.jpg" src="assets/original-yichuan-ppt/source-slide-199.jpg" alt="宜川项目原PPT第199页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第200页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-200.jpg" src="assets/original-yichuan-ppt/source-slide-200.jpg" alt="宜川项目原PPT第200页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第201页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-201.jpg" src="assets/original-yichuan-ppt/source-slide-201.jpg" alt="宜川项目原PPT第201页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第202页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-202.jpg" src="assets/original-yichuan-ppt/source-slide-202.jpg" alt="宜川项目原PPT第202页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第203页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-203.jpg" src="assets/original-yichuan-ppt/source-slide-203.jpg" alt="宜川项目原PPT第203页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第204页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-204.jpg" src="assets/original-yichuan-ppt/source-slide-204.jpg" alt="宜川项目原PPT第204页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第205页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-205.jpg" src="assets/original-yichuan-ppt/source-slide-205.jpg" alt="宜川项目原PPT第205页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第206页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-206.jpg" src="assets/original-yichuan-ppt/source-slide-206.jpg" alt="宜川项目原PPT第206页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第207页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-207.jpg" src="assets/original-yichuan-ppt/source-slide-207.jpg" alt="宜川项目原PPT第207页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第208页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-208.jpg" src="assets/original-yichuan-ppt/source-slide-208.jpg" alt="宜川项目原PPT第208页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第209页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-209.jpg" src="assets/original-yichuan-ppt/source-slide-209.jpg" alt="宜川项目原PPT第209页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第210页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-210.jpg" src="assets/original-yichuan-ppt/source-slide-210.jpg" alt="宜川项目原PPT第210页">
+</section>
+</main>
+<footer class="bottom">
+ <span>横版作品集　/　← → 翻页　/　点击图像可看原图</span>
+ <div class="controls"><button id="prev">上一页</button><span class="counter"><b id="current">01</b> / <span id="total">18</span></span><div class="progress"><i id="progress"></i></div><button id="next">下一页</button></div>
+</footer>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-label="图片查看器"><button id="closeLightbox" aria-label="关闭">×</button><img id="lightboxImage" alt="放大查看"></div>
+<script>
+(function(){
+ var pages=[].slice.call(document.querySelectorAll('.page')),current=0;
+ var currentLabel=document.getElementById('current'),totalLabel=document.getElementById('total'),progress=document.getElementById('progress');
+ totalLabel.textContent=String(pages.length).padStart(2,'0');
+ function show(n){current=Math.max(0,Math.min(pages.length-1,n));pages.forEach(function(p,i){p.classList.toggle('active',i===current)});currentLabel.textContent=String(current+1).padStart(2,'0');progress.style.width=((current+1)/pages.length*100)+'%'}
+ document.getElementById('prev').onclick=function(){show(current-1)};
+ document.getElementById('next').onclick=function(){show(current+1)};
+ document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='PageDown')show(current+1);if(e.key==='ArrowLeft'||e.key==='PageUp')show(current-1);if(e.key==='Escape')closeLightbox()});
+ var lightbox=document.getElementById('lightbox'),lightboxImage=document.getElementById('lightboxImage');
+ function openLightbox(src){lightboxImage.src=src;lightbox.classList.add('open')}
+ function closeLightbox(){lightbox.classList.remove('open');lightboxImage.src=''}
+ document.querySelectorAll('[data-zoom]').forEach(function(el){el.addEventListener('click',function(){openLightbox(el.dataset.zoom)})});
+ document.getElementById('closeLightbox').onclick=closeLightbox;
+ lightbox.addEventListener('click',function(e){if(e.target===lightbox)closeLightbox()});
+ var startMatch=location.hash.match(/^#page=(\d+)$/); show(startMatch?parseInt(startMatch[1],10)-1:0)
+})();
+</script>
+</body>
+</html>
