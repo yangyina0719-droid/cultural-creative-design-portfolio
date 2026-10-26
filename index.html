@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>文化创意与用户体验作品集｜庄浪古堡 × 宜川文创</title>
+<title>部分项目展示合集｜文化创意与用户体验作品集</title>
 <style>
 :root{
- --ink:#29251f;--paper:#f1eee8;--earth:#9a6942;--soil:#c5a17b;--muted:#81786d;
+ --ink:#29251f;--paper:#f1eee8;--earth:#9a6942;--soil:#c5a17b;--muted:#62594f;
  --dark:#191b19;--line:#d7d0c5;--serif:"Songti SC","STSong","Noto Serif CJK SC",Georgia,serif;
  --sans:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",Arial,sans-serif
 }
@@ -16,6 +16,30 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 .app{height:100dvh;display:grid;grid-template-rows:38px 1fr 42px}
 .top,.bottom{display:flex;align-items:center;justify-content:space-between;padding:0 24px;color:#cbc5bb;font-size:12px;letter-spacing:.12em}
 .top .project-name{color:#8f8a81}
+.project-switcher{display:flex;align-items:center;gap:.45rem}
+.project-switcher button{border:0;border-bottom:1px solid transparent;background:transparent;color:#aaa398;padding:6px 8px;cursor:pointer;font:inherit;font-size:12px;letter-spacing:.08em;white-space:nowrap;transition:color .18s,border-color .18s}
+.project-switcher button:hover,.project-switcher button:focus-visible{color:#f3eee6;border-color:#bd8d62;outline:none}
+.project-switcher button[aria-current="location"]{color:#e2b58b;border-color:#bd8d62}
+.chapter-menu{position:fixed;z-index:15;top:46px;right:18px;width:min(780px,calc(100vw - 36px));max-height:calc(100dvh - 92px);overflow:auto;padding:22px 24px 24px;background:#f3efe8;color:#302820;border:1px solid #c8b9a7;box-shadow:0 18px 54px #0009}
+.chapter-menu[hidden]{display:none}
+.chapter-menu-head{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-bottom:14px;margin-bottom:16px;border-bottom:1px solid #d1c7bb}
+.chapter-menu-head small{font-size:11px;letter-spacing:.17em;color:#9a4936}
+.chapter-menu-head h2{margin:3px 0 0;font:500 27px/1.2 var(--serif);color:#302820}
+.chapter-menu-close{border:1px solid #c8b9a7;background:transparent;color:#5f554b;padding:7px 11px;font:inherit;font-size:12px;cursor:pointer}
+.chapter-menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.chapter-project{min-width:0}
+.chapter-project-head{display:flex;align-items:baseline;justify-content:space-between;gap:.5rem;margin-bottom:9px;padding-bottom:7px;border-bottom:2px solid #a46b4c}
+.chapter-project-head b{font:500 16px var(--serif);color:#403329}
+.chapter-project-head span{font-size:12px;color:#756b60}
+.chapter-list{display:grid;grid-template-columns:1fr 1fr;gap:5px 8px}
+.chapter-link{display:grid;grid-template-columns:2em 1fr auto;align-items:center;gap:.35em;min-width:0;padding:8px 6px;border:0;background:transparent;text-align:left;color:#5b5147;font:inherit;font-size:13px;cursor:pointer}
+.chapter-link span{font:italic 11px Georgia,serif;color:#a27654}
+.chapter-link b{font-weight:400;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chapter-link i{font-style:normal;color:#9a4936;opacity:0;transition:opacity .15s}
+.chapter-link:hover,.chapter-link:focus-visible{background:#e8dfd3;color:#302820;outline:1px solid #c6ad94}
+.chapter-subheading{grid-column:1/-1;display:flex;align-items:center;gap:.75em;padding:10px 6px 4px;margin-top:3px;border-top:1px solid #d1c7bb;color:#9a4936;font-size:12px;letter-spacing:.13em}
+.chapter-subheading:after{content:"";height:1px;flex:1;background:#d1c7bb}
+.chapter-link:hover i,.chapter-link:focus-visible i{opacity:1}
 .stage{display:grid;place-items:center;min-height:0}
 .page{display:none;position:relative;container-type:inline-size;width:min(96vw,calc((100dvh - 80px)*1.414));aspect-ratio:297/210;background:var(--paper);overflow:hidden;box-shadow:0 20px 70px #0008}
 .page.active{display:block;animation:fade-in .25s ease both}
@@ -24,24 +48,26 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 .kicker{font-size:1.05cqw;letter-spacing:.18em;color:var(--earth);text-transform:uppercase}
 .headline{font:500 3.15cqw/1.18 var(--serif);letter-spacing:.015em;margin:.36em 0 .3em}
 .copy{font-size:1.24cqw;line-height:1.9;color:#655e54;margin:.3em 0}
-.small-note{font-size:1.05cqw;line-height:1.7;color:#8e8579}
+.small-note{font-size:1.05cqw;line-height:1.7;color:#5d544a}
 .rule{height:1px;background:var(--line);margin:1.3em 0}
-.footnote{font-size:1.05cqw;color:#92887a;line-height:1.65}
+.footnote{font-size:1.05cqw;color:#5d544a;line-height:1.65}
 .footnote a,.source-link{color:#836044;text-decoration:none;border-bottom:1px solid #c8b6a2}
 .footnote a:hover,.source-link:hover{color:#34271d;border-color:#34271d}
 .zoom{cursor:zoom-in}
 .image-label{position:absolute;left:3%;bottom:3%;color:#f2eee7;background:#151716b8;padding:.6em .8em;font-size:1.05cqw;letter-spacing:.12em}
 .tag{font-size:1.05cqw;letter-spacing:.1em;color:#d9d1c6;background:#161815a8;padding:.5em .7em}
-.cover{height:100%;position:relative;background:#151716}
-.cover>img{width:100%;height:100%;object-fit:cover;object-position:center 46%}
-.cover:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,15,14,.76),rgba(13,15,14,.28) 51%,transparent 81%),linear-gradient(0deg,rgba(10,12,11,.52),transparent 42%)}
-.cover-copy{position:absolute;z-index:2;left:7.1%;top:14%;width:49%;color:#f2eee7}
-.cover-copy .kicker{color:#d2aa81}
-.cover h1{font:500 7cqw/1.08 var(--serif);letter-spacing:.035em;margin:.3em 0}
-.cover .english{font:italic 1.2cqw Georgia,serif;letter-spacing:.23em;color:#d5b99b;margin:1.4em 0 2.4em}
-.cover .subtitle{font:1.35cqw/1.7 var(--serif);color:#e5dfd6}
-.cover .meta{font-size:1.05cqw;line-height:1.9;letter-spacing:.12em;color:#c5bdb1;margin-top:3.5em}
-.cover .cover-tag{position:absolute;right:4%;bottom:4%;z-index:2}
+.cover{height:100%;position:relative;background:#302820;color:#f4eee6}
+.cover-top{position:absolute;z-index:2;left:7%;right:7%;top:6%;display:flex;justify-content:space-between;color:#ddd2c4;font-size:clamp(12px,1.12cqw,15px);letter-spacing:.08em}
+.cover-copy{position:absolute;z-index:2;left:8%;top:28%;width:80%;color:#f2eee7}
+.cover-copy:before{content:"";display:block;width:3.8cqw;height:3px;margin:0 0 1.8cqw;background:#9a4936}
+.cover-copy .kicker{font-size:clamp(12px,1.12cqw,15px);letter-spacing:.18em;color:#d0a77f}
+.cover h1{font:500 clamp(40px,5.55cqw,66px)/1.18 var(--serif);letter-spacing:.07em;white-space:nowrap;margin:.48em 0 .3em;color:#f6f0e8}
+.cover .subtitle{max-width:100%;font:clamp(15px,1.48cqw,19px)/1.7 var(--serif);letter-spacing:.04em;color:#e1d6c8}
+.cover-rule{width:68%;height:1px;background:#ffffff55;margin:2.2cqw 0 1.5cqw}
+.cover-author{display:flex;align-items:baseline;gap:1.15cqw}
+.cover-author b{font:500 clamp(17px,1.72cqw,22px) var(--serif);letter-spacing:.1em;color:#f4eee6}
+.cover-author span{font-size:clamp(13px,1.15cqw,16px);color:#c6b7a6;letter-spacing:.06em}
+.cover-foot{position:absolute;z-index:2;left:8%;right:10%;bottom:6.5%;display:flex;gap:2cqw;font-size:clamp(12px,1.08cqw,15px);letter-spacing:.08em;color:#c9beaf}
 .photo-spread{height:100%;position:relative;background:#1a1d1b;overflow:hidden}
 .photo-spread>img{width:100%;height:100%;object-fit:cover;object-position:center 46%}
 .photo-spread:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,12,11,.55),transparent 56%),linear-gradient(0deg,rgba(10,12,11,.74),transparent 42%)}
@@ -49,6 +75,7 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 .photo-copy .kicker{color:#d7af84}
 .photo-copy h2{font:500 3.6cqw/1.2 var(--serif);margin:.35em 0}
 .photo-copy p{font-size:1.05cqw;line-height:1.85;color:#ded7ce}
+.project-role-line{display:inline-flex;align-self:flex-start;margin-top:.7cqw;padding:.48em .72em;border:1px solid #ffffff65;background:#14161488;color:#f4eee6;font-size:1.05cqw;letter-spacing:.04em}
 .photo-caption{position:absolute;z-index:2;left:6%;bottom:6%;color:#d6cec2;font-size:1.05cqw;letter-spacing:.12em}
 .photo-detail{position:absolute;z-index:3;right:4.5%;bottom:5%;width:37%;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .photo-detail figure{margin:0;min-width:0;background:#121412;border:1px solid #ffffff25;cursor:zoom-in}
@@ -101,9 +128,6 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 .workflow-visual video{width:100%;height:100%;object-fit:contain;background:#111}
 .workflow-visual .video-title{position:absolute;left:4%;top:4%;z-index:2;color:#efe9df;background:#171916a8;padding:.7em .9em;font-size:1.05cqw;letter-spacing:.09em}
 .workflow-visual .video-source{position:absolute;right:3%;bottom:3%;z-index:2}
-.workflow-under{display:flex;gap:1cqw;margin-top:4%;align-items:center}
-.workflow-under img{width:28%;max-height:5cqw;object-fit:contain;background:#e6dfd5}
-.workflow-under span{font-size:1.05cqw;line-height:1.65;color:#81786c}
 .particles{height:100%;display:grid;grid-template-columns:1.12fr .88fr;gap:4.5%;align-items:center}
 .particle-main{position:relative;height:84%;min-height:0;background:#181b19;overflow:hidden;cursor:zoom-in}
 .particle-main img{width:100%;height:100%;object-fit:contain}
@@ -127,7 +151,7 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 .timeline-item:before{content:"";position:absolute;width:8px;height:8px;border-radius:50%;background:#9a6942;top:-1.47cqw;left:0}
 .timeline-item time{font:italic 1.75cqw Georgia,serif;color:#9a6942}
 .timeline-item h3{font:500 1.35cqw var(--serif);margin:.7em 0 .3em}
-.timeline-item p{font-size:1.05cqw;line-height:1.72;color:#776d62;margin:0}
+.timeline-item p{font-size:1.05cqw;line-height:1.72;color:#51483f;margin:0}
 .memory-strip{display:grid;grid-template-columns:.9fr 1.1fr;gap:4%;border-top:1px solid var(--line);padding-top:2.5%;align-items:center}
 .memory-intro strong{font:500 1.24cqw var(--serif);color:#473a2f}
 .memory-intro p{font-size:1.05cqw;line-height:1.6;color:#766d62;margin:.45em 0 0}
@@ -141,7 +165,7 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 .unit{display:grid;grid-template-columns:2.6cqw 1fr;gap:1cqw;padding:2.4% 0;border-bottom:1px solid var(--line)}
 .unit .n{font:italic 1.05cqw Georgia,serif;color:#9a6942}
 .unit b{font:500 1.23cqw var(--serif)}
-.unit span{display:block;font-size:1.05cqw;color:#7b7166;line-height:1.55;margin-top:.25em}
+.unit span{display:block;font-size:1.05cqw;color:#51483f;line-height:1.55;margin-top:.25em}
 .exhibition-photo{height:83%;position:relative;background:#e6dfd5;display:grid;place-items:center;overflow:hidden;cursor:zoom-in}
 .exhibition-photo img{width:100%;height:100%;object-fit:contain}
 .exhibition-photo .image-label{background:#181916bd}
@@ -174,7 +198,7 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 .activity-grid.space{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}
 .activity-grid.people{grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr)}
 .activity-frame{position:relative;min-width:0;min-height:0;margin:0;background:#20221f;display:grid;place-items:center;overflow:hidden;cursor:zoom-in}
-.activity-frame img{width:100%;height:100%;object-fit:contain}
+.activity-frame img{width:100%;height:100%;object-fit:cover;object-position:center}
 .activity-frame figcaption{position:absolute;left:0;right:0;bottom:0;padding:.55em .75em;background:#111512ba;color:#f0ebe3;font-size:1.05cqw;letter-spacing:.06em}
 .impact{height:100%;display:grid;grid-template-columns:.86fr 1.14fr;background:#eee9e1}
 .impact-photo{position:relative;min-width:0;min-height:0;background:#24221f;overflow:hidden;display:grid;place-items:center}
@@ -194,23 +218,25 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 .impact-facts strong{font:500 2.55cqw Georgia,serif;color:#9a6942}
 .impact-facts span{font-size:1.05cqw;line-height:1.65;color:#756b60}
 .impact-copy .footnote{margin-top:3%;font-size:1.05cqw}
-.sources{height:100%;display:flex;flex-direction:column;justify-content:center}
-.sources-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:4%}
+.sources{height:100%;display:flex;flex-direction:column;justify-content:flex-start;min-height:0}
+.sources-head{display:flex;justify-content:space-between;align-items:flex-end;gap:4%;margin-bottom:2.4%;padding-right:1.5cqw}
+.sources-head>div{min-width:0}
+.sources-head>.small-note{flex:0 0 30%;max-width:30%;margin:0;padding:.7cqw .9cqw;background:#e8e1d7;border-left:2px solid #9a6942;color:#51483f;line-height:1.5}
 .sources-head h2{font:500 2.8cqw var(--serif);margin:.3em 0 0}
-.sources-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:5%;row-gap:0;border-top:1px solid var(--line)}
-.source-item{padding:2.2% 0;border-bottom:1px solid var(--line)}
+.sources-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:5%;row-gap:0;border-top:1px solid var(--line);min-height:0}
+.source-item{min-width:0;padding:1.25% 0;border-bottom:1px solid var(--line)}
 .source-item h3{font:500 1.18cqw var(--serif);margin:0 0 .4em}
 .source-item p{font-size:1.05cqw;line-height:1.65;color:#766d62;margin:0}
 .source-item a{display:inline-block;font-size:1.05cqw;color:#8a603f;text-decoration:none;border-bottom:1px solid #c8b6a2;margin-top:.6em}
 .source-item a:hover{color:#30251c}
-.sources-bottom{display:flex;justify-content:space-between;gap:4%;margin-top:4%;align-items:end}
-.sources-bottom p{max-width:70%;font:1.35cqw/1.5 var(--serif);color:#534539;margin:0}
-.sources-bottom small{font-size:1.05cqw;line-height:1.7;color:#91877a;text-align:right}
+.sources-bottom{display:flex;justify-content:space-between;gap:4%;margin-top:2.2%;padding-top:2%;border-top:1px solid var(--line);align-items:center}
+.sources-bottom p{flex:1;max-width:none;border-left:3px solid #9a6942;background:#e8e1d7;padding:.7cqw 1cqw;font:600 clamp(16px,1.42cqw,19px)/1.45 var(--sans);color:#392e25;margin:0}
+.sources-bottom small{flex:0 0 34%;font-size:clamp(13px,1.08cqw,15px);line-height:1.5;color:#51483f;text-align:left}
 .yc-page{background:#f2eee6;color:#302820}
 .yc-page .page-index{color:#9a806b}
 .yc-overline{font-size:1.05cqw;letter-spacing:.17em;text-transform:uppercase;color:#95694a}
 .yc-title{font:500 2.75cqw/1.18 var(--serif);letter-spacing:.015em;margin:.34em 0 .22em;color:#33271f}
-.yc-deck{font-size:1.05cqw;line-height:1.78;color:#76695d;margin:.2em 0}
+.yc-deck{font-size:1.05cqw;line-height:1.78;color:#51483f;margin:.2em 0}
 .yc-pad{height:100%;padding:5.2% 6% 4.5%;display:flex;flex-direction:column}
 .yc-head{display:flex;justify-content:space-between;align-items:end;gap:5%;margin-bottom:3.2%}
 .yc-head .yc-title{margin-bottom:0}
@@ -242,7 +268,7 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 .yc-resource-row{display:grid;grid-template-columns:4.2cqw 15.5cqw 1fr;gap:1.3cqw;align-items:center;padding:1.55cqw 0;border-bottom:1px solid #cfc4b7}
 .yc-resource-row .n{font:italic 1.25cqw Georgia,serif;color:#ad7760}
 .yc-resource-row b{font:500 1.36cqw var(--serif);color:#3a2e25}
-.yc-resource-row span{font-size:1.05cqw;color:#76695d;line-height:1.65}
+.yc-resource-row span{font-size:1.05cqw;color:#51483f;line-height:1.65}
 .yc-resource-note{display:flex;justify-content:space-between;gap:4%;margin-top:2.5%;font-size:1.05cqw;line-height:1.65;color:#8b7d6f}
 .yc-screen{height:100%;display:grid;grid-template-columns:.9fr 1.1fr;gap:7%;padding:5.5% 6% 5%}
 .yc-screen-left{display:flex;flex-direction:column;justify-content:center}
@@ -269,7 +295,7 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 .yc-translation-copy{padding:1.2cqw 1.2cqw 1cqw}
 .yc-translation-copy small{font-size:1.05cqw;letter-spacing:.12em;color:#a34631}
 .yc-translation-copy h3{font:500 1.42cqw var(--serif);margin:.55em 0 .4em;color:#382c23}
-.yc-translation-copy p{font-size:1.05cqw;line-height:1.65;color:#75695d;margin:0}
+.yc-translation-copy p{font-size:1.05cqw;line-height:1.65;color:#51483f;margin:0}
 .yc-feature{height:100%;display:flex;flex-direction:column;background:#211c18;color:#f2eee7}
 .yc-feature-photo{height:66%;min-height:0;display:grid;place-items:center;background:#261f1a;overflow:hidden}
 .yc-feature-photo img{width:100%;height:100%;object-fit:contain}
@@ -322,7 +348,7 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 .yc-game{height:100%;display:grid;grid-template-columns:.82fr 1.18fr;gap:5%;padding:5.4% 5.8% 4.8%;background:#f1eee8}
 .yc-game-copy{display:flex;flex-direction:column;justify-content:center}
 .yc-game-copy .yc-title{font-size:2.65cqw}
-.yc-game-copy p{font-size:1.05cqw;line-height:1.8;color:#75695d}
+.yc-game-copy p{font-size:1.05cqw;line-height:1.8;color:#51483f}
 .yc-game-steps{margin-top:2.1cqw;border-top:1px solid #cec4b8}
 .yc-game-step{display:grid;grid-template-columns:2.8cqw 1fr;gap:.8cqw;padding:.8cqw 0;border-bottom:1px solid #cec4b8;align-items:baseline}
 .yc-game-step i{font:italic 1.05cqw Georgia,serif;color:#a34631}
@@ -347,14 +373,14 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 .y2-page{height:100%;padding:4.6% 5.6% 4.1%;display:flex;flex-direction:column;background:#f2eee6;color:#302820}
 .y2-head{display:flex;justify-content:space-between;align-items:end;gap:4%;margin-bottom:2.1%;flex:none}
 .y2-head h2{font:500 2.55cqw/1.16 var(--serif);margin:.3em 0 0;color:#33271f}
-.y2-head p{max-width:43%;font-size:1.05cqw;line-height:1.7;color:#76695d;margin:0}
+.y2-head p{max-width:43%;font-size:1.05cqw;line-height:1.7;color:#51483f;margin:0}
 .y2-label{font-size:1.05cqw;letter-spacing:.17em;color:#95694a;text-transform:uppercase}
 .y2-body{flex:1;min-height:0}
-.y2-note{font-size:1.05cqw;line-height:1.65;color:#918577}
+.y2-note{font-size:1.05cqw;line-height:1.65;color:#51483f}
 .y2-literature-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,minmax(0,1fr));gap:.9cqw;flex:1;min-height:0}
 .y2-literature-grid article{display:flex;flex-direction:column;justify-content:center;padding:1.6cqw 1.7cqw!important}
 .y2-resource-layout,.y2-matrix-layout{display:flex;flex-direction:column}
-.y2-caption{display:flex;justify-content:space-between;align-items:baseline;gap:1em;margin-top:.55cqw;color:#76695d;font-size:1.05cqw}
+.y2-caption{display:flex;justify-content:space-between;align-items:baseline;gap:1em;margin-top:.55cqw;color:#51483f;font-size:1.05cqw}
 .y2-caption b{font:500 1.16cqw var(--serif);color:#43362b}
 .y2-fit{display:block;width:100%;height:100%;object-fit:contain}
 .y2-figure{margin:0;min-width:0;min-height:0;background:#e7e0d5;display:flex;flex-direction:column;overflow:hidden;cursor:zoom-in}
@@ -372,9 +398,9 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 .y2-intro-stat{display:flex;flex-direction:column;justify-content:center;padding-right:7%;border-right:1px solid #cec3b6}
 .y2-intro-stat strong{font:500 8.6cqw/.9 var(--serif);color:#a34631;letter-spacing:-.06em}
 .y2-intro-stat b{font:500 1.25cqw var(--serif);margin:.7em 0 .35em;color:#44372d}
-.y2-intro-stat p{font-size:1.05cqw;line-height:1.8;color:#76695d;margin:0}
+.y2-intro-stat p{font-size:1.05cqw;line-height:1.8;color:#51483f;margin:0}
 .y2-intro-right{display:flex;flex-direction:column;justify-content:stretch}
-.y2-insight-row{display:grid;grid-template-columns:5.3cqw 1fr;gap:1.2cqw;padding:1.05cqw 0;border-bottom:1px solid #d2c8bc;align-items:center;flex:1}
+.y2-insight-row{display:grid;grid-template-columns:8.8cqw minmax(0,1fr);gap:1.2cqw;padding:1.05cqw 0;border-bottom:1px solid #d2c8bc;align-items:center;flex:1}
 .y2-insight-row:first-child{border-top:1px solid #d2c8bc}
 .y2-insight-row b{font:500 1.18cqw var(--serif);color:#49392d}
 .y2-insight-row p{font-size:1.05cqw;line-height:1.65;color:#776b60;margin:0}
@@ -393,14 +419,14 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 .y2-interview-copy{display:flex;flex-direction:column;justify-content:center}
 .y2-interview-copy h3{font:500 1.45cqw var(--serif);margin:0 0 .75em;color:#43352a}
 .y2-interview-list{border-top:1px solid #cec3b6}
-.y2-interview-list div{padding:.7cqw 0;border-bottom:1px solid #cec3b6;font-size:1.05cqw;line-height:1.5;color:#75695d}
-.y2-interview-list b{display:inline-block;width:8.5cqw;font-weight:500;color:#47382c}
+.y2-interview-list div{display:grid;grid-template-columns:11.2cqw minmax(0,1fr);align-items:start;column-gap:1cqw;padding:.7cqw 0;border-bottom:1px solid #cec3b6;font-size:1.05cqw;line-height:1.55;color:#51483f}
+.y2-interview-list b{display:block;width:auto;white-space:nowrap;font-weight:600;color:#382e25}
 .y2-opportunity{margin-top:1.3cqw;padding:1cqw 1.2cqw;background:#e5ddd2;border-left:3px solid #a34631;font:1.2cqw/1.6 var(--serif);color:#594638}
 .y2-transition{display:grid;grid-template-columns:.92fr 1.08fr;gap:4%;align-items:stretch}
 .y2-transition-left{display:flex;flex-direction:column;justify-content:center}
 .y2-transition-left .big{font:500 7.8cqw/.92 var(--serif);letter-spacing:-.06em;color:#a34631}
 .y2-transition-left h2{font:500 2.25cqw/1.2 var(--serif);color:#362a21;margin:.45em 0}
-.y2-transition-left p{font-size:1.05cqw;line-height:1.75;color:#76695d;max-width:85%}
+.y2-transition-left p{font-size:1.05cqw;line-height:1.75;color:#51483f;max-width:85%}
 .y2-flow{display:flex;flex-direction:column;justify-content:center}
 .y2-flow-step{display:grid;grid-template-columns:3.8cqw 1fr auto;gap:1.2cqw;align-items:center;padding:1.1cqw .3cqw;border-bottom:1px solid #cfc4b8}
 .y2-flow-step:first-child{border-top:1px solid #cfc4b8}
@@ -411,7 +437,7 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 .y2-resource-row{display:grid;grid-template-columns:4.5cqw 14cqw 1fr 1.18fr;gap:1.4cqw;align-items:center;padding:1.12cqw .15cqw;border-bottom:1px solid #d3c9bd;flex:1}
 .y2-resource-row .n{font:italic 1.24cqw Georgia,serif;color:#ad7760}
 .y2-resource-row b{font:500 1.18cqw var(--serif);color:#423329}
-.y2-resource-row span{font-size:1.05cqw;line-height:1.58;color:#75695d}
+.y2-resource-row span{font-size:1.05cqw;line-height:1.58;color:#51483f}
 .y2-resource-head{display:grid;grid-template-columns:4.5cqw 14cqw 1fr 1.18fr;gap:1.4cqw;padding:.55cqw .15cqw;color:#9a8876;font-size:1.05cqw;letter-spacing:.12em}
 .y2-schema{display:grid;grid-template-columns:.78fr 1.22fr;gap:4%;align-items:stretch}
 .y2-schema-fields{display:flex;flex-direction:column;justify-content:center}
@@ -455,7 +481,7 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 .y2-product-split{display:grid;grid-template-columns:.85fr 1.15fr;gap:3.5%;align-items:stretch}
 .y2-product-copy{display:flex;flex-direction:column;justify-content:center;padding-right:5%}
 .y2-product-copy h3{font:500 1.5cqw/1.25 var(--serif);margin:.4em 0;color:#403126}
-.y2-product-copy p{font-size:1.05cqw;line-height:1.8;color:#75695d}
+.y2-product-copy p{font-size:1.05cqw;line-height:1.8;color:#51483f}
 .y2-product-copy ul{list-style:none;padding:0;margin:1.1cqw 0 0;border-top:1px solid #cec3b6}
 .y2-product-copy li{padding:.65cqw 0;border-bottom:1px solid #cec3b6;font-size:1.05cqw;color:#716255}
 .y2-product-copy li b{display:inline-block;width:7cqw;font-weight:500;color:#a34631}
@@ -464,7 +490,7 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 .y2-pair{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:minmax(0,1fr);gap:1.2cqw;min-height:0;height:100%}
 .y2-pair figure{margin:0;min-width:0;min-height:0;background:#e4ddd2;display:flex;flex-direction:column;overflow:hidden;cursor:zoom-in}
 .y2-pair img{width:100%;height:100%;min-height:0;object-fit:contain}
-.y2-pair figcaption{padding:.55cqw .75cqw;border-top:1px solid #d2c8bc;font-size:1.05cqw;color:#75695d}
+.y2-pair figcaption{padding:.55cqw .75cqw;border-top:1px solid #d2c8bc;font-size:1.05cqw;color:#51483f}
 .y2-concepts{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(2,minmax(0,1fr));gap:1cqw;min-height:0;height:100%}
 .y2-concept{margin:0;min-width:0;min-height:0;background:#e7dfd4;display:flex;flex-direction:column;overflow:hidden;cursor:zoom-in}
 .y2-concept img{width:100%;height:100%;min-height:0;object-fit:contain}
@@ -527,7 +553,7 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 .y2-intro-images figure{display:flex;flex-direction:column;min-width:0;min-height:0;margin:0;background:#e5ddd2;overflow:hidden}
 .y2-intro-images figure>a{display:block;flex:1;min-height:0;overflow:hidden}
 .y2-intro-images img{display:block;width:100%;height:100%;object-fit:cover}
-.y2-intro-images figcaption{padding:.28cqw .35cqw;background:#e8e0d5;color:#76695d;font-size:1cqw;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.y2-intro-images figcaption{padding:.28cqw .35cqw;background:#e8e0d5;color:#51483f;font-size:1cqw;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .y2-intro-images figcaption a{color:inherit;text-decoration:none}
 .y2-index-card img{object-fit:cover;padding:0;opacity:1}
 .y2-index-card:nth-child(3) img{object-position:78% center}
@@ -551,7 +577,7 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 .yu-opener-copy{display:grid;grid-template-columns:auto auto 1fr;grid-template-rows:auto auto;align-items:end;gap:.2cqw 1.5cqw;min-width:0}
 .yu-opener-number{grid-column:1;grid-row:1 / 3;font:400 5.7cqw/.9 Georgia,serif;color:var(--earth);letter-spacing:-.045em;margin:0}
 .yu-opener-copy h1{font:500 4.05cqw/1.18 var(--serif);letter-spacing:.04em;margin:0;color:var(--ink)}
-.yu-opener-en{grid-column:2;grid-row:2;margin-top:.35cqw;font:italic 1.12cqw Georgia,serif;letter-spacing:.18em;color:#8d8172}
+.yu-opener-en{grid-column:2;grid-row:2;margin-top:.35cqw;font:italic 1.12cqw Georgia,serif;letter-spacing:.18em;color:#62594f}
 .yu-opener-copy .yu-rule{display:none}
 .yu-opener-sub{grid-column:3;grid-row:1 / 3;justify-self:end;align-self:end;font:1.18cqw/1.8 var(--serif);color:#655e54;margin:0;max-width:95%;text-align:right}
 .yu-photo{margin:0;min-width:0;min-height:0;overflow:hidden;background:#e5ddd2;position:relative}
@@ -577,60 +603,204 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 .yu-red-photo img{object-position:center 50%}
 .profile-page{background:#f1eee8}
 .profile-spread{height:100%;display:grid;grid-template-columns:1.12fr .88fr;background:#f1eee8;color:#302820}
-.profile-main{min-width:0;min-height:0;padding:5.6% 5.3% 5% 7.2%;display:flex;flex-direction:column}
-.profile-overline{font-size:1.08cqw;letter-spacing:.2em;color:#95694a;text-transform:uppercase}
-.profile-main h1{font:500 5.1cqw/1.08 var(--serif);letter-spacing:.08em;color:#2d2721;margin:.34em 0 .17em}
-.profile-role{font:1.34cqw/1.6 var(--serif);color:#9b4936;letter-spacing:.025em}
-.profile-summary{max-width:94%;font-size:1.3cqw;line-height:1.78;color:#665d52;margin:1.05cqw 0 1.05cqw}
-.profile-thread{display:flex;align-items:center;gap:.75cqw;margin:0 0 1.65cqw;font-size:1.14cqw;letter-spacing:.04em;color:#8b755f}
+.profile-main{min-width:0;min-height:0;padding:5.4% 5.2% 4.8% 7.2%;display:flex;flex-direction:column}
+.profile-overline{font-size:clamp(12px,1.08cqw,15px);letter-spacing:.16em;color:#95694a;text-transform:uppercase}
+.profile-main h1{font:500 clamp(38px,4.45cqw,54px)/1.08 var(--serif);letter-spacing:.08em;color:#2d2721;margin:.34em 0 .17em}
+.profile-role{font:clamp(14px,1.38cqw,18px)/1.55 var(--serif);color:#9b4936;letter-spacing:.025em}
+.profile-summary{max-width:96%;font-size:clamp(14px,1.38cqw,18px);line-height:1.7;color:#665d52;margin:1cqw 0}
+.profile-thread{display:flex;align-items:center;gap:.8cqw;margin:0 0 1.15cqw;font-size:clamp(12px,1.12cqw,15px);letter-spacing:.04em;color:#6c6258}
 .profile-thread i{font-style:normal;color:#c2b4a3}
 .profile-section-head,.profile-skill-head,.profile-education-head{display:flex;align-items:baseline;justify-content:space-between;gap:1em}
-.profile-section-head{padding-bottom:.48cqw;border-bottom:1px solid #cfc4b8}
-.profile-section-head b,.profile-skill-head b,.profile-education-head b{font:500 1.48cqw var(--serif);color:#403329}
-.profile-section-head small,.profile-skill-head small{font-size:.92cqw;letter-spacing:.16em;color:#a18c78}
+.profile-section-head{padding-bottom:.6cqw;border-bottom:1px solid #cfc4b8}
+.profile-section-head b,.profile-skill-head b,.profile-education-head b{font:500 clamp(16px,1.45cqw,20px) var(--serif);color:#403329}
+.profile-section-head small,.profile-skill-head small{font-size:clamp(11px,1cqw,14px);letter-spacing:.14em;color:#766b60}
 .profile-jobs{display:flex;flex:1;min-height:0;flex-direction:column}
-.profile-job{display:grid;flex:1;align-content:center;grid-template-columns:11.3cqw 1fr;gap:1.2cqw;padding:1.12cqw 0;border-bottom:1px solid #d8cfc4}
-.profile-job time{font:italic 1.08cqw/1.55 Georgia,serif;color:#9a6942;white-space:nowrap}
-.profile-job h3{font:500 1.4cqw/1.35 var(--serif);margin:0 0 .22em;color:#41342a}
-.profile-job h3 span{font:1.02cqw var(--sans);color:#837568;margin-left:.45em}
-.profile-job p{font-size:1.15cqw;line-height:1.6;color:#70665a;margin:0}
-.profile-skill-head{margin-top:auto;padding-top:1.3cqw}
-.profile-capabilities{display:grid;grid-template-columns:repeat(3,1fr);gap:1.05cqw;margin-top:.68cqw}
-.profile-capability{border-top:2px solid #b17b58;padding-top:.58cqw}
-.profile-capability b{display:block;font:500 1.18cqw var(--serif);color:#493a2e;margin-bottom:.28em}
-.profile-capability span{display:block;font-size:1.12cqw;line-height:1.55;color:#81766a}
-.profile-side{position:relative;min-width:0;min-height:0;padding:5.7% 9% 5.1%;display:flex;flex-direction:column;background:#28231f;color:#f2eee8}
-.profile-portrait{width:82%;height:56%;align-self:flex-end;margin:0;overflow:hidden;background:#eee9e1}
-.profile-portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 22%}
-.profile-photo-meta{width:82%;align-self:flex-end;display:flex;justify-content:space-between;gap:1em;padding:.55cqw 0 1.15cqw;border-bottom:1px solid #ffffff3b;font-size:1.02cqw;letter-spacing:.06em;color:#d0c4b7}
-.profile-education-head{margin-top:1.05cqw;padding-bottom:.48cqw;border-bottom:1px solid #ffffff3b}
-.profile-education-head b{font:500 1.48cqw var(--serif);color:#f1ece3}
-.profile-education-head small{font-size:.92cqw;letter-spacing:.16em;color:#ba9d7e}
-.profile-school{display:grid;grid-template-columns:9.3cqw 1fr;gap:.8cqw;padding:.75cqw 0;border-bottom:1px solid #ffffff30}
-.profile-school time{font:italic 1.02cqw/1.55 Georgia,serif;color:#d3a981;white-space:nowrap}
-.profile-school b{display:block;font:500 1.22cqw/1.4 var(--serif);color:#f3eee6}
-.profile-school span{display:block;font-size:1.1cqw;line-height:1.5;color:#c9bfb3}
-.profile-school small{display:block;margin-top:.25em;font-size:1cqw;line-height:1.5;color:#a89b8c}
+.profile-job{display:grid;flex:1;align-content:center;grid-template-columns:16.8cqw minmax(0,1fr);gap:1.2cqw;padding:.8cqw 0;border-bottom:1px solid #d8cfc4}
+.profile-job time{font:italic clamp(12px,1.08cqw,15px)/1.55 Georgia,serif;color:#9a6942;white-space:nowrap}
+.profile-job h3{font:500 clamp(15px,1.42cqw,19px)/1.35 var(--serif);margin:0 0 .22em;color:#41342a}
+.profile-job h3 span{font:clamp(12px,1.12cqw,15px) var(--sans);color:#70665a;margin-left:.45em}
+.profile-job p{font-size:clamp(13px,1.22cqw,16px);line-height:1.52;color:#655d54;margin:0}
+.profile-skill-head{margin-top:auto;padding-top:.9cqw}
+.profile-capabilities{display:grid;grid-template-columns:repeat(3,1fr);gap:.85cqw;margin-top:.6cqw}
+.profile-capability{border-top:2px solid #b17b58;padding-top:.48cqw}
+.profile-capability b{display:block;font:500 clamp(13px,1.18cqw,16px) var(--serif);color:#493a2e;margin-bottom:.28em}
+.profile-capability span{display:block;font-size:clamp(12px,1.08cqw,15px);line-height:1.48;color:#655d54}
+.profile-side{position:relative;min-width:0;min-height:0;padding:5.4% 8% 4.8%;display:flex;flex-direction:column;background:#28231f;color:#f2eee8}
+.profile-portrait{width:min(100%,23cqw);aspect-ratio:3/4;flex:0 0 auto;align-self:center;margin:0;overflow:hidden;background:transparent}
+.profile-portrait img{display:block;width:100%;height:100%;object-fit:contain;object-position:center}
+.profile-photo-meta{width:min(100%,23cqw);align-self:center;display:flex;justify-content:space-between;gap:1em;padding:.6cqw 0 .9cqw;border-bottom:1px solid #ffffff3b;font-size:clamp(12px,1.08cqw,15px);letter-spacing:.06em;color:#d0c4b7}
+.profile-education-head{margin-top:.9cqw;padding-bottom:.55cqw;border-bottom:1px solid #ffffff3b}
+.profile-education-head b{font:500 clamp(16px,1.42cqw,19px) var(--serif);color:#f1ece3}
+.profile-education-head small{font-size:clamp(11px,.98cqw,14px);letter-spacing:.15em;color:#ba9d7e}
+.profile-school{display:grid;grid-template-columns:13cqw minmax(0,1fr);gap:.8cqw;padding:.75cqw 0;border-bottom:1px solid #ffffff30}
+.profile-school time{font:italic clamp(12px,1.03cqw,14px)/1.55 Georgia,serif;color:#d3a981;white-space:nowrap}
+.profile-school b{display:block;font:500 clamp(15px,1.28cqw,18px)/1.4 var(--serif);color:#f3eee6}
+.profile-school span{display:block;font-size:clamp(13px,1.12cqw,15px);line-height:1.45;color:#c9bfb3}
+.profile-school small{display:block;margin-top:.23em;font-size:clamp(12px,1.02cqw,14px);line-height:1.45;color:#c8bdb1}
+
+/* Opening contents page: the two projects share one grid and image frame */
+.contents-page{height:100%;background:#f3efe8;color:#29251f}
+.contents-body{height:100%;display:flex;flex-direction:column;padding:5.2% 6% 4.5%}
+.contents-heading{display:flex;align-items:end;justify-content:space-between;gap:4%;margin-bottom:2.1%}
+.contents-label{font-size:clamp(12px,1.08cqw,15px);letter-spacing:.18em;color:#9a4936;text-transform:uppercase}
+.contents-heading h1{font:500 clamp(30px,3.3cqw,42px)/1.12 var(--serif);letter-spacing:.04em;margin:.35em 0 0;color:#302820}
+.contents-heading p{max-width:41%;font:clamp(14px,1.26cqw,17px)/1.6 var(--serif);color:#655d54;margin:0 0 .3em}
+.contents-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.6cqw;flex:1;min-height:0}
+.contents-project{display:flex;flex-direction:column;min-width:0;min-height:0}
+.contents-image{position:relative;flex:0 0 62%;height:62%;min-height:0;margin:0;overflow:hidden;background:#ddd5ca}
+.contents-image img{display:block;width:100%;height:100%;object-fit:cover}
+.contents-project:first-child .contents-image img{object-position:52% 52%}
+.contents-project:nth-child(2) .contents-image img{object-position:67% center}
+.contents-image figcaption{position:absolute;left:1.1cqw;bottom:1cqw;padding:.46em .72em;background:#201b17c9;color:#f4eee6;font-size:clamp(12px,1.04cqw,15px);letter-spacing:.08em}
+.contents-enter{position:absolute;right:1.1cqw;top:1cqw;padding:.55em .85em;border:1px solid #f4eee680;background:#201b17dc;color:#f4eee6;font:inherit;font-size:clamp(12px,1.04cqw,15px);letter-spacing:.06em;cursor:pointer;transition:background .18s,color .18s}
+.contents-enter:hover,.contents-enter:focus-visible{background:#f4eee6;color:#302820;outline:2px solid #f4eee6;outline-offset:2px}
+.contents-copy{padding:.9cqw 0 0}
+.contents-project-label{font-size:clamp(12px,1.02cqw,14px);letter-spacing:.14em;color:#9a4936}
+.contents-copy h2{font:500 clamp(23px,2.15cqw,29px)/1.22 var(--serif);letter-spacing:.025em;color:#382d24;margin:.24em 0}
+.contents-copy p{font-size:clamp(14px,1.24cqw,17px);line-height:1.55;min-height:3.1em;margin:.25em 0 .55em;color:#655d54;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.contents-topics{display:flex;flex-wrap:wrap;gap:.4cqw .9cqw;padding-top:.5cqw;border-top:1px solid #d1c7bb;color:#655d54;font-size:clamp(12px,1.03cqw,14px);line-height:1.4}
+.contents-footer{display:flex;justify-content:space-between;align-items:center;gap:1em;margin-top:1cqw;padding-top:.68cqw;border-top:1px solid #cbc0b4;color:#655d54;font-size:clamp(12px,1.02cqw,14px);letter-spacing:.04em}
+.contents-footer strong{font:500 clamp(12px,1.04cqw,15px) var(--serif);color:#6c5340}
+.yu-text-page{background:#f3efe8;color:#302820}
+.yu-text-page .yu-inner{padding:5.5% 6% 4.6%}
+.yu-text-head{display:flex;align-items:center;justify-content:space-between;gap:2em;padding-bottom:.8cqw;border-bottom:1px solid #d1c7bb;color:#8e6045;font-size:clamp(12px,1.05cqw,15px);letter-spacing:.16em}
+.yu-text-head span:last-child{color:#756b60;letter-spacing:.06em}
+.yu-text-main{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;padding:2cqw 0}
+.yu-text-eyebrow{font-size:clamp(12px,1.06cqw,15px);letter-spacing:.18em;color:#9a4936}
+.yu-text-title{font:500 clamp(38px,4.2cqw,56px)/1.18 var(--serif);letter-spacing:.05em;color:#302820;margin:.28em 0 .3em}
+.yu-text-lede{max-width:80%;font:clamp(18px,1.75cqw,23px)/1.7 var(--serif);color:#665d52;margin:0}
+.yu-text-rule{height:1px;background:#cfc4b8;margin:2.2cqw 0 1.6cqw}
+.yu-text-columns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5cqw}
+.yu-text-column{min-width:0;border-top:2px solid #a46b4c;padding:1cqw .2cqw 0}
+.yu-text-column small{display:block;font-size:clamp(12px,1.02cqw,14px);letter-spacing:.14em;color:#9a4936}
+.yu-text-column strong{display:block;font:500 clamp(20px,2cqw,27px)/1.35 var(--serif);color:#403329;margin:.45em 0 .3em}
+.yu-text-column p{font-size:clamp(14px,1.24cqw,17px);line-height:1.65;color:#6c6257;margin:0}
+.yu-text-foot{display:flex;justify-content:space-between;align-items:center;gap:1em;border-top:1px solid #d1c7bb;padding-top:.8cqw;color:#756b60;font-size:clamp(12px,1.03cqw,14px);letter-spacing:.06em}
+.yu-text-liquor .yu-text-main{justify-content:flex-start}
+.yu-flavor-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.4cqw;margin-top:2.4cqw}
+.yu-flavor{min-height:9.2cqw;display:flex;flex-direction:column;justify-content:space-between;padding:1.05cqw 1.2cqw;border:1px solid #cfc4b8;background:#ece6dd}
+.yu-flavor span{font:italic clamp(13px,1.1cqw,16px) Georgia,serif;color:#9a4936}
+.yu-flavor strong{font:500 clamp(20px,2cqw,27px) var(--serif);color:#3d3228}
+.yu-liquor-bottom{display:grid;grid-template-columns:1fr 1fr;gap:3cqw;margin-top:2cqw;padding-top:1.15cqw;border-top:1px solid #cfc4b8}
+.yu-liquor-bottom b{display:block;font-size:clamp(12px,1.03cqw,14px);letter-spacing:.14em;color:#9a4936;margin-bottom:.55em}
+.yu-liquor-bottom p{font-size:clamp(14px,1.2cqw,16px);line-height:1.6;color:#655d54;margin:0}
+.yu-case-layout{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;padding:2cqw 0 1cqw}
+.yu-case-intro{display:flex;align-items:end;justify-content:space-between;gap:3cqw;margin-bottom:2.2cqw}
+.yu-case-intro h1{font:500 clamp(36px,4.1cqw,54px)/1.18 var(--serif);letter-spacing:.04em;color:#302820;margin:.28em 0 0}
+.yu-case-intro p{max-width:43%;font-size:clamp(16px,1.38cqw,19px);line-height:1.7;color:#51483f;margin:0}
+.yu-case-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5cqw}
+.yu-case-card{min-width:0;min-height:20cqw;padding:1.45cqw 1.35cqw 1.3cqw;border:1px solid #d2c8bc;background:#ece6dd;display:flex;flex-direction:column}
+.yu-case-meta{font-size:clamp(13px,1.12cqw,15px);letter-spacing:.12em;color:#9a4936}
+.yu-case-card h2{font:600 clamp(21px,2.05cqw,28px)/1.38 var(--sans);color:#352b23;margin:2.2cqw 0 .65cqw}
+.yu-case-card p{font-size:clamp(15px,1.28cqw,18px);line-height:1.7;color:#51483f;margin:0}
+.yu-case-flow{display:flex;align-items:center;gap:1.2cqw;margin-top:2.2cqw;padding-top:1.1cqw;border-top:1px solid #cfc4b8;color:#51483f;font-size:clamp(14px,1.2cqw,16px)}
+.yu-case-flow b{font-weight:700;color:#9a4936;letter-spacing:.08em;white-space:nowrap}
+.yu-case-flow span{line-height:1.5}
+.yu-text-page .page-index{color:#9a806b}
+.yu-guide-main{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;padding:1.8cqw 0 1.3cqw}
+.yu-guide-heading{display:flex;align-items:end;justify-content:space-between;gap:3cqw;margin-bottom:2.2cqw}
+.yu-guide-heading h1{font:500 clamp(52px,5.8cqw,78px)/1.08 var(--serif);letter-spacing:.08em;color:#302820;margin:.2em 0 0}
+.yu-guide-heading p{max-width:38%;font-size:clamp(16px,1.38cqw,19px);line-height:1.65;color:#51483f;margin:0 0 .35em}
+.yu-guide-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.4cqw}
+.yu-guide-card{position:relative;min-width:0;min-height:22cqw;display:flex;flex-direction:column;align-items:flex-start;text-align:left;padding:1.45cqw 1.35cqw;border:1px solid #cfc4b8;background:#ece6dd;color:#302820;cursor:pointer;transition:background .18s,border-color .18s,transform .18s}
+.yu-guide-card:hover,.yu-guide-card:focus-visible{background:#e5dbce;border-color:#a46b4c;transform:translateY(-2px);outline:2px solid #a46b4c;outline-offset:2px}
+.yu-guide-card .yu-guide-num{font-size:clamp(13px,1.12cqw,15px);letter-spacing:.12em;color:#9a4936}
+.yu-guide-card h2{font:600 clamp(22px,2.15cqw,30px)/1.35 var(--sans);color:#352b23;margin:auto 0 .65cqw}
+.yu-guide-card .yu-guide-desc{display:block;min-height:3.2em;max-width:88%;font-size:clamp(15px,1.22cqw,17px);line-height:1.6;color:#51483f}
+.yu-guide-card i{position:absolute;right:1.25cqw;bottom:1.2cqw;font-style:normal;font-size:1.5cqw;color:#9a4936}
 @media(max-width:760px){.yu-opener-grid{grid-template-columns:.9fr 1.1fr}.yu-fruit-layout,.yu-red-layout{grid-template-columns:.8fr 1.2fr}}
+@media(max-width:700px){.top,.bottom{padding:0 8px}.top>span:first-child{max-width:34vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10px;letter-spacing:.03em}.project-switcher{gap:0}.project-switcher button{font-size:10px;padding:5px 4px;letter-spacing:0}.chapter-menu{top:40px;right:10px;width:calc(100vw - 20px);max-height:calc(100dvh - 76px);padding:16px}.chapter-menu-grid{grid-template-columns:1fr;gap:16px}.chapter-list{grid-template-columns:1fr 1fr}.chapter-menu-head h2{font-size:23px}}
+/* Readability scale for designed pages; rasterized original PPT pages retain their source artwork. */
+.page:not(.original-slide-page) p:not(.yu-text-lede){font-size:clamp(15px,1.28cqw,18px)!important}
+.page:not(.original-slide-page) .copy{font-size:clamp(16px,1.42cqw,19px)!important;line-height:1.68!important}
+.page:not(.original-slide-page) .profile-summary{font-size:clamp(16px,1.48cqw,19px)!important}
+.page:not(.original-slide-page) .yu-text-lede{font-size:clamp(19px,1.85cqw,24px)!important}
+.page:not(.original-slide-page) :is(small,li,figcaption,span:not(.page-index)){font-size:clamp(13px,1.12cqw,15px)!important}
+.page:not(.original-slide-page) :is(td,th){font-size:clamp(14px,1.2cqw,16px)!important}
+.page:not(.original-slide-page) :is(.small-note,.footnote,[class*="-note"],[class*="-caption"],.contents-project-label,.contents-topics,.contents-footer,.project-role-line,.image-label,.tag,.concept-line,.video-title,.press-source,.source-item a,.yc-ai-inline,.yc-red-note,.yc-research-foot,.yc-cover-meta,.y2-cover-meta,.y2-resource-head,.y2-interview-list div,.y2-matrix-head,.yu-text-head,.yu-text-foot,.y2-label,.yc-overline){font-size:clamp(13px,1.12cqw,15px)!important}
+/* Darker supporting copy on light pages; preserve the white copy used over dark panels. */
+.page:not(.original-slide-page) :is(.copy,.small-note,.footnote,.timeline-item p,.memory-intro p,.unit span,.y2-head>p,.y2-note,.y2-caption,.y2-interview-list div,.y2-transition-left p,.y2-insight-row p,.yu-opener-sub,.yu-liquor-bottom p){color:#51483f!important}
+.page:not(.original-slide-page) :is(.stat span,.location-fact span,.workflow-step p,.activity-header p,.press-card p,.impact-facts span,.source-item p,.yc-research-row p,.yc-research-foot,.yc-resource-note,.yc-screen-right>p,.yc-screen-note,.yc-duo-card p,.yc-ai-inline,.yc-wine-caption p,.yc-pack-left p,.yc-pack-visuals figcaption,.yc-red-note,.yc-game-step span,.y2-score-number p,.y2-weight span,.y2-pref-note,.y2-matrix-row span,.y2-product-copy li,.y2-concept span,.y2-board-note,.profile-summary,.yu-wine-head p,.yu-fruit-list,.yu-text-head span:last-child,.yu-text-column p){color:#51483f!important}
+.page:not(.original-slide-page) :is(.y2-resource-head,.y2-matrix-head,.yc-criterion span,.yc-bar-row span,.y2-weight span,.y2-pref-row span,.yc-game-step span){font-family:var(--sans)!important;font-size:clamp(14px,1.2cqw,16px)!important;font-weight:650!important;color:#493a2d!important}
+.page:not(.original-slide-page) .risk-copy :is(.copy,.footnote),.page:not(.original-slide-page) .viz-copy .copy{color:#e3ddd3!important}
+.page:not(.original-slide-page) .y2-interview-list div{grid-template-columns:11.2cqw minmax(0,1fr);column-gap:1cqw;font-size:clamp(15px,1.28cqw,17px)!important;line-height:1.55}
+.page:not(.original-slide-page) .y2-interview-list b{font-size:clamp(15px,1.25cqw,16px)!important;color:#382e25!important}
+/* Clear hierarchy: retain Songti for page titles, use stronger sans-serif for labels and data. */
+.page:not(.original-slide-page) h2{font-weight:600!important}
+.page:not(.original-slide-page) h3{font-family:var(--sans)!important;font-size:clamp(16px,1.38cqw,19px)!important;font-weight:700!important;line-height:1.35!important}
+.page:not(.original-slide-page) :is(b,strong){font-weight:700!important}
+.page:not(.original-slide-page) :is(.region-step b,.location-fact b,.workflow-step b,.memory-intro strong,.unit b,.yc-research-methods b,.yc-research-row b,.yc-resource-row b,.yc-big-caption,.yc-duo-card figcaption b,.yc-wine-caption strong,.y2-intro-stat b,.y2-insight-row b,.y2-flow-step b,.y2-resource-row b,.y2-score-number b,.y2-matrix-row b,.y2-product-copy li b,.y2-concept b,.profile-capability b,.y2-product figcaption){font-family:var(--sans)!important;font-size:clamp(15px,1.3cqw,18px)!important;font-weight:700!important;line-height:1.4!important}
+.page:not(.original-slide-page) :is(.region-step b,.location-fact b,.workflow-step b,.memory-intro strong,.unit b,.yc-research-methods b,.yc-research-row b,.yc-resource-row b,.yc-big-caption,.yc-duo-card figcaption b,.yc-wine-caption strong,.y2-intro-stat b,.y2-insight-row b,.y2-flow-step b,.y2-resource-row b,.y2-score-number b,.y2-matrix-row b,.y2-product-copy li b,.y2-concept b,.profile-capability b,.y2-product figcaption){color:#392e25!important}
+.page:not(.original-slide-page) .workflow-step b{font-size:clamp(16px,1.45cqw,19px)!important}
+/* Dates, step numbers, and percentages use one upright, bold Chinese sans-serif style. */
+.page:not(.original-slide-page) :is(.region-step .num,.workflow-step .n,.timeline-item time,.memory-years span,.unit .n,.event-date,.stat b,.impact-facts strong,.yc-research-stat strong,.yc-criterion b,.yc-bar-row b,.yc-resource-row .n,.yc-big-number,.yc-game-step i,.y2-intro-stat strong,.y2-flow-step i,.y2-resource-row .n,.y2-score-number strong,.y2-weight b,.y2-pref-row b,.profile-job time,.profile-school time){font-family:var(--sans)!important;font-style:normal!important;font-weight:700!important;color:#68452d!important}
+.page:not(.original-slide-page) :is(.region-step .num,.workflow-step .n,.unit .n,.yc-resource-row .n,.yc-game-step i,.y2-flow-step i,.y2-resource-row .n){font-size:clamp(15px,1.25cqw,17px)!important}
+.page:not(.original-slide-page) .timeline-item time{font-size:clamp(16px,1.7cqw,21px)!important;line-height:1.2!important}
+.page:not(.original-slide-page) .memory-years span{font-size:clamp(14px,1.18cqw,16px)!important}
+.page:not(.original-slide-page) :is(.yc-criterion b,.yc-bar-row b,.y2-weight b,.y2-pref-row b,.profile-job time,.profile-school time){font-size:clamp(14px,1.2cqw,16px)!important}
+.page:not(.original-slide-page) .profile-school time{color:#e3bc95!important}
+.page:not(.original-slide-page) :is(.stat b,.impact-facts strong,.yc-research-stat strong,.yc-big-number,.y2-intro-stat strong,.y2-score-number strong){font-family:var(--sans)!important;font-style:normal!important;font-weight:700!important}
+.page:not(.original-slide-page) :is(.yc-research-methods div,.yc-close-list div,.y2-close-list div){font-size:clamp(15px,1.24cqw,17px)!important;line-height:1.5}
+.page:not(.original-slide-page) .y2-opportunity{font-size:clamp(15px,1.32cqw,18px)!important;line-height:1.55;font-weight:600;color:#493a2d}
+.page:not(.original-slide-page) .yc-feature-copy .yc-feature-aside strong{font-size:clamp(15px,1.3cqw,18px)!important;font-weight:700!important}
+.page:not(.original-slide-page) .yc-feature-copy .yc-feature-aside small{color:#d0c8bd}
+.page:not(.original-slide-page) .press-card .press-source{color:#62513f!important}
+.chapter-project-head b{font:700 16px var(--sans)!important;color:#392e25}
+.chapter-link span{font:700 13px var(--sans)!important;color:#68452d}
+.chapter-link b{font-weight:600}
+.y2-insight-row b{white-space:nowrap}
+/* Keep the profile's date columns and headings from colliding after the hierarchy pass. */
+.page.profile-page .profile-job{grid-template-columns:16.8cqw minmax(0,1fr);gap:1.2cqw}
+.page.profile-page .profile-school{grid-template-columns:13cqw minmax(0,1fr);gap:.8cqw}
+.page.profile-page .profile-job time,.page.profile-page .profile-school time{font-size:clamp(14px,1.12cqw,15px)!important;line-height:1.45!important}
+/* Source notes belong in the header and footer panels, not loose at the page corners. */
+.page[aria-label="资料来源与项目说明"] .sources{justify-content:flex-start}
+.page[aria-label="资料来源与项目说明"] .page-index{top:2.4%}
+.page[aria-label="资料来源与项目说明"] .sources-head>.small-note{font-size:clamp(13px,1.08cqw,15px)!important;line-height:1.5!important}
+.page[aria-label="资料来源与项目说明"] .source-item h3{font-size:clamp(15px,1.25cqw,17px)!important;line-height:1.3!important;margin-bottom:.3em}
+.page[aria-label="资料来源与项目说明"] .source-item p{font-size:clamp(14px,1.12cqw,16px)!important;line-height:1.48!important}
+.page[aria-label="资料来源与项目说明"] .source-item a{font-size:clamp(13px,1.02cqw,14px)!important;line-height:1.35}
+.page[aria-label="资料来源与项目说明"] .sources-bottom{margin-top:1.8%;padding-top:1.6%}
+.page[aria-label="资料来源与项目说明"] .sources-bottom p{font-size:clamp(16px,1.4cqw,19px)!important;line-height:1.4!important}
+.page[aria-label="资料来源与项目说明"] .sources-bottom small{font-size:clamp(13px,1.05cqw,14px)!important;line-height:1.45!important}
+.closing-page{background:#27231e;color:#f3eee6}
+.closing-inner{position:relative;height:100%;display:flex;flex-direction:column;overflow:hidden;padding:5.8% 7% 4.8%;background:linear-gradient(135deg,#312a22 0%,#211e19 100%)}
+.closing-inner:before{content:"";position:absolute;width:45cqw;aspect-ratio:1;right:5%;top:13%;border:1px solid #d1b08a45;border-radius:50%;box-shadow:0 0 0 2.4cqw #d1b08a0a,0 0 0 5cqw #d1b08a08}
+.closing-inner:after{content:"";position:absolute;right:14%;top:29%;width:26cqw;height:26cqw;border:1px solid #d1b08a24;border-radius:50%}
+.closing-top,.closing-foot{position:relative;z-index:1;display:flex;justify-content:space-between;gap:1em;color:#c9aa86;font-size:clamp(12px,1.08cqw,15px);letter-spacing:.15em}
+.closing-main{position:relative;z-index:1;display:flex;flex-direction:column;justify-content:center;flex:1;max-width:70%;padding:2cqw 0}
+.closing-kicker{color:#d3ae84;font-size:clamp(12px,1.08cqw,15px);letter-spacing:.2em}
+.closing-main h1{margin:.45em 0 .2em;color:#f5efe7;font:500 clamp(44px,5.7cqw,72px)/1.12 var(--serif);letter-spacing:.08em}
+.closing-main>p{margin:0;color:#dfd3c4;font:clamp(18px,1.65cqw,23px)/1.6 var(--serif);font-size:clamp(18px,1.65cqw,23px)!important}
+.closing-rule{width:min(37cqw,440px);height:1px;margin:2.1cqw 0 1.45cqw;background:#ffffff42}
+.closing-author{display:flex;align-items:baseline;gap:1.2cqw;color:#d1c3b3;font-size:clamp(13px,1.15cqw,16px);line-height:1.7}
+.closing-author strong{color:#f3eee6;font:500 clamp(18px,1.8cqw,24px) var(--serif);letter-spacing:.08em}
+.closing-links{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8cqw;max-width:78%}
+.closing-links button{display:flex;justify-content:space-between;align-items:center;gap:.6em;padding:.8em .9em;border:1px solid #ffffff4a;background:#ffffff08;color:#eee6dc;text-align:left;font:inherit;font-size:clamp(12px,1.05cqw,14px);letter-spacing:.04em;cursor:pointer;transition:background .18s,border-color .18s}
+.closing-links button:hover,.closing-links button:focus-visible{background:#ffffff18;border-color:#d0a77f;outline:2px solid #d0a77f;outline-offset:2px}
+.closing-links button span{color:#d3ae84}
+.closing-foot{margin-top:2.2cqw;padding-top:.8cqw;border-top:1px solid #ffffff35;color:#a99b89;font-size:clamp(11px,1cqw,13px);letter-spacing:.08em}
+.closing-page .page-index{color:#d3c2af}
+@media(max-width:700px){.closing-inner{padding:4% 6% 3%}.closing-main{max-width:92%;padding:.4cqw 0}.closing-main h1{font-size:clamp(32px,6cqw,42px);margin:.22em 0}.closing-main>p{font-size:clamp(15px,3.4cqw,18px)!important}.closing-rule{margin:1cqw 0}.closing-author{font-size:12px}.closing-author strong{font-size:16px}.closing-links{max-width:100%;grid-template-columns:1fr 1fr;gap:5px}.closing-links button{padding:.6em .7em}.closing-links button:nth-child(3){grid-column:1/-1}.closing-foot{margin-top:1.2cqw}.closing-inner:before{width:62cqw;right:-8%;top:18%}.closing-inner:after{width:36cqw;height:36cqw;right:2%;top:31%}}
 </style>
 </head>
 <body>
 <div class="app">
-<header class="top"><span>杨祎娜　/　文化创意与用户体验作品集</span><span class="project-name">庄浪古堡数字保护　·　宜川文创产品设计</span></header>
+<header class="top"><span>杨祎娜　/　文化创意与用户体验作品集</span><nav class="project-switcher" aria-label="项目快速入口"><button type="button" data-project-jump="古堡现场影像" aria-label="直接查看庄浪古堡数字保护项目">01 庄浪项目</button><button type="button" data-project-jump="宜川文创项目封面" aria-label="直接查看宜川文创产品设计项目">02 宜川项目</button><button type="button" id="chapters-toggle" aria-controls="chapter-menu" aria-expanded="false">章节目录</button></nav></header>
 <main class="stage" id="stage">
 
 <section class="page active" aria-label="封面">
  <div class="cover">
-  <img class="zoom" data-zoom="assets/fort-zhaojiashan.jpg" src="assets/fort-zhaojiashan.jpg" alt="赵家山堡无人机实景影像">
   <span class="page-index" style="color:#ddd4c8">01</span>
+  <div class="cover-top"><span>杨祎娜　/　设计作品集</span></div>
   <div class="cover-copy">
-   <div class="kicker">CULTURAL HERITAGE · DIGITAL ARCHIVE</div>
-   <h1>从夯土<br>到云端</h1>
-   <div class="english">FROM EARTH TO CLOUD</div>
-   <div class="subtitle">庄浪县古城堡<br>数字保护调查影像展</div>
-   <div class="meta">团队项目　/　庄浪县博物馆　/　2025<br>遗产调查 · 数字记录 · 展览叙事</div>
+   <div class="kicker">SELECTED WORKS / PORTFOLIO</div>
+   <h1>部分项目展示合集</h1>
+   <div class="subtitle">文化遗产数字保护　·　地域文化创新　·　产品体验设计</div>
+   <div class="cover-rule"></div>
+   <div class="cover-author"><b>杨祎娜</b><span>工业设计工程硕士研究生</span></div>
   </div>
-  <div class="tag cover-tag">项目现场影像</div>
+  <div class="cover-foot"><span>01　庄浪县古城堡数字文化展</span><span>02　宜川文化创意产品设计</span></div>
  </div>
 </section>
 
@@ -641,7 +811,7 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
    <div class="profile-overline">ABOUT / DESIGN PRACTICE</div>
    <h1>杨祎娜</h1>
    <div class="profile-role">工业设计工程硕士研究生　·　文化创意与用户体验设计</div>
-   <p class="profile-summary">我关注地方文化如何转化为当代体验，也关注产品如何回应真实使用场景。具备从文化与用户调研、问题定义，到视觉表达、产品方案和原型验证的跨环节实践。</p>
+   <p class="profile-summary">从用户与文化调研出发，梳理问题、定义体验，再把判断落实为产品与视觉方案。关注设计如何回应真实场景，并让地方文化更容易被理解和使用。</p>
    <div class="profile-thread"><span>文化研究</span><i>—</i><span>体验定义</span><i>—</i><span>设计落地</span></div>
    <div class="profile-section-head"><b>实践经历</b><small>SELECTED EXPERIENCE</small></div>
    <div class="profile-jobs">
@@ -677,14 +847,54 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
  </div>
 </section>
 
+<section class="page contents-page" aria-label="内容目录">
+ <span class="page-index">03</span>
+ <div class="contents-body">
+  <div class="contents-heading">
+   <div><div class="contents-label">CONTENTS / SELECTED PROJECTS</div><h1>内容目录</h1></div>
+   <p>两个项目分别回答：如何让遗产被看见，如何让地方文化进入当代产品。</p>
+  </div>
+  <div class="contents-grid">
+   <article class="contents-project">
+    <figure class="contents-image">
+     <img class="zoom" data-zoom="assets/fort-zhaojiashan.jpg" src="assets/fort-zhaojiashan.jpg" alt="庄浪赵家山堡航拍">
+     <figcaption>文化遗产　/　数字记录</figcaption>
+     <button class="contents-enter" type="button" data-project-jump="古堡现场影像" aria-label="直接查看庄浪项目">直接查看项目 ↗</button>
+    </figure>
+    <div class="contents-copy">
+     <div class="contents-project-label">PROJECT 01　/　庄浪</div>
+     <h2>庄浪县古城堡<br>数字文化展</h2>
+     <p>我参与古堡资料梳理、数字保护表达与展览视觉设计，把遗址信息转化为公众可读的展陈内容。</p>
+     <div class="contents-topics"><span>古堡历史与价值</span><span>扫描建模与点云</span><span>展览设计与现场</span></div>
+    </div>
+   </article>
+   <article class="contents-project">
+    <figure class="contents-image">
+     <img class="zoom" data-zoom="assets/yichuan-quicksand-user.png" src="assets/yichuan-quicksand-user.png" alt="宜川壶口流沙摆件效果图">
+     <figcaption>地域文化　/　产品转译</figcaption>
+     <button class="contents-enter" type="button" data-project-jump="宜川文创项目封面" aria-label="直接查看宜川项目">直接查看项目 ↗</button>
+    </figure>
+    <div class="contents-copy">
+     <div class="contents-project-label">PROJECT 02　/　宜川</div>
+     <h2>宜川文化<br>创意产品设计</h2>
+     <p>作为项目负责人，我全程参与文化调研、资源整理、数据库建设与产品方案设计。</p>
+     <div class="contents-topics"><span>文化调研</span><span>资源数据库</span><span>设计方案展示</span></div>
+    </div>
+   </article>
+  </div>
+  <div class="contents-footer"><span>作品集结构　/　背景研究 → 资源梳理 → 设计转译 → 展览与产品</span><strong>DESIGN THROUGH RESEARCH</strong></div>
+ </div>
+</section>
+
 <section class="page" aria-label="古堡现场影像">
  <div class="photo-spread">
   <img class="zoom" data-zoom="assets/fort-zhaojiashan.jpg" src="assets/fort-zhaojiashan.jpg" alt="赵家山堡航拍全景">
   <span class="page-index" style="color:#ddd4c8">02</span>
   <div class="photo-copy">
    <div class="kicker">01 / THE FORTS</div>
-   <h2>先看见<br>古堡</h2>
-   <p>夯土城墙从梁峁上环抱而下，城门、墙体与村庄相连。庄浪古堡不是孤立的遗址，它们仍在黄土沟壑与日常生活之间。</p>
+  <h2>先看见<br>古堡</h2>
+   <p>城墙沿梁峁起伏，堡门与村庄相连。调研让我看到：古堡的价值不只在建筑本身，也在它与地形、聚落和日常生活的关系。</p>
+   <div class="project-role-line">我的参与　/　参与项目各阶段设计工作</div>
   </div>
   <div class="photo-caption">赵家山堡　/　项目现场航拍影像</div>
   <div class="photo-detail">
@@ -726,11 +936,11 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
    </div>
    <div class="location-copy">
     <div class="kicker">02 / A LIVING HERITAGE LANDSCAPE</div>
-    <h2 class="headline">这里保存的<br>是一整个古堡谱系</h2>
-    <p class="copy">当地古堡以人力夯土筑成，墙体、女墙、垛口、城楼、角楼与城门共同构成防御空间。官堡与民堡并存，尺度和形制各异，与山地、河谷和聚落紧密相连。</p>
+     <h2 class="headline">理解古堡<br>先读懂它所在的地方</h2>
+    <p class="copy">庄浪古堡以夯土筑成，官堡与民堡形制各异。它们依山就势，与河谷和村落相连；建筑形态也记录着地方防御、聚落与生活的变化。</p>
     <div class="stat-row">
-     <div class="stat"><b>320+</b><span>据媒体粗略统计<br>历史上曾有古堡数量</span></div>
-     <div class="stat"><b>200+</b><span>不同历史时期<br>现存古堡遗存数量</span></div>
+     <div class="stat"><b>320+</b><span>媒体报道的历史古堡<br>粗略数量</span></div>
+     <div class="stat"><b>200+</b><span>媒体报道的现存古堡<br>粗略数量</span></div>
     </div>
     <div class="location-facts">
      <div class="location-fact"><b>地形</b><span>六盘山西麓<br>黄土丘陵沟壑</span></div>
@@ -752,14 +962,14 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
   </div>
   <div class="risk-copy">
    <div class="kicker">03 / WHY RECORD</div>
-   <h2>风雨会改写<br>夯土的边界</h2>
-   <p class="copy">土堡长期暴露在自然环境中，水、温度与风会使夯土发生剥蚀、裂隙、冲沟等变化。许多古堡还与村落紧邻，时间、使用与环境共同改变着它们的形态。</p>
+   <h2>先记录<br>才能看见变化</h2>
+   <p class="copy">夯土古堡长期暴露在自然环境中，雨水、温差与风蚀都可能改变墙体形态。项目因此将数字采集作为理解遗址、支持后续研究与展示的基础。</p>
    <div class="risk-list">
     <div class="risk-item"><b>水</b><span>降雨、径流<br>冲刷墙体表面</span></div>
     <div class="risk-item"><b>温差</b><span>干湿与冻融<br>促成裂隙、剥落</span></div>
     <div class="risk-item"><b>风</b><span>松散颗粒<br>沿夯层逐渐流失</span></div>
    </div>
-   <p class="copy">数字化记录把形体、肌理与场地关系保存为可回看、可比较的资料，为后续研究、保护和公众理解留下参照。</p>
+   <p class="copy">记录形体、肌理与场地关系，为后续研究、展示和公众理解留下可回看的参照。</p>
    <p class="footnote">此处以现场影像与夯土遗址风化研究说明保存风险，不代表对某一座古堡作了病害鉴定。<br><a href="https://cjournal.hep.com.cn/1000-2383/CN/PDF/10.3799/dqkx.2024.141" target="_blank" rel="noreferrer">《夯土遗址风化病害类型、机理与保护加固：现状和展望》</a></p>
   </div>
  </div>
@@ -772,14 +982,13 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
    <div class="workflow-copy">
     <div class="kicker">04 / FROM SITE TO DATA</div>
     <h2 class="headline">把现场<br>变成数字档案</h2>
-    <p class="copy">先理解遗址的空间与环境，再选择采集方式。无人机影像、地面扫描与现场校核共同建立可用于建模的原始数据。</p>
+    <p class="copy">先判断遗址的空间特点，再组合无人机影像、地面扫描与现场校核，建立后续建模所需的数据。</p>
     <div class="workflow-list">
-     <div class="workflow-step"><span class="n">01</span><div><b>航线与像控布置</b><p>结合地形和扫描范围规划飞行路线，布置控制点与检查点。</p></div></div>
-     <div class="workflow-step"><span class="n">02</span><div><b>影像与空间数据采集</b><p>无人机获取 POS 与原始影像；按遗址情况进行地面补拍、三维扫描。</p></div></div>
-     <div class="workflow-step"><span class="n">03</span><div><b>数据检查与建模</b><p>检查影像质量、重叠度与控制点，生成点云并进行三维实景建模。</p></div></div>
-     <div class="workflow-step"><span class="n">04</span><div><b>数字内容转译</b><p>把模型、影像与历史信息组织成信息可视化与展览内容。</p></div></div>
+     <div class="workflow-step"><span class="n">01</span><div><b>规划采集范围</b><p>结合地形确定飞行路线，布置控制点与检查点。</p></div></div>
+     <div class="workflow-step"><span class="n">02</span><div><b>采集现场数据</b><p>获取无人机影像，并按需要补拍、扫描。</p></div></div>
+     <div class="workflow-step"><span class="n">03</span><div><b>检查并建立模型</b><p>校核影像与控制点，生成点云和三维实景模型。</p></div></div>
+     <div class="workflow-step"><span class="n">04</span><div><b>转化为展示内容</b><p>将模型、影像与历史资料组织为可视化内容。</p></div></div>
     </div>
-    <div class="workflow-under"><img src="assets/unit04-wall.jpg" alt="第四单元数字采集流程展墙"><span>展墙记录了项目采用的采集设备与基本流程。<br>点击右侧视频可播放扫描过程影像。</span></div>
    </div>
    <div class="workflow-visual">
     <video controls preload="metadata" poster="assets/viz-still.jpg" aria-label="庄浪古堡三维扫描过程视频">
@@ -799,8 +1008,8 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
   <div class="viz-copy">
    <div class="kicker">05 / INFORMATION VISUALIZATION</div>
    <h2>让古堡<br>被重新读懂</h2>
-   <p class="copy">从三维采集得到的空间数据出发，项目进一步把古堡的历史、形制与地域信息转译为动态视觉内容。信息可视化视频让原本分散的资料在时间中建立联系。</p>
-   <div class="viz-note">项目原始视频<br>《庄浪古堡信息可视化》<br>封面为场景概念图，视频内容为项目原始素材。</div>
+   <p class="copy">项目把古堡的空间数据、历史与地域信息编排成动态影像，让分散的资料形成连续叙事。</p>
+   <div class="viz-note">《庄浪古堡信息可视化》<br>项目原始视频　/　封面为概念图</div>
   </div>
   <div class="viz-screen">
    <video controls preload="metadata" poster="assets/information-visualization-cover.png" aria-label="庄浪古堡信息可视化视频">
@@ -820,12 +1029,12 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
    <div class="particle-copy">
     <div class="kicker">06 / POINT CLOUD</div>
     <h2>让遗址的形体<br>重新显影</h2>
-    <p class="copy">点云把墙体的起伏、缺口和空间轮廓转为可视的数据。旗峰堡与通边堡的粒子图像，将技术记录转成可被观看的视觉语言。</p>
+    <p class="copy">点云将墙体起伏、缺口与空间轮廓转成可视数据。项目进一步把旗峰堡、通边堡的扫描资料转化为展览视觉。</p>
     <div class="particle-pair">
      <figure data-zoom="assets/particle-qifeng-2.png"><img src="assets/particle-qifeng-2.png" alt="旗峰堡粒子效果图二"><figcaption>旗峰堡　/　粒子效果 02</figcaption></figure>
      <figure data-zoom="assets/particle-tongbian-4.png"><img src="assets/particle-tongbian-4.png" alt="通边堡粒子效果图"><figcaption>通边堡　/　粒子效果</figcaption></figure>
     </div>
-    <p class="copy">从真实采集，到数据整理，再到展览视觉，每一步都在回答同一个问题：怎样让正在变化的遗址，仍能被准确地看见。</p>
+    <p class="copy">我的参与　/　参与点云视觉表达与展陈设计，让技术记录更容易被观众读懂。</p>
     <div class="concept-line"><i></i><span>右侧粒子图为项目素材；土层转化图为概念渲染</span></div>
    </div>
   </div>
@@ -839,19 +1048,19 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
    <div class="timeline-head">
     <div>
      <div class="kicker">07 / HISTORICAL EVOLUTION</div>
-     <h2 class="headline">城与堡，沿着时间改变功能</h2>
+     <h2 class="headline">城与堡<br>随地方历史演变</h2>
     </div>
-    <p class="copy">水洛城的城史与每一座古堡的建造年代并不相同。结合展墙沿革与县志资料，我们把庄浪古堡放回更长的地方历史中理解。</p>
+    <p class="copy">水洛城沿革不等于每座古堡的始建年代。结合县志与展墙资料，我们把城址、堡寨放回庄浪更长的地方历史中理解。</p>
    </div>
    <div class="timeline-line">
-    <article class="timeline-item"><time>411</time><h3>水洛城见于史册</h3><p>庄浪县政府所载早期史料提及水洛城，是现存地名见于史册的重要节点。</p></article>
-    <article class="timeline-item"><time>1043</time><h3>宋代边防城址</h3><p>庆历三年，刘沪收复水洛城；城址连接秦、渭地区，具有重要军事与交通意义。</p></article>
-    <article class="timeline-item"><time>1142</time><h3>金设水洛、通边县</h3><p>宋金时期，水洛、通边及多处据险而建的城堡共同构成区域防御脉络。</p></article>
-    <article class="timeline-item"><time>1367</time><h3>庄浪城重建</h3><p>展墙记述元至正二十七年重建庄浪城，城池与堡寨在不同历史阶段持续演变。</p></article>
-    <article class="timeline-item"><time>明清—民国</time><h3>从要塞到家园</h3><p>堡寨扩展并融入村落生活。展墙将其功能变化概括为居住与庇护。</p></article>
+    <article class="timeline-item"><time>411</time><h3>水洛城见于史料</h3><p>县志资料记载水洛城，是庄浪地方史的重要早期节点。</p></article>
+    <article class="timeline-item"><time>1043</time><h3>水洛城成为边防要地</h3><p>刘沪收复水洛城，城址连接秦、渭地区，兼具军事与交通意义。</p></article>
+    <article class="timeline-item"><time>1142</time><h3>水洛、通边设县</h3><p>城址与周边堡寨共同构成区域防御网络。</p></article>
+    <article class="timeline-item"><time>1367</time><h3>庄浪城重建</h3><p>展墙记载庄浪城重建，城池与堡寨此后继续演变。</p></article>
+    <article class="timeline-item"><time>明清—民国</time><h3>堡寨融入日常生活</h3><p>展墙将堡寨后期功能概括为居住与庇护。</p></article>
    </div>
    <div class="memory-strip">
-    <div class="memory-intro"><strong>当代回响：把故事落到人的生活里</strong><p>第三单元以“民间记忆”和“精神传承”为线索，将地方器物与集体记忆带回观众眼前。</p></div>
+    <div class="memory-intro"><strong>历史如何进入当代生活？</strong><p>第三单元从民间器物与集体记忆出发，呈现古堡与地方生活的联系。</p></div>
     <div class="memory-years" aria-label="第三单元展墙时间轴节点"><span>1840</span><span>1921</span><span>1949</span><span>60年代</span><span>70年代</span><span>1978</span><span>90年代</span></div>
    </div>
    <p class="footnote">411年据庄浪县人民政府《历史沿革》；1043年据县志资料及展墙；1142、1367与“居住/庇护”节点据第二单元展墙文字整理。墙上年代针对城址与区域沿革，不能直接等同于所有古堡的始建年代。<br><a href="https://www.gszhuanglang.gov.cn/zjzl/LSYG/art/2022/art_f3091ce67e964189aa973000728cd0cfa.html" target="_blank" rel="noreferrer">庄浪县人民政府：历史沿革</a>　<a href="https://www.gsdfszw.org.cn/gsxz/pls_267/zlx/202101/P020210129644329366218.pdf" target="_blank" rel="noreferrer">《庄浪县志（1991—2010）》相关条目</a></p>
@@ -866,12 +1075,12 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
    <div class="exhibition-copy">
     <div class="kicker">08 / FROM RESEARCH TO EXPERIENCE</div>
     <h2>四个单元<br>把遗产讲给公众</h2>
-    <p class="copy">展览把“古堡是什么、经历过什么、如何进入当代生活、怎样面向未来”组织成连续的观看路径。</p>
+   <p class="copy">我参与内容梳理与展陈视觉设计，将古堡概况、历史记忆、当代生活和数字保护组织成四段观看路径。</p>
     <div class="unit-list">
-     <div class="unit"><span class="n">01</span><div><b>庄浪古城堡</b><span>区位、发展脉络与整体风貌</span></div></div>
-     <div class="unit"><span class="n">02</span><div><b>历史印记</b><span>沿历史时序呈现城与堡的演变、建筑与功能</span></div></div>
-     <div class="unit"><span class="n">03</span><div><b>当代回响</b><span>从文字与实物中读出集体记忆和生活变化</span></div></div>
-     <div class="unit"><span class="n">04</span><div><b>未来已来</b><span>以数字扫描、VR全景等方式扩展体验</span></div></div>
+     <div class="unit"><span class="n">01</span><div><b>庄浪古城堡</b><span>从区位与风貌认识古堡</span></div></div>
+     <div class="unit"><span class="n">02</span><div><b>历史印记</b><span>沿时间理解城与堡的变化</span></div></div>
+     <div class="unit"><span class="n">03</span><div><b>当代回响</b><span>从器物与记忆连接地方生活</span></div></div>
+     <div class="unit"><span class="n">04</span><div><b>未来已来</b><span>用数字扫描与全景体验延伸观看</span></div></div>
     </div>
     <div class="event-date">2025.08.19　庄浪县博物馆开展</div>
     <p class="footnote">展览单元名称、内容结构与开展时间据南开大学公开报道；墙面图像为项目原始设计资料。<br><a href="https://wxy.nankai.edu.cn/2025/0825/c15950a576362/page.htm" target="_blank" rel="noreferrer">南开大学文学院：庄浪县古城堡数字保护调查影像展启幕</a></p>
@@ -889,7 +1098,7 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
   <span class="page-index" style="color:#ddd4c8">10</span>
   <div class="wall-viewer"><img class="zoom" data-zoom="assets/unit01-a.jpg" src="assets/unit01-a.jpg" alt="第一单元展墙设计：序言、古城堡概述与庄浪区位"></div>
   <div class="wall-heading"><small>EXHIBITION WALL　/　UNIT 01</small><b>庄浪古城堡　·　概述与区位</b></div>
-  <div class="wall-caption">第一单元展板 01　/　以县域地理与古堡概述建立观看起点　/　点击放大</div>
+  <div class="wall-caption">第一单元　/　先认识庄浪，再认识古堡　/　点击放大</div>
  </div>
 </section>
 
@@ -898,7 +1107,7 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
   <span class="page-index" style="color:#ddd4c8">11</span>
   <div class="wall-viewer"><img class="zoom" data-zoom="assets/unit01-b.jpg" src="assets/unit01-b.jpg" alt="第一单元展墙设计：古堡营造工艺"></div>
   <div class="wall-heading"><small>EXHIBITION WALL　/　UNIT 01</small><b>古堡营造　·　从选址到成墙</b></div>
-  <div class="wall-caption">第一单元展板 02　/　以图解呈现传统夯土营造过程　/　点击放大</div>
+  <div class="wall-caption">第一单元　/　图解传统夯土营造过程　/　点击放大</div>
  </div>
 </section>
 
@@ -907,7 +1116,7 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
   <span class="page-index" style="color:#ddd4c8">12</span>
   <div class="wall-viewer"><img class="zoom" data-zoom="assets/unit02.jpg" src="assets/unit02.jpg" alt="第二单元展墙设计：历史印记"></div>
   <div class="wall-heading"><small>EXHIBITION WALL　/　UNIT 02</small><b>历史印记　·　城与堡的演变</b></div>
-  <div class="wall-caption">第二单元完整展墙　/　按时间梳理庄浪古城堡的历史脉络　/　点击放大</div>
+  <div class="wall-caption">第二单元　/　沿时间梳理城与堡的历史　/　点击放大</div>
  </div>
 </section>
 
@@ -916,7 +1125,7 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
   <span class="page-index" style="color:#ddd4c8">13</span>
   <div class="wall-viewer"><img class="zoom" data-zoom="assets/unit03.jpg" src="assets/unit03.jpg" alt="第三单元展墙设计：当代回响"></div>
   <div class="wall-heading"><small>EXHIBITION WALL　/　UNIT 03</small><b>当代回响　·　民间记忆与精神传承</b></div>
-  <div class="wall-caption">第三单元完整展墙　/　以器物、生活记忆与时间节点连接古堡和当下　/　点击放大</div>
+  <div class="wall-caption">第三单元　/　从器物与生活记忆连接古堡和当下　/　点击放大</div>
  </div>
 </section>
 
@@ -938,7 +1147,7 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
  <div class="activity-page">
   <div class="activity-header">
    <div><div class="kicker">EXHIBITION DOCUMENTATION　/　01</div><h2>展厅现场</h2></div>
-   <p>从整体空间到单个展项，记录展墙、实物与数字影像共同构成的观看环境。</p>
+   <p>展厅照片展示展墙、实物与数字影像如何共同构成观展空间。</p>
   </div>
   <div class="activity-grid space">
    <figure class="activity-frame" data-zoom="assets/event-01.jpg"><img src="assets/event-01.jpg" alt="展厅全景，展示多个主题单元"><figcaption>展厅全景　/　整体空间</figcaption></figure>
@@ -954,7 +1163,7 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
  <div class="activity-page">
   <div class="activity-header">
    <div><div class="kicker">EXHIBITION DOCUMENTATION　/　02</div><h2>观看与交流</h2></div>
-   <p>活动照片记录观众在展墙、实物与数字展项之间的停留、观看和体验。</p>
+   <p>观众在展墙、地方器物与数字展项之间观看、交流和体验。</p>
   </div>
   <div class="activity-grid people">
    <figure class="activity-frame" data-zoom="assets/event-03.jpg"><img src="assets/event-03.jpg" alt="观众在数字展项前交流"><figcaption>现场交流　/　数字展项</figcaption></figure>
@@ -977,11 +1186,11 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
   <div class="impact-copy">
    <div class="kicker">PUBLIC REACH　/　EXHIBITION RECORD</div>
    <h2>让地方遗产<br>进入公共视野</h2>
-   <p class="copy">展览于 2025 年 8 月 19 日在庄浪县博物馆启幕。南开大学与庄浪县官方报道记录了展览内容、合作单位与公众参与，让数字化保护成果从项目现场走向公共传播。</p>
+   <p class="copy">2025 年 8 月 19 日，庄浪古城堡数字保护调查影像展在庄浪县博物馆开展。项目成果由此从设计与研究现场进入公共展览。</p>
    <article class="press-card">
     <span class="press-source">南开大学文学院　/　2025.08.25</span>
     <h3>庄浪县古城堡数字保护调查影像展启幕</h3>
-    <p>报道介绍展览以“庄浪古城堡、历史印记、当代回响、未来已来”四个单元，呈现古堡数字扫描、VR全景与数字文创等实践。</p>
+    <p>报道记录了展览的四个单元，以及古堡扫描、VR 全景与数字文创等展示内容。</p>
     <a href="https://wxy.nankai.edu.cn/2025/0825/c15950a576362/page.htm" target="_blank" rel="noreferrer">阅读南开大学原报道　↗</a>
    </article>
    <div class="impact-facts"><strong>100+</strong><span>庄浪县官方报道记载，开展仪式有县文旅、教育系统及院校师生等 100 余人参加。<br><a class="source-link" href="https://www.gszhuanglang.gov.cn/zfxxgk/bmxzxxgk/bmxxgk/zlxwtgdhlyj/fdzdgknr/QTXX/art/2025/art_144ac45846254c4d83dde999d9fb0f4a.html" target="_blank" rel="noreferrer">查看庄浪县官方报道</a></span></div>
@@ -996,19 +1205,19 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
   <div class="sources">
    <div class="sources-head">
     <div><div class="kicker">REFERENCES & PROJECT MATERIALS</div><h2>资料来源与内容说明</h2></div>
-    <span class="small-note">公开资料用于背景核对<br>历史节点以展墙资料为主</span>
+    <span class="small-note">公开资料用于事实核对<br>展览内容据项目资料整理</span>
    </div>
    <div class="sources-grid">
-    <article class="source-item"><h3>庄浪县人民政府 · 庄浪简介</h3><p>核对庄浪县区位、六盘山西麓、黄土高原丘陵沟壑区等地理信息。</p><a href="https://www.gszhuanglang.gov.cn/zjzl/ZLGK/art/2022/art_9e9cec78ed964189b8ed35dabb8cf764.html" target="_blank" rel="noreferrer">打开政府页面</a></article>
-    <article class="source-item"><h3>甘肃日报 · 庄浪古堡遗迹的“博物馆”</h3><p>核对夯土建造、古堡构成、官堡与民堡类型，以及320余座/现存200余座的粗略统计。</p><a href="https://manage.gsei.com.cn/html/1654/2021-04-15/content-318178.html" target="_blank" rel="noreferrer">打开报道</a></article>
-    <article class="source-item"><h3>庄浪县人民政府 · 历史沿革</h3><p>核对水洛城早期见于史册的时间节点，并与展墙沿革进行区分。</p><a href="https://www.gszhuanglang.gov.cn/zjzl/LSYG/art/2022/art_f3091ce67e964189aa973000728cd0cfa.html" target="_blank" rel="noreferrer">打开政府页面</a></article>
-    <article class="source-item"><h3>《庄浪县志（1991—2010）》</h3><p>参考刘沪收复水洛城及庄浪地方史相关记载。</p><a href="https://www.gsdfszw.org.cn/gsxz/pls_267/zlx/202101/P020210129644329366218.pdf" target="_blank" rel="noreferrer">打开县志 PDF</a></article>
-    <article class="source-item"><h3>南开大学文学院 · 影像展启幕报道</h3><p>核对展览举办日期、地点、合作单位与四个展览单元的公开信息。</p><a href="https://wxy.nankai.edu.cn/2025/0825/c15950a576362/page.htm" target="_blank" rel="noreferrer">打开南开大学报道</a></article>
-    <article class="source-item"><h3>庄浪县人民政府 · 展览开展报道</h3><p>核对开展仪式参与人数与推动展览进校园、进单位的传播倡议。</p><a href="https://www.gszhuanglang.gov.cn/zfxxgk/bmxzxxgk/bmxxgk/zlxwtgdhlyj/fdzdgknr/QTXX/art/2025/art_144ac45846254c4d83dde999d9fb0f4a.html" target="_blank" rel="noreferrer">打开庄浪县报道</a></article>
-    <article class="source-item"><h3>《地球科学》· 夯土遗址风化研究</h3><p>用作夯土在水、温度和风等自然因素下可能发生风化的通用背景，不替代遗址病害调查。</p><a href="https://cjournal.hep.com.cn/1000-2383/CN/PDF/10.3799/dqkx.2024.141" target="_blank" rel="noreferrer">打开论文 PDF</a></article>
+    <article class="source-item"><h3>庄浪县人民政府 · 庄浪简介</h3><p>核对庄浪县区位与地形信息。</p><a href="https://www.gszhuanglang.gov.cn/zjzl/ZLGK/art/2022/art_9e9cec78ed964189b8ed35dabb8cf764.html" target="_blank" rel="noreferrer">打开政府页面</a></article>
+    <article class="source-item"><h3>甘肃日报 · 庄浪古堡遗迹的“博物馆”</h3><p>核对古堡建造、类型及数量的媒体统计口径。</p><a href="https://manage.gsei.com.cn/html/1654/2021-04-15/content-318178.html" target="_blank" rel="noreferrer">打开报道</a></article>
+    <article class="source-item"><h3>庄浪县人民政府 · 历史沿革</h3><p>核对水洛城早期史料，并与古堡年代区分。</p><a href="https://www.gszhuanglang.gov.cn/zjzl/LSYG/art/2022/art_f3091ce67e964189aa973000728cd0cfa.html" target="_blank" rel="noreferrer">打开政府页面</a></article>
+    <article class="source-item"><h3>《庄浪县志（1991—2010）》</h3><p>参考水洛城与庄浪地方史记载。</p><a href="https://www.gsdfszw.org.cn/gsxz/pls_267/zlx/202101/P020210129644329366218.pdf" target="_blank" rel="noreferrer">打开县志 PDF</a></article>
+    <article class="source-item"><h3>南开大学文学院 · 影像展启幕报道</h3><p>核对展览日期、地点、合作单位与单元信息。</p><a href="https://wxy.nankai.edu.cn/2025/0825/c15950a576362/page.htm" target="_blank" rel="noreferrer">打开南开大学报道</a></article>
+    <article class="source-item"><h3>庄浪县人民政府 · 展览开展报道</h3><p>核对开展仪式参与人数及后续传播信息。</p><a href="https://www.gszhuanglang.gov.cn/zfxxgk/bmxzxxgk/bmxxgk/zlxwtgdhlyj/fdzdgknr/QTXX/art/2025/art_144ac45846254c4d83dde999d9fb0f4a.html" target="_blank" rel="noreferrer">打开庄浪县报道</a></article>
+    <article class="source-item"><h3>《地球科学》· 夯土遗址风化研究</h3><p>作为夯土遗址风化的一般背景，不替代具体遗址病害调查。</p><a href="https://cjournal.hep.com.cn/1000-2383/CN/PDF/10.3799/dqkx.2024.141" target="_blank" rel="noreferrer">打开论文 PDF</a></article>
    </div>
    <div class="sources-bottom">
-    <p>把一座古堡记录下来，<br>也把它所在的时间与生活留了下来。</p>
+    <p>记录古堡，<br>也记录它与地方生活的联系。</p>
     <small>展墙、堡址照片、粒子效果与项目视频<br>来自用户提供的项目资料<br>概念场景图已单独标注</small>
    </div>
   </div>
@@ -1017,13 +1226,13 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 
 <section class="page yc-page" aria-label="宜川文创项目封面">
  <div class="y2-cover">
-  <img class="zoom" data-zoom="assets/yichuan-quicksand-hero.jpg" src="assets/yichuan-quicksand-hero.jpg" alt="壶口听涛梯形流沙摆件主效果图">
+  <img class="zoom" data-zoom="assets/yichuan-quicksand-user.png" src="assets/yichuan-quicksand-user.png" alt="壶口听涛梯形流沙摆件主效果图">
   <span class="page-index" style="color:#e2d5c7">19</span>
   <div class="y2-cover-copy">
    <div class="y2-label" style="color:#d0a67c">PROJECT 02 / YICHUAN CULTURAL CREATION</div>
    <h1>宜川<br>文创</h1>
    <p>从地方文化调研，到资源数据库，再到可使用、可参与的设计方案。</p>
-   <div class="y2-cover-meta">陕西省哲学社会科学研究专项<br>2025 年度宜川县文化旅游融合发展合作研究项目<br>创意产品设计及衍生品开发　/　团队项目</div>
+  <div class="y2-cover-meta">陕西省哲学社会科学研究专项<br>2025 年度宜川县文化旅游融合发展合作研究项目<br>创意产品设计及衍生品开发　/　项目负责人<br>全程参与项目各阶段</div>
   </div>
   <div class="y2-cover-note">壶口听涛梯形流沙摆件主效果图　/　项目原始 PPT</div>
  </div>
@@ -1032,15 +1241,15 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 <section class="page yc-page" aria-label="宜川项目背景与设计命题">
  <span class="page-index">20</span>
  <div class="y2-page">
-  <header class="y2-head"><div><div class="y2-label">01 / PROJECT BACKGROUND</div><h2>地方资源丰富，如何转化为当代体验</h2></div><p>项目围绕宜川县文旅融合展开，以红色文化与地域文化为基础，研究文化创意产品及衍生品的设计方向。</p></header>
+  <header class="y2-head"><div><div class="y2-label">01 / PROJECT BACKGROUND</div><h2>宜川文化，如何走进当代产品？</h2></div><p>作为项目负责人，我从文化调研出发，带领项目梳理地方资源，并推进数据库建设与产品设计。</p></header>
   <div class="y2-body y2-intro">
-   <div class="y2-intro-stat"><strong>300</strong><b>篇相关文献梳理</b><p>研究覆盖红色文化、文创产品设计与地域文化活化，为后续调研和设计建立参考框架。</p><div class="y2-intro-images"><figure><a href="https://www.sxfycc.com/home/Index/library_detail.html?id=114" target="_blank" rel="noreferrer"><img class="zoom" data-zoom="https://www.sxfycc.com/storage/images/2023-05-29/67b0d985de18f0d6199ba03e86dbf989.png" src="https://www.sxfycc.com/storage/images/2023-05-29/67b0d985de18f0d6199ba03e86dbf989.png" onerror="this.onerror=null;this.src='assets/yichuan-research-drum.jpg';this.dataset.zoom=this.src" alt="宜川胸鼓表演"></a><figcaption><a href="https://www.sxfycc.com/home/Index/library_detail.html?id=114" target="_blank" rel="noreferrer">宜川胸鼓　/　陕西省非遗数字博物馆</a></figcaption></figure><figure><a href="https://www.cnr.cn/sx/jdt/20250703/t20250703_527240933.shtml" target="_blank" rel="noreferrer"><img class="zoom" data-zoom="https://mediabluk.cnr.cn/img/cnr/CNRCDP/2025/0703/6c148ab124de5175150406009618015410.jpg?auth=22422a1d9f4e996f3a7b7b318c740a" src="https://mediabluk.cnr.cn/img/cnr/CNRCDP/2025/0703/6c148ab124de5175150406009618015410.jpg?auth=22422a1d9f4e996f3a7b7b318c740a" onerror="this.onerror=null;this.src='assets/yichuan-research-waterfall.jpg';this.dataset.zoom=this.src" alt="宜川壶口瀑布"></a><figcaption><a href="https://www.cnr.cn/sx/jdt/20250703/t20250703_527240933.shtml" target="_blank" rel="noreferrer">黄河壶口瀑布　/　央广网</a></figcaption></figure></div></div>
+   <div class="y2-intro-stat"><strong>300</strong><b>篇相关文献梳理</b><p>先了解红色文化、文创设计与地域文化活化的已有研究，再把问题带入宜川现场。</p><div class="y2-intro-images"><figure><a href="https://www.sxfycc.com/home/Index/library_detail.html?id=114" target="_blank" rel="noreferrer"><img class="zoom" data-zoom="https://www.sxfycc.com/storage/images/2023-05-29/67b0d985de18f0d6199ba03e86dbf989.png" src="https://www.sxfycc.com/storage/images/2023-05-29/67b0d985de18f0d6199ba03e86dbf989.png" onerror="this.onerror=null;this.src='assets/yichuan-research-drum.jpg';this.dataset.zoom=this.src" alt="宜川胸鼓表演"></a><figcaption><a href="https://www.sxfycc.com/home/Index/library_detail.html?id=114" target="_blank" rel="noreferrer">宜川胸鼓　/　陕西省非遗数字博物馆</a></figcaption></figure><figure><a href="https://www.cnr.cn/sx/jdt/20250703/t20250703_527240933.shtml" target="_blank" rel="noreferrer"><img class="zoom" data-zoom="https://mediabluk.cnr.cn/img/cnr/CNRCDP/2025/0703/6c148ab124de5175150406009618015410.jpg?auth=22422a1d9f4e996f3a7b7b318c740a" src="https://mediabluk.cnr.cn/img/cnr/CNRCDP/2025/0703/6c148ab124de5175150406009618015410.jpg?auth=22422a1d9f4e996f3a7b7b318c740a" onerror="this.onerror=null;this.src='assets/yichuan-research-waterfall.jpg';this.dataset.zoom=this.src" alt="宜川壶口瀑布"></a><figcaption><a href="https://www.cnr.cn/sx/jdt/20250703/t20250703_527240933.shtml" target="_blank" rel="noreferrer">黄河壶口瀑布　/　央广网</a></figcaption></figure></div></div>
    <div class="y2-intro-right">
-    <div class="y2-insight-row"><b>研究对象</b><p>宜川红色遗址、胸鼓与斗鼓、壶口瀑布、地方物产、非遗手工艺及生活场景。</p></div>
-    <div class="y2-insight-row"><b>现实问题</b><p>调研指出，已有文创常见文化符号简单粘贴、产品同质化、本土辨识度不足等情况。</p></div>
-    <div class="y2-insight-row"><b>设计命题</b><p>如何把文化线索变成有地方识别度、适合日常使用或参与的产品与体验？</p></div>
-    <div class="y2-insight-row"><b>项目路径</b><p>文献与实地调研 → 文化元素提取 → 数据库与筛选 → 设计转译 → 产品方案展示。</p></div>
-    <div class="y2-opportunity">核心方向：让红色精神与地方非遗共同进入产品故事、器物形态和使用过程。</div>
+    <div class="y2-insight-row"><b>研究对象</b><p>红色遗址、胸鼓与斗鼓、壶口风物、地方物产、非遗和生活场景。</p></div>
+    <div class="y2-insight-row"><b>发现的问题</b><p>项目材料指出，部分文创存在符号表面化、产品同质化和地方辨识度不足。</p></div>
+    <div class="y2-insight-row"><b>设计问题</b><p>怎样让宜川文化成为可识别、可使用、可参与的产品体验？</p></div>
+    <div class="y2-insight-row"><b>推进路径</b><p>文献与实地调研 → 提取文化元素 → 建立数据库 → 筛选并转译 → 形成产品方案。</p></div>
+    <div class="y2-opportunity">项目目标：让文化不只被看见，也能进入产品形态与使用过程。</div>
    </div>
   </div>
  </div>
@@ -1049,17 +1258,17 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 <section class="page yc-page" aria-label="文献研究与市场问题">
  <span class="page-index">21</span>
  <div class="y2-page">
-  <header class="y2-head"><div><div class="y2-label">01 / LITERATURE & MARKET</div><h2>文献研究：从符号表达走向文化转译</h2></div><p>项目梳理与红色文化、文创设计及地域文化活化有关的 300 篇文献，并归纳出四个与宜川设计相关的观察方向。</p></header>
+  <header class="y2-head"><div><div class="y2-label">01 / LITERATURE & MARKET</div><h2>梳理 300 篇文献，聚焦一个设计问题</h2></div><p>文献研究让我从“宜川有什么”继续追问：地方文化怎样进入当代产品？</p></header>
   <div class="y2-body" style="display:flex;flex-direction:column;justify-content:center">
    <div class="y2-literature-grid">
-    <article style="padding:1.2cqw 1.1cqw;background:#e8e0d5;border-top:2px solid #a34631"><small class="y2-label">01 / RED CULTURE</small><h3 style="font:500 1.42cqw var(--serif);margin:.7em 0 .35em">情感与基因</h3><p style="font-size:1.05cqw;line-height:1.75;color:#75695d;margin:0">红色文创不止复刻视觉符号，也要呈现人物、事件与精神内核。</p></article>
-    <article style="padding:1.2cqw 1.1cqw;background:#e8e0d5;border-top:2px solid #a34631"><small class="y2-label">02 / LOCAL CULTURE</small><h3 style="font:500 1.42cqw var(--serif);margin:.7em 0 .35em">地方性表达</h3><p style="font-size:1.05cqw;line-height:1.75;color:#75695d;margin:0">非遗、民俗、历史与自然资源共同构成宜川文化的辨识度。</p></article>
-    <article style="padding:1.2cqw 1.1cqw;background:#e8e0d5;border-top:2px solid #a34631"><small class="y2-label">03 / DESIGN METHOD</small><h3 style="font:500 1.42cqw var(--serif);margin:.7em 0 .35em">技术辅助设计</h3><p style="font-size:1.05cqw;line-height:1.75;color:#75695d;margin:0">AIGC 等工具可辅助探索，但文化准确性与设计判断仍需核验。</p></article>
-    <article style="padding:1.2cqw 1.1cqw;background:#e8e0d5;border-top:2px solid #a34631"><small class="y2-label">04 / MARKET</small><h3 style="font:500 1.42cqw var(--serif);margin:.7em 0 .35em">融合与接受度</h3><p style="font-size:1.05cqw;line-height:1.75;color:#75695d;margin:0">产品需要兼顾文化叙事、实际使用和不同场景中的传播。</p></article>
+    <article style="padding:1.2cqw 1.1cqw;background:#e8e0d5;border-top:2px solid #a34631"><small class="y2-label">01 / RED CULTURE</small><h3 style="font:500 1.42cqw var(--serif);margin:.7em 0 .35em">表达文化内核</h3><p style="font-size:1.05cqw;line-height:1.75;color:#75695d;margin:0">红色文创要呈现人物、事件与精神，不只复刻视觉符号。</p></article>
+    <article style="padding:1.2cqw 1.1cqw;background:#e8e0d5;border-top:2px solid #a34631"><small class="y2-label">02 / LOCAL CULTURE</small><h3 style="font:500 1.42cqw var(--serif);margin:.7em 0 .35em">建立宜川辨识度</h3><p style="font-size:1.05cqw;line-height:1.75;color:#75695d;margin:0">红色遗址、非遗、民俗与自然风物共同提供地方线索。</p></article>
+    <article style="padding:1.2cqw 1.1cqw;background:#e8e0d5;border-top:2px solid #a34631"><small class="y2-label">03 / PRODUCT EXPERIENCE</small><h3 style="font:500 1.42cqw var(--serif);margin:.7em 0 .35em">连接真实使用</h3><p style="font-size:1.05cqw;line-height:1.75;color:#75695d;margin:0">文化需要进入产品形态、功能与具体使用场景。</p></article>
+    <article style="padding:1.2cqw 1.1cqw;background:#e8e0d5;border-top:2px solid #a34631"><small class="y2-label">04 / MEMORY & SHARING</small><h3 style="font:500 1.42cqw var(--serif);margin:.7em 0 .35em">留下情感记忆</h3><p style="font-size:1.05cqw;line-height:1.75;color:#75695d;margin:0">纪念、携带与分享，让地方故事继续传播。</p></article>
    </div>
    <div style="display:grid;grid-template-columns:.8fr 1.2fr;gap:3%;align-items:center;padding:1.4cqw 1.2cqw;margin-top:1.4cqw;background:#dfd5c9">
-    <b style="font:500 1.3cqw var(--serif);color:#4a392d">调研指出的市场缺口</b>
-    <p style="font-size:1.05cqw;line-height:1.7;color:#6f6256;margin:0">现有产品容易停留在表面贴图，红色主题与宜川地域特色的表达不足。设计因此从“可识别”继续推进到“可使用、可记忆、可参与”。</p>
+    <b style="font:500 1.3cqw var(--serif);color:#4a392d">设计判断</b>
+    <p style="font-size:1.05cqw;line-height:1.7;color:#6f6256;margin:0">因此，项目把目标从“看见文化符号”推进到“识别地方文化、使用产品、记住体验”。</p>
    </div>
    <div class="y2-note" style="margin-top:1cqw">以上研究结论据项目汇报 PPT 整理；此处为研究内容摘要，不替代完整文献目录。</div>
   </div>
@@ -1069,12 +1278,12 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 <section class="page yc-page" aria-label="宜川实地文化调研">
  <span class="page-index">22</span>
  <div class="y2-page">
-  <header class="y2-head"><div><div class="y2-label">01 / FIELD RESEARCH</div><h2>走进遗址、非遗现场与地方生活</h2></div><p>实地调研覆盖红色遗址、文化场所、特色市场与地方手工艺，观察文化如何在真实环境中被观看、使用和传承。</p></header>
+  <header class="y2-head"><div><div class="y2-label">01 / FIELD RESEARCH</div><h2>从文化现场提取设计线索</h2></div><p>作为项目负责人，我全程参与实地调研，记录遗址、藏品、表演与手工艺中的设计线索。</p></header>
   <div class="y2-body y2-research-grid">
-   <article class="y2-research-card"><figure><img class="zoom" data-zoom="assets/yichuan-research-memorial.jpg" src="assets/yichuan-research-memorial.jpg" alt="宜川红色纪念地现场照片"></figure><div><small>HISTORICAL SITE</small><h3>红色遗址</h3><p>秋林抗战纪念地、瓦子街战役烈士陵园等，记录建筑、纪念设施与历史叙事。</p></div></article>
-   <article class="y2-research-card"><figure><img class="zoom" data-zoom="assets/yichuan-research-museum.jpg" src="assets/yichuan-research-museum.jpg" alt="宜川县博物馆展陈与文物调研照片"></figure><div><small>LANDSCAPE</small><h3>博物馆与藏品</h3><p>走访博物馆展陈，梳理地方历史、实物资料与可继续转译的文化信息。</p></div></article>
-   <article class="y2-research-card"><figure><img class="zoom" data-zoom="assets/yichuan-research-drum.jpg" src="assets/yichuan-research-drum.jpg" alt="宜川胸鼓表演场景"></figure><div><small>PERFORMANCE</small><h3>胸鼓与斗鼓</h3><p>记录服饰、鼓具、动作和队形，理解动态非遗的节奏与视觉特征。</p></div></article>
-   <article class="y2-research-card"><figure><img class="zoom" data-zoom="assets/yichuan-research-paper-cut.jpg" src="assets/yichuan-research-paper-cut.jpg" alt="宜川剪纸工艺调研照片"></figure><div><small>CRAFT</small><h3>剪纸与手工艺</h3><p>走访剪纸工作室、葫芦烙画等场景，观察工艺过程、材料和图案语言。</p></div></article>
+   <article class="y2-research-card"><figure><img class="zoom" data-zoom="assets/yichuan-research-memorial.jpg" src="assets/yichuan-research-memorial.jpg" alt="宜川红色纪念地现场照片"></figure><div><small>HISTORICAL SITE</small><h3>红色遗址</h3><p>记录纪念空间与历史叙事，核对红色文化的内容依据。</p></div></article>
+   <article class="y2-research-card"><figure><img class="zoom" data-zoom="assets/yichuan-research-museum.jpg" src="assets/yichuan-research-museum.jpg" alt="宜川县博物馆展陈与文物调研照片"></figure><div><small>MUSEUM & COLLECTION</small><h3>博物馆与藏品</h3><p>梳理地方史料与实物信息，寻找可继续转译的文化线索。</p></div></article>
+   <article class="y2-research-card"><figure><img class="zoom" data-zoom="assets/yichuan-research-drum.jpg" src="assets/yichuan-research-drum.jpg" alt="宜川胸鼓表演场景"></figure><div><small>PERFORMANCE</small><h3>胸鼓与斗鼓</h3><p>观察鼓具、服饰、动作与队形，提取节奏和形态特征。</p></div></article>
+   <article class="y2-research-card"><figure><img class="zoom" data-zoom="assets/yichuan-research-paper-cut.jpg" src="assets/yichuan-research-paper-cut.jpg" alt="宜川剪纸工艺调研照片"></figure><div><small>CRAFT</small><h3>剪纸与手工艺</h3><p>记录制作过程、材料肌理与图案语言，为产品表达寻找依据。</p></div></article>
   </div>
  </div>
 </section>
@@ -1082,7 +1291,7 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 <section class="page yc-page" aria-label="访谈对象与设计机会">
  <span class="page-index">23</span>
  <div class="y2-page">
-  <header class="y2-head"><div><div class="y2-label">01 / INTERVIEWS & SYNTHESIS</div><h2>从管理者、讲解者与传承者处理解文化</h2></div><p>访谈与现场观察帮助团队补足文献难以呈现的使用场景、传播问题和地方经验。</p></header>
+  <header class="y2-head"><div><div class="y2-label">01 / INTERVIEWS & SYNTHESIS</div><h2>访谈补上文献之外的地方经验</h2></div><p>我组织访谈与现场观察，了解文化如何被管理、讲述、传承和使用。</p></header>
   <div class="y2-body y2-interviews">
    <div class="y2-interview-photo">
     <figure><img class="zoom" data-zoom="assets/yichuan-research-interview.jpg" src="assets/yichuan-research-interview.jpg" alt="项目团队与地方文化工作者访谈"></figure>
@@ -1096,7 +1305,7 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
      <div><b>非遗传承</b>剪纸、葫芦烙画等手工艺传承人</div>
      <div><b>专家与用户</b>地方文化专家及潜在使用者</div>
     </div>
-    <div class="y2-opportunity">机会判断：从“贴上一个地方符号”，转向把文化放进产品形态、使用过程与故事体验。</div>
+    <div class="y2-opportunity">设计机会　/　让文化进入产品形态、使用过程与故事表达，而不只停留在符号装饰。</div>
    </div>
   </div>
  </div>
@@ -1105,9 +1314,9 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 <section class="page yc-page" aria-label="第二部分数据库建设">
  <span class="page-index">24</span>
  <div class="y2-page">
-  <header class="y2-head"><div><div class="y2-label">02 / CULTURAL ELEMENT DATABASE</div><h2>把调研记录整理成可调用的文化元素库</h2></div><p>数据库部分将分散的遗址、非遗、自然风物与生活场景归类，再通过筛选规则把资源连接到设计决策。</p></header>
+  <header class="y2-head"><div><div class="y2-label">02 / CULTURAL ELEMENT DATABASE</div><h2>把调研线索变成可选择的设计资源</h2></div><p>项目将文献、遗址、访谈和影像中的线索整理为 412 个文化元素，再按类别、特征与来源归档。</p></header>
   <div class="y2-body y2-transition">
-   <div class="y2-transition-left"><div class="big">412</div><h2>个文化元素<br>进入筛选流程</h2><p>项目将调研所得从“看过、记下”推进到“可比较、可选择、可转译”，为后续设计建立共用的内容底稿。</p></div>
+   <div class="y2-transition-left"><div class="big">412</div><h2>个文化元素<br>进入设计筛选</h2><p>资源从记录走向比较与选择，为后续产品转译建立共同依据。</p></div>
    <div class="y2-flow">
     <div class="y2-flow-step"><i>01</i><b>采集与归档</b><span>文献 / 遗址 / 访谈 / 影像</span></div>
     <div class="y2-flow-step"><i>02</i><b>文化类别标注</b><span>红色 / 鼓舞 / 物产 / 非遗 / 场景</span></div>
@@ -1122,7 +1331,7 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 <section class="page yc-page" aria-label="文化资源数据库分类">
  <span class="page-index">25</span>
  <div class="y2-page">
-  <header class="y2-head"><div><div class="y2-label">02 / RESOURCE TAXONOMY</div><h2>五类资源，构成宜川文化底图</h2></div><p>分类既保留资源来源，也为后续选择设计媒介提供线索。</p></header>
+  <header class="y2-head"><div><div class="y2-label">02 / RESOURCE TAXONOMY</div><h2>五类资源，构成宜川文化底图</h2></div><p>分类记录资源从哪里来、有什么特征，以及可以转化成哪些设计线索。</p></header>
   <div class="y2-body y2-resource-layout">
    <div class="y2-resource-head"><span>编号</span><span>资源类别</span><span>收录内容</span><span>可转译的设计线索</span></div>
    <div class="y2-resource-table">
@@ -1140,9 +1349,9 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 <section class="page yc-page" aria-label="文化元素数据库字段">
  <span class="page-index">26</span>
  <div class="y2-page">
-  <header class="y2-head"><div><div class="y2-label">02 / DATABASE STRUCTURE</div><h2>让每条文化线索都能继续被设计使用</h2></div><p>把“元素是什么、来自哪里、有什么特征、适合怎样转译”放在同一条记录中，形成清晰的设计检索路径。</p></header>
+  <header class="y2-head"><div><div class="y2-label">02 / DATABASE STRUCTURE</div><h2>让文化线索从来源走到设计方案</h2></div><p>每条记录关联资源出处、文化特征与转译方向，让选择依据清楚、资料可以追溯。</p></header>
   <div class="y2-body y2-schema">
-   <div class="y2-schema-fields"><h3>建议的元素档案字段</h3><div class="y2-field-tags"><span>元素名称</span><span>资源类别</span><span>来源地点</span><span>资料出处</span><span>形态特征</span><span>色彩与材料</span><span>文化故事</span><span>情绪关键词</span><span>用户场景</span><span>转译方向</span><span>关联方案</span><span>图像档案</span></div><p class="y2-note" style="margin-top:1.5cqw">这是根据项目内容整理的数据库展示结构，用于呈现资源如何进入设计判断。</p></div>
+   <div class="y2-schema-fields"><h3>数据库字段示例</h3><div class="y2-field-tags"><span>元素名称</span><span>资源类别</span><span>来源地点</span><span>资料出处</span><span>形态特征</span><span>色彩与材料</span><span>文化故事</span><span>情绪关键词</span><span>用户场景</span><span>转译方向</span><span>关联方案</span><span>图像档案</span></div><p class="y2-note" style="margin-top:1.5cqw">字段根据项目材料整理，展示文化资源如何进入设计判断。</p></div>
    <div class="y2-schema-example"><table><thead><tr><th>文化元素</th><th>关键信息</th><th>设计转译方向</th></tr></thead><tbody>
     <tr><td>宜川胸鼓</td><td>表演动作、鼓具、红绸与服饰</td><td>扇面人物、动作节奏、角色周边</td></tr>
     <tr><td>壶口瀑布</td><td>黄河水势、峡谷层理、沙流</td><td>流沙摆件、器物曲线、地貌香氛石</td></tr>
@@ -1156,9 +1365,9 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 <section class="page yc-page" aria-label="412个文化元素筛选规则">
  <span class="page-index">27</span>
  <div class="y2-page">
-  <header class="y2-head"><div><div class="y2-label">02 / ELEMENT SELECTION</div><h2>用代表性、适配度和情感连接筛选</h2></div><p>设计团队评分、地方专家意见与问卷结果共同参与筛选，避免只凭视觉偏好决定资源优先级。</p></header>
+  <header class="y2-head"><div><div class="y2-label">02 / ELEMENT SELECTION</div><h2>资源筛选，要同时看文化与使用</h2></div><p>项目从文化代表性、设计适配度和情感连接度三方面评分，并结合团队、地方专家与问卷意见。</p></header>
   <div class="y2-body y2-score">
-   <div class="y2-score-number"><strong>412</strong><b>个文化元素进入筛选</b><p>从资料归档到方案选择，形成一套可解释的评估顺序。</p></div>
+   <div class="y2-score-number"><strong>412</strong><b>个文化元素进入筛选</b><p>让方案选择有据可循，不只依赖个人视觉偏好。</p></div>
    <div class="y2-weight-list">
     <div class="y2-weight"><span>文化代表性</span><div class="track"><i style="width:40%"></i></div><b>40%</b></div>
     <div class="y2-weight"><span>设计适配度</span><div class="track"><i style="width:35%"></i></div><b>35%</b></div>
@@ -1173,42 +1382,80 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 <section class="page yc-page" aria-label="问卷需求倾向">
  <span class="page-index">28</span>
  <div class="y2-page">
-  <header class="y2-head"><div><div class="y2-label">02 / USER PREFERENCE</div><h2>需求倾向提示：装饰与纪念属性更突出</h2></div><p>问卷结果帮助团队判断产品形态的优先级，让设计从“文化能否表达”继续考虑“用户愿不愿意带走、使用或参与”。</p></header>
+  <header class="y2-head"><div><div class="y2-label">02 / USER PREFERENCE</div><h2>问卷中，装饰与纪念需求更突出</h2></div><p>这组倾向为产品形态排序提供参考：除了表达文化，也要考虑用户是否愿意带走、使用或参与。</p></header>
   <div class="y2-body y2-preference">
    <div class="y2-pref-row"><span>装饰类</span><div class="track"><i style="width:59.67%"></i></div><b>59.67%</b></div>
    <div class="y2-pref-row"><span>纪念类</span><div class="track"><i style="width:57.22%"></i></div><b>57.22%</b></div>
    <div class="y2-pref-row"><span>实用类</span><div class="track"><i style="width:48.5%"></i></div><b>48.50%</b></div>
    <div class="y2-pref-row"><span>体验类</span><div class="track"><i style="width:43.32%"></i></div><b>43.32%</b></div>
-   <div class="y2-pref-note">上述为项目 PPT 所列问卷需求比例。原稿未注明样本量，且各项比例不构成互斥分类，因此按需求倾向呈现，不作为市场份额解读。</div>
   </div>
  </div>
 </section>
 
-<section class="page yichuan-unified" aria-label="宜川方案展示章节页">
+
+<section class="page yichuan-unified yu-text-page yu-case-guide" aria-label="案例展示导览">
  <div class="yu-inner">
-  <span class="page-index">29</span>
-  <div class="yu-kicker">05 / DESIGN SHOWCASE</div>
-  <div class="yu-opener-grid">
-   <div class="yu-opener-copy">
-    <div class="yu-opener-number">05</div>
-    <h1>方案展示</h1>
-    <div class="yu-opener-en">SOLUTION PRESENTATION</div>
-    <div class="yu-rule"></div>
-    <p class="yu-opener-sub">宜川文化资源的当代设计转译</p>
+  <span class="page-index">31</span>
+  <div class="yu-text-head"><span>02 / SELECTED CASES</span><span>宜川项目　/　产品设计</span></div>
+  <div class="yu-guide-main">
+   <header class="yu-guide-heading">
+    <div><div class="yu-text-eyebrow">YICHUAN / DESIGN CASES</div><h1>案例展示</h1></div>
+    <p>三组产品设计内容，点击板块即可进入对应案例。</p>
+   </header>
+   <div class="yu-guide-grid">
+    <button class="yu-guide-card" type="button" data-project-jump="宜川稠酒系列">
+     <span class="yu-guide-num">01 / LIQUOR SERIES</span>
+     <h2>宜川稠酒系列</h2>
+     <span class="yu-guide-desc">便携稠酒包装与配套酒具设计</span><i aria-hidden="true">↗</i>
+    </button>
+    <button class="yu-guide-card" type="button" data-project-jump="宜川风物黄河边的果香香片挂件设计">
+     <span class="yu-guide-num">02 / LOCAL PRODUCTS</span>
+     <h2>宜川非遗物产系列</h2>
+     <span class="yu-guide-desc">以地方物产为灵感，设计随身香片挂件</span><i aria-hidden="true">↗</i>
+    </button>
+    <button class="yu-guide-card" type="button" data-project-jump="宜川红色系列">
+     <span class="yu-guide-num">03 / RED CULTURE</span>
+     <h2>宜川红色系列</h2>
+     <span class="yu-guide-desc">将地方红色记忆转化为可携带的纪念设计</span><i aria-hidden="true">↗</i>
+    </button>
    </div>
-   <figure class="yu-photo yu-opener-image"><img class="zoom" loading="lazy" decoding="async" data-zoom="assets/yichuan-fan-hero.jpg" src="assets/yichuan-fan-hero.jpg" alt="宜川胸鼓主题折扇文创主效果图"><figcaption>宜川非遗文创　/　系列设计效果</figcaption></figure>
   </div>
-  <div class="yu-foot"><span>宜川文化创意产品设计</span><span>方案展示</span></div>
+  <div class="yu-text-foot"><span>宜川项目　/　从地方文化到产品体验</span><span>PROJECT GUIDE</span></div>
  </div>
 </section>
-<section class="page yichuan-unified" aria-label="宜川稠酒系列">
+
+<section class="page yichuan-unified yu-text-page yu-case-page" aria-label="宜川稠酒系列">
  <div class="yu-inner">
-  <span class="page-index">30</span>
-  <header class="yu-wine-head"><div><div class="yu-kicker">01 / YICHUAN LIQUOR</div><h1>宜川稠酒系列</h1></div><p>苹果风味　/　原味　/　猕猴桃风味</p></header>
-  <figure class="yu-wine-visual"><img class="zoom" loading="lazy" decoding="async" data-zoom="assets/yichuan-wine-flavors.png" src="assets/yichuan-wine-flavors.png" alt="宜川稠酒苹果风味、原味与猕猴桃风味包装效果图"></figure>
-  <div class="yu-foot"><span>地方饮品　/　风味包装</span><span>系列产品设计</span></div>
+  <span class="page-index">31</span>
+  <div class="yu-text-head"><span>02 / SELECTED CASES</span><span>宜川项目　/　产品与器具设计</span></div>
+  <div class="yu-case-layout">
+   <div class="yu-case-intro">
+    <div><div class="yu-text-eyebrow">PRODUCT &amp; CULTURAL INTERPRETATION</div><h1>宜川稠酒系列</h1></div>
+    <p>围绕宜川稠酒，从产品开发、饮用器具到非遗表达，呈现三条设计实践。</p>
+   </div>
+   <div class="yu-case-grid">
+    <article class="yu-case-card">
+     <span class="yu-case-meta">01 / PRODUCT DEVELOPMENT</span>
+     <h2>新概念小罐稠酒开发</h2>
+     <p>参考便携饮品的使用方式，探索稠酒的小罐产品形态与包装表达。</p>
+    </article>
+    <article class="yu-case-card">
+     <span class="yu-case-meta">02 / DRINKWARE DESIGN</span>
+     <h2>稠酒酒具设计</h2>
+     <p>围绕稠酒饮用与分享场景，梳理配套酒具的造型与组合方式。</p>
+    </article>
+    <article class="yu-case-card">
+     <span class="yu-case-meta">03 / INTANGIBLE HERITAGE</span>
+     <h2>非遗概念酒具</h2>
+     <p>从地方非遗文化中提取设计线索，探索其在酒具造型与细节中的转译。</p>
+    </article>
+   </div>
+   <div class="yu-case-flow"><b>设计脉络</b><span>产品形态探索　→　饮用体验设计　→　地方文化表达</span></div>
+  </div>
+  <div class="yu-text-foot"><span>宜川稠酒　/　从产品到体验的设计探索</span><span>CASE STUDIES</span></div>
  </div>
 </section>
+
 <section class="page original-slide-page" aria-label="宜川项目原PPT第23页">
  <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-023.jpg" src="assets/original-yichuan-ppt/source-slide-023.jpg" alt="宜川项目原PPT第23页">
 </section>
@@ -1230,26 +1477,25 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 <section class="page original-slide-page" aria-label="宜川项目原PPT第29页">
  <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-029.jpg" src="assets/original-yichuan-ppt/source-slide-029.jpg" alt="宜川项目原PPT第29页">
 </section>
-<section class="page original-slide-page" aria-label="宜川项目原PPT第30页">
- <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-030.jpg" src="assets/original-yichuan-ppt/source-slide-030.jpg" alt="宜川项目原PPT第30页">
-</section>
-<section class="page original-slide-page" aria-label="宜川项目原PPT第31页">
- <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-031.jpg" src="assets/original-yichuan-ppt/source-slide-031.jpg" alt="宜川项目原PPT第31页">
-</section>
-<section class="page original-slide-page" aria-label="宜川项目原PPT第32页">
- <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-032.jpg" src="assets/original-yichuan-ppt/source-slide-032.jpg" alt="宜川项目原PPT第32页">
-</section>
-<section class="page original-slide-page" aria-label="宜川项目原PPT第33页">
- <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-033.jpg" src="assets/original-yichuan-ppt/source-slide-033.jpg" alt="宜川项目原PPT第33页">
-</section>
-<section class="page original-slide-page" aria-label="宜川项目原PPT第34页">
- <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-034.jpg" src="assets/original-yichuan-ppt/source-slide-034.jpg" alt="宜川项目原PPT第34页">
-</section>
+
+
+
+
+
 <section class="page original-slide-page" aria-label="宜川项目原PPT第35页">
  <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-035.jpg" src="assets/original-yichuan-ppt/source-slide-035.jpg" alt="宜川项目原PPT第35页">
 </section>
 <section class="page original-slide-page" aria-label="宜川项目原PPT第36页">
  <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-036.jpg" src="assets/original-yichuan-ppt/source-slide-036.jpg" alt="宜川项目原PPT第36页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第76页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-076.jpg" src="assets/original-yichuan-ppt/source-slide-076.jpg" alt="宜川项目原PPT第76页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第77页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-077.jpg" src="assets/original-yichuan-ppt/source-slide-077.jpg" alt="宜川项目原PPT第77页">
+</section>
+<section class="page original-slide-page" aria-label="宜川项目原PPT第78页">
+ <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-078.jpg" src="assets/original-yichuan-ppt/source-slide-078.jpg" alt="宜川项目原PPT第78页">
 </section>
 <section class="page original-slide-page" aria-label="宜川项目原PPT第37页">
  <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-037.jpg" src="assets/original-yichuan-ppt/source-slide-037.jpg" alt="宜川项目原PPT第37页">
@@ -1368,15 +1614,9 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 <section class="page original-slide-page" aria-label="宜川项目原PPT第75页">
  <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-075.jpg" src="assets/original-yichuan-ppt/source-slide-075.jpg" alt="宜川项目原PPT第75页">
 </section>
-<section class="page original-slide-page" aria-label="宜川项目原PPT第76页">
- <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-076.jpg" src="assets/original-yichuan-ppt/source-slide-076.jpg" alt="宜川项目原PPT第76页">
-</section>
-<section class="page original-slide-page" aria-label="宜川项目原PPT第77页">
- <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-077.jpg" src="assets/original-yichuan-ppt/source-slide-077.jpg" alt="宜川项目原PPT第77页">
-</section>
-<section class="page original-slide-page" aria-label="宜川项目原PPT第78页">
- <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-078.jpg" src="assets/original-yichuan-ppt/source-slide-078.jpg" alt="宜川项目原PPT第78页">
-</section>
+
+
+
 <section class="page original-slide-page" aria-label="宜川项目原PPT第79页">
  <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-079.jpg" src="assets/original-yichuan-ppt/source-slide-079.jpg" alt="宜川项目原PPT第79页">
 </section>
@@ -1388,7 +1628,7 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
    <div class="yu-fruit-copy">
     <div class="yu-kicker">宜川风物</div>
     <h1 class="yu-fruit-title">黄河边的<br>果香</h1>
-    <p class="yu-fruit-sub">以宜川特产为灵感的<br>香片挂件设计</p>
+    <p class="yu-fruit-sub">从地方果香出发<br>设计可随身携带的香片挂件</p>
     <div class="yu-fruit-list"><span>苹果</span><span>柿子</span><span>酥梨</span><span>石榴</span><span>花椒</span><span>核桃</span><span>猕猴桃</span><span>枣</span></div>
    </div>
    <figure class="yu-photo yu-fruit-photo"><img class="zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-090.jpg" src="assets/original-yichuan-ppt/source-slide-090.jpg" alt="宜川酥梨主题香片挂件的车内使用效果"><figcaption>宜川酥梨　/　香片挂件情境效果</figcaption></figure>
@@ -1663,7 +1903,7 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
     <div class="yu-kicker">宜川文创</div>
     <h1>宜川<br>红色系列</h1>
     <div class="yu-red-accent"></div>
-    <p>红色文化主题衍生设计</p>
+    <p>把地方红色记忆转化为可携带的纪念设计</p>
    </div>
   <figure class="yu-photo yu-red-photo"><img class="zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-171.jpg" src="assets/yichuan-red-keychain.jpg" alt="宜川红色主题纪念地文创钥匙扣效果图"><figcaption>红色主题纪念品　/　产品效果图</figcaption></figure>
   </div>
@@ -1799,23 +2039,90 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 <section class="page original-slide-page" aria-label="宜川项目原PPT第210页">
  <img class="original-slide-image zoom" loading="lazy" decoding="async" data-zoom="assets/original-yichuan-ppt/source-slide-210.jpg" src="assets/original-yichuan-ppt/source-slide-210.jpg" alt="宜川项目原PPT第210页">
 </section>
+<section class="page closing-page" aria-label="作品集结束页">
+ <span class="page-index">215</span>
+ <div class="closing-inner">
+  <div class="closing-top"><span>SELECTED WORKS / PORTFOLIO</span><span>YANG YINA　·　2026</span></div>
+  <div class="closing-main">
+   <div class="closing-kicker">END / THANK YOU</div>
+   <h1>感谢观看</h1>
+   <p>期待与您交流</p>
+   <div class="closing-rule"></div>
+   <div class="closing-author"><strong>杨祎娜</strong><span>工业设计工程硕士研究生<br>文化创意与用户体验设计</span></div>
+  </div>
+  <nav class="closing-links" aria-label="继续浏览作品集">
+   <button type="button" data-project-jump="古堡现场影像" aria-label="回看庄浪古堡数字保护项目">回看庄浪项目 <span>↗</span></button>
+   <button type="button" data-project-jump="宜川文创项目封面" aria-label="回看宜川文创产品设计项目">回看宜川项目 <span>↗</span></button>
+   <button type="button" data-project-jump="内容目录" aria-label="返回作品集目录">返回项目目录 <span>↗</span></button>
+  </nav>
+  <div class="closing-foot"><span>文化遗产数字保护　/　地域文化创新　/　产品体验设计</span><span>THANK YOU</span></div>
+ </div>
+</section>
 </main>
 <footer class="bottom">
  <span>横版作品集　/　← → 翻页　/　点击图像可看原图</span>
  <div class="controls"><button id="prev">上一页</button><span class="counter"><b id="current">01</b> / <span id="total">18</span></span><div class="progress"><i id="progress"></i></div><button id="next">下一页</button></div>
 </footer>
 </div>
+<section class="chapter-menu" id="chapter-menu" hidden aria-label="项目章节目录">
+ <div class="chapter-menu-head"><div><small>PROJECTS / SECTIONS</small><h2>项目章节</h2></div><button class="chapter-menu-close" type="button" id="chapters-close" aria-label="关闭章节目录">关闭　×</button></div>
+ <div class="chapter-menu-grid">
+  <section class="chapter-project" aria-label="庄浪古堡数字保护章节">
+   <div class="chapter-project-head"><b>01　庄浪项目</b><span>古城堡数字保护与展览</span></div>
+   <div class="chapter-list">
+    <button class="chapter-link" type="button" data-project-jump="古堡现场影像"><span>01</span><b>项目概览</b><i>↗</i></button>
+    <button class="chapter-link" type="button" data-project-jump="地理区位与价值"><span>02</span><b>区位与遗址价值</b><i>↗</i></button>
+    <button class="chapter-link" type="button" data-project-jump="数字化保护缘起"><span>03</span><b>数字保护缘起</b><i>↗</i></button>
+    <button class="chapter-link" type="button" data-project-jump="数字采集过程"><span>04</span><b>数字采集过程</b><i>↗</i></button>
+    <button class="chapter-link" type="button" data-project-jump="古堡信息可视化视频"><span>05</span><b>信息可视化</b><i>↗</i></button>
+    <button class="chapter-link" type="button" data-project-jump="点云视觉表达"><span>06</span><b>点云视觉表达</b><i>↗</i></button>
+    <button class="chapter-link" type="button" data-project-jump="庄浪古堡历史沿革"><span>07</span><b>历史沿革</b><i>↗</i></button>
+    <button class="chapter-link" type="button" data-project-jump="展览叙事与落地"><span>08</span><b>展览叙事</b><i>↗</i></button>
+    <button class="chapter-link" type="button" data-project-jump="第一单元展墙设计一"><span>09</span><b>展墙设计</b><i>↗</i></button>
+    <button class="chapter-link" type="button" data-project-jump="展览活动现场一"><span>10</span><b>展览现场</b><i>↗</i></button>
+    <button class="chapter-link" type="button" data-project-jump="展览传播与社会影响"><span>11</span><b>传播与影响</b><i>↗</i></button>
+   </div>
+  </section>
+  <section class="chapter-project" aria-label="宜川文创产品设计章节">
+   <div class="chapter-project-head"><b>02　宜川项目</b><span>文化调研与产品设计</span></div>
+   <div class="chapter-list">
+    <button class="chapter-link" type="button" data-project-jump="宜川文创项目封面"><span>01</span><b>项目概览</b><i>↗</i></button>
+    <button class="chapter-link" type="button" data-project-jump="宜川项目背景与设计命题"><span>02</span><b>背景与设计命题</b><i>↗</i></button>
+    <button class="chapter-link" type="button" data-project-jump="文献研究与市场问题"><span>03</span><b>文献与市场研究</b><i>↗</i></button>
+    <button class="chapter-link" type="button" data-project-jump="宜川实地文化调研"><span>04</span><b>实地文化调研</b><i>↗</i></button>
+    <button class="chapter-link" type="button" data-project-jump="访谈对象与设计机会"><span>05</span><b>访谈与设计机会</b><i>↗</i></button>
+    <button class="chapter-link" type="button" data-project-jump="第二部分数据库建设"><span>06</span><b>数据库建设</b><i>↗</i></button>
+    <button class="chapter-link" type="button" data-project-jump="文化资源数据库分类"><span>07</span><b>文化资源分类</b><i>↗</i></button>
+    <button class="chapter-link" type="button" data-project-jump="412个文化元素筛选规则"><span>08</span><b>元素筛选规则</b><i>↗</i></button>
+    <button class="chapter-link" type="button" data-project-jump="问卷需求倾向"><span>09</span><b>问卷与用户需求</b><i>↗</i></button>
+    <div class="chapter-subheading">案例展示</div>
+    <button class="chapter-link" type="button" data-project-jump="宜川稠酒系列"><span>10</span><b>宜川稠酒系列</b><i>↗</i></button>
+    <button class="chapter-link" type="button" data-project-jump="宜川风物黄河边的果香香片挂件设计"><span>11</span><b>宜川非遗物产系列</b><i>↗</i></button>
+    <button class="chapter-link" type="button" data-project-jump="宜川红色系列"><span>12</span><b>宜川红色系列</b><i>↗</i></button>
+   </div>
+  </section>
+ </div>
+</section>
 <div class="lightbox" id="lightbox" role="dialog" aria-label="图片查看器"><button id="closeLightbox" aria-label="关闭">×</button><img id="lightboxImage" alt="放大查看"></div>
 <script>
 (function(){
  var pages=[].slice.call(document.querySelectorAll('.page')),current=0;
- pages.slice(2).forEach(function(page){var index=page.querySelector('.page-index');if(!index)return;var value=parseInt(index.textContent.trim(),10);if(!isNaN(value))index.textContent=String(value+1).padStart(2,'0')});
+ pages.forEach(function(page,i){var index=page.querySelector('.page-index');if(index)index.textContent=String(i+1).padStart(2,'0')});
  var currentLabel=document.getElementById('current'),totalLabel=document.getElementById('total'),progress=document.getElementById('progress');
  totalLabel.textContent=String(pages.length).padStart(2,'0');
- function show(n){current=Math.max(0,Math.min(pages.length-1,n));pages.forEach(function(p,i){p.classList.toggle('active',i===current)});currentLabel.textContent=String(current+1).padStart(2,'0');progress.style.width=((current+1)/pages.length*100)+'%'}
+ var projectButtons=[].slice.call(document.querySelectorAll('[data-project-jump]'));
+ var projectStarts=projectButtons.slice(0,2).map(function(button){return pages.findIndex(function(page){return page.getAttribute('aria-label')===button.dataset.projectJump})});
+  var chapterMenu=document.getElementById('chapter-menu'),chapterToggle=document.getElementById('chapters-toggle'),chapterClose=document.getElementById('chapters-close');
+  function closeChapterMenu(restoreFocus){chapterMenu.hidden=true;chapterToggle.setAttribute('aria-expanded','false');if(restoreFocus)chapterToggle.focus()}
+  chapterToggle.addEventListener('click',function(){var open=chapterMenu.hidden;chapterMenu.hidden=!open;chapterToggle.setAttribute('aria-expanded',String(open));if(open){var firstLink=chapterMenu.querySelector('.chapter-link');if(firstLink)firstLink.focus()}});
+  chapterClose.addEventListener('click',function(){closeChapterMenu(true)});
+  document.addEventListener('click',function(e){if(!chapterMenu.hidden&&!chapterMenu.contains(e.target)&&!chapterToggle.contains(e.target))closeChapterMenu(false)});
+ function updateProjectSwitcher(){var headerButtons=[].slice.call(document.querySelectorAll('.project-switcher [data-project-jump]'));headerButtons.forEach(function(button,i){var start=projectStarts[i],next=projectStarts[i+1];var active=start>=0&&current>=start&&(next<0||current<next);if(active)button.setAttribute('aria-current','location');else button.removeAttribute('aria-current')})}
+  projectButtons.forEach(function(button){button.addEventListener('click',function(){var target=pages.findIndex(function(page){return page.getAttribute('aria-label')===button.dataset.projectJump});if(target>=0)show(target);if(chapterMenu.contains(button))closeChapterMenu(true)})});
+ function show(n){current=Math.max(0,Math.min(pages.length-1,n));pages.forEach(function(p,i){p.classList.toggle('active',i===current)});currentLabel.textContent=String(current+1).padStart(2,'0');progress.style.width=((current+1)/pages.length*100)+'%';updateProjectSwitcher();if(history.replaceState){try{history.replaceState(null,'','#page='+(current+1))}catch(error){}}}
  document.getElementById('prev').onclick=function(){show(current-1)};
  document.getElementById('next').onclick=function(){show(current+1)};
- document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='PageDown')show(current+1);if(e.key==='ArrowLeft'||e.key==='PageUp')show(current-1);if(e.key==='Escape')closeLightbox()});
+  document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='PageDown')show(current+1);if(e.key==='ArrowLeft'||e.key==='PageUp')show(current-1);if(e.key==='Escape'){if(!chapterMenu.hidden)closeChapterMenu(true);closeLightbox()}});
  var lightbox=document.getElementById('lightbox'),lightboxImage=document.getElementById('lightboxImage');
  function openLightbox(src){lightboxImage.src=src;lightbox.classList.add('open')}
  function closeLightbox(){lightbox.classList.remove('open');lightboxImage.src=''}
