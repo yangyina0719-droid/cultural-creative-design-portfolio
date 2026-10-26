@@ -575,6 +575,42 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 .yu-red-accent{width:3.6cqw;height:2px;background:#9f3e30;margin:1.45cqw 0 1.15cqw}
 .yu-red-copy p{font:1.18cqw/1.8 var(--serif);color:#71675b;margin:0}
 .yu-red-photo img{object-position:center 50%}
+.profile-page{background:#f1eee8}
+.profile-spread{height:100%;display:grid;grid-template-columns:1.12fr .88fr;background:#f1eee8;color:#302820}
+.profile-main{min-width:0;min-height:0;padding:5.6% 5.3% 5% 7.2%;display:flex;flex-direction:column}
+.profile-overline{font-size:1.08cqw;letter-spacing:.2em;color:#95694a;text-transform:uppercase}
+.profile-main h1{font:500 5.1cqw/1.08 var(--serif);letter-spacing:.08em;color:#2d2721;margin:.34em 0 .17em}
+.profile-role{font:1.34cqw/1.6 var(--serif);color:#9b4936;letter-spacing:.025em}
+.profile-summary{max-width:94%;font-size:1.3cqw;line-height:1.78;color:#665d52;margin:1.05cqw 0 1.05cqw}
+.profile-thread{display:flex;align-items:center;gap:.75cqw;margin:0 0 1.65cqw;font-size:1.14cqw;letter-spacing:.04em;color:#8b755f}
+.profile-thread i{font-style:normal;color:#c2b4a3}
+.profile-section-head,.profile-skill-head,.profile-education-head{display:flex;align-items:baseline;justify-content:space-between;gap:1em}
+.profile-section-head{padding-bottom:.48cqw;border-bottom:1px solid #cfc4b8}
+.profile-section-head b,.profile-skill-head b,.profile-education-head b{font:500 1.48cqw var(--serif);color:#403329}
+.profile-section-head small,.profile-skill-head small{font-size:.92cqw;letter-spacing:.16em;color:#a18c78}
+.profile-jobs{display:flex;flex:1;min-height:0;flex-direction:column}
+.profile-job{display:grid;flex:1;align-content:center;grid-template-columns:11.3cqw 1fr;gap:1.2cqw;padding:1.12cqw 0;border-bottom:1px solid #d8cfc4}
+.profile-job time{font:italic 1.08cqw/1.55 Georgia,serif;color:#9a6942;white-space:nowrap}
+.profile-job h3{font:500 1.4cqw/1.35 var(--serif);margin:0 0 .22em;color:#41342a}
+.profile-job h3 span{font:1.02cqw var(--sans);color:#837568;margin-left:.45em}
+.profile-job p{font-size:1.15cqw;line-height:1.6;color:#70665a;margin:0}
+.profile-skill-head{margin-top:auto;padding-top:1.3cqw}
+.profile-capabilities{display:grid;grid-template-columns:repeat(3,1fr);gap:1.05cqw;margin-top:.68cqw}
+.profile-capability{border-top:2px solid #b17b58;padding-top:.58cqw}
+.profile-capability b{display:block;font:500 1.18cqw var(--serif);color:#493a2e;margin-bottom:.28em}
+.profile-capability span{display:block;font-size:1.12cqw;line-height:1.55;color:#81766a}
+.profile-side{position:relative;min-width:0;min-height:0;padding:5.7% 9% 5.1%;display:flex;flex-direction:column;background:#28231f;color:#f2eee8}
+.profile-portrait{width:82%;height:56%;align-self:flex-end;margin:0;overflow:hidden;background:#eee9e1}
+.profile-portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 22%}
+.profile-photo-meta{width:82%;align-self:flex-end;display:flex;justify-content:space-between;gap:1em;padding:.55cqw 0 1.15cqw;border-bottom:1px solid #ffffff3b;font-size:1.02cqw;letter-spacing:.06em;color:#d0c4b7}
+.profile-education-head{margin-top:1.05cqw;padding-bottom:.48cqw;border-bottom:1px solid #ffffff3b}
+.profile-education-head b{font:500 1.48cqw var(--serif);color:#f1ece3}
+.profile-education-head small{font-size:.92cqw;letter-spacing:.16em;color:#ba9d7e}
+.profile-school{display:grid;grid-template-columns:9.3cqw 1fr;gap:.8cqw;padding:.75cqw 0;border-bottom:1px solid #ffffff30}
+.profile-school time{font:italic 1.02cqw/1.55 Georgia,serif;color:#d3a981;white-space:nowrap}
+.profile-school b{display:block;font:500 1.22cqw/1.4 var(--serif);color:#f3eee6}
+.profile-school span{display:block;font-size:1.1cqw;line-height:1.5;color:#c9bfb3}
+.profile-school small{display:block;margin-top:.25em;font-size:1cqw;line-height:1.5;color:#a89b8c}
 @media(max-width:760px){.yu-opener-grid{grid-template-columns:.9fr 1.1fr}.yu-fruit-layout,.yu-red-layout{grid-template-columns:.8fr 1.2fr}}
 </style>
 </head>
@@ -595,6 +631,49 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
    <div class="meta">团队项目　/　庄浪县博物馆　/　2025<br>遗产调查 · 数字记录 · 展览叙事</div>
   </div>
   <div class="tag cover-tag">项目现场影像</div>
+ </div>
+</section>
+
+<section class="page profile-page" aria-label="个人简介">
+ <span class="page-index" style="color:#d9cbb9">02</span>
+ <div class="profile-spread">
+  <div class="profile-main">
+   <div class="profile-overline">ABOUT / DESIGN PRACTICE</div>
+   <h1>杨祎娜</h1>
+   <div class="profile-role">工业设计工程硕士研究生　·　文化创意与用户体验设计</div>
+   <p class="profile-summary">我关注地方文化如何转化为当代体验，也关注产品如何回应真实使用场景。具备从文化与用户调研、问题定义，到视觉表达、产品方案和原型验证的跨环节实践。</p>
+   <div class="profile-thread"><span>文化研究</span><i>—</i><span>体验定义</span><i>—</i><span>设计落地</span></div>
+   <div class="profile-section-head"><b>实践经历</b><small>SELECTED EXPERIENCE</small></div>
+   <div class="profile-jobs">
+    <article class="profile-job">
+     <time>2025.12 — 2026.08</time>
+     <div><h3>科大讯飞 <span>结构设计助理</span></h3><p>参与智能硬件方案协作、样件验证与产品研究，连接结构设计、使用体验和展示表达。</p></div>
+    </article>
+    <article class="profile-job">
+     <time>2024.04 — 2025.09</time>
+     <div><h3>小坡岛科技 <span>产品经理助理（实习）</span></h3><p>协助需求梳理与小程序体验优化，参与品牌内容设计和新媒体工作流建设。</p></div>
+    </article>
+   </div>
+   <div class="profile-skill-head"><b>设计能力</b><small>RESEARCH · TRANSLATION · MAKING</small></div>
+   <div class="profile-capabilities">
+    <div class="profile-capability"><b>研究与定义</b><span>用户研究 / 场景分析<br>需求梳理 / 竞品研究</span></div>
+    <div class="profile-capability"><b>文化与体验</b><span>文化转译 / 信息组织<br>视觉表达 / 交互流程</span></div>
+    <div class="profile-capability"><b>设计与验证</b><span>三维建模 / 方案呈现<br>快速打样 / 装配验证</span></div>
+   </div>
+  </div>
+  <aside class="profile-side">
+   <figure class="profile-portrait"><img src="assets/profile-portrait.jpg" alt="杨祎娜个人肖像"></figure>
+   <div class="profile-photo-meta"><span>杨祎娜</span><span>西安　/　设计研究</span></div>
+   <div class="profile-education-head"><b>教育经历</b><small>EDUCATION</small></div>
+   <div class="profile-school">
+    <time>2024.09—2027.07</time>
+    <div><b>西安理工大学</b><span>艺术与设计学院　·　工业设计工程（硕士在读）</span><small>研究方向：文化创意与用户体验设计、人机工效学</small></div>
+   </div>
+   <div class="profile-school">
+    <time>2019.09—2023.06</time>
+    <div><b>宝鸡文理学院</b><span>工业设计　·　工学学士</span><small>本科优秀毕业生 / 国家励志奖学金 / 校级三好学生</small></div>
+   </div>
+  </aside>
  </div>
 </section>
 
@@ -1730,6 +1809,7 @@ body{background:#20211f;color:var(--ink);font-family:var(--sans);overflow:hidden
 <script>
 (function(){
  var pages=[].slice.call(document.querySelectorAll('.page')),current=0;
+ pages.slice(2).forEach(function(page){var index=page.querySelector('.page-index');if(!index)return;var value=parseInt(index.textContent.trim(),10);if(!isNaN(value))index.textContent=String(value+1).padStart(2,'0')});
  var currentLabel=document.getElementById('current'),totalLabel=document.getElementById('total'),progress=document.getElementById('progress');
  totalLabel.textContent=String(pages.length).padStart(2,'0');
  function show(n){current=Math.max(0,Math.min(pages.length-1,n));pages.forEach(function(p,i){p.classList.toggle('active',i===current)});currentLabel.textContent=String(current+1).padStart(2,'0');progress.style.width=((current+1)/pages.length*100)+'%'}
