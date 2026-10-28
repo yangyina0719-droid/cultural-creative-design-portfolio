@@ -31,6 +31,7 @@ jobs:
         run: |
           mkdir site
           cp index.html site/
+          cp mobile.html site/
           cp -R assets site/
           touch site/.nojekyll
       - name: Upload website artifact

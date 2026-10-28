@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#29251f">
+<meta name="description" content="杨祎娜的移动端作品集：庄浪古堡数字文化保护与宜川文化创意产品设计。">
+<title>杨祎娜｜移动端作品集</title>
+<style>
+:root{--ink:#29251f;--paper:#f2eee7;--earth:#9a6942;--rust:#a34631;--muted:#655d54;--line:#d8cfc3;--serif:"Songti SC","STSong","Noto Serif CJK SC",Georgia,serif;--sans:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",Arial,sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.mobile-bar{position:sticky;top:0;z-index:20;min-height:58px;padding:0 max(20px,env(safe-area-inset-left));display:flex;align-items:center;justify-content:space-between;gap:1rem;background:#f2eee7ed;backdrop-filter:blur(12px);border-bottom:1px solid #d8cfc3}
+.wordmark{font:600 16px/1.1 var(--serif);letter-spacing:.06em;white-space:nowrap}
+.wordmark small{display:block;margin-top:4px;font:10px/1 var(--sans);letter-spacing:.15em;color:#81766b}
+.full-link{padding:9px 0 9px 10px;font-size:12px;color:#76533c;white-space:nowrap}
+.hero{position:relative;min-height:min(780px,calc(100svh - 58px));min-height:max(570px,min(780px,calc(100svh - 58px)));display:flex;align-items:flex-end;overflow:hidden;background:#29251f;color:#f3eee7}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:52% center;filter:saturate(.82)}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#211d19e8 0%,#211d19a8 60%,#211d1940 100%),linear-gradient(0deg,#211d19bd,transparent 55%)}
+.hero-content{position:relative;z-index:1;width:min(100%,900px);padding:76px 26px 54px;margin:0 auto}
+.eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#d2aa81}
+.hero h1{font:500 clamp(42px,11vw,70px)/1.17 var(--serif);letter-spacing:.05em;margin:20px 0 18px}
+.hero-lede{max-width:540px;font:17px/1.8 var(--serif);color:#e1d8cd;margin:0}
+.hero-meta{display:flex;flex-wrap:wrap;gap:9px 18px;margin-top:27px;color:#e1d8cd;font-size:13px}
+.hero-meta span{white-space:nowrap}
+.hero-cta{display:inline-flex;align-items:center;gap:12px;margin-top:34px;padding:12px 17px;border:1px solid #e0c5a6;color:#f8f2e9;font-size:14px;letter-spacing:.04em}
+.hero-cta b{font-size:18px;font-weight:400;color:#e0b990}
+.section{width:min(100% - 40px,820px);margin:0 auto;padding:68px 0}
+.section-kicker{font-size:11px;letter-spacing:.16em;color:var(--rust);text-transform:uppercase}
+.section-title{font:500 clamp(29px,8vw,43px)/1.28 var(--serif);letter-spacing:.025em;margin:10px 0 14px;color:#302820}
+.section-lede{max-width:680px;margin:0;color:#5b534a;font-size:16px;line-height:1.9}
+.project-index{padding-top:58px}
+.project-cards{display:grid;gap:16px;margin-top:28px}
+.project-card{display:grid;grid-template-columns:1fr;overflow:hidden;border:1px solid var(--line);background:#ebe5dc;transition:transform .2s,border-color .2s}
+.project-card:active{transform:scale(.99)}
+.project-card img{width:100%;aspect-ratio:1.62;object-fit:cover}
+.project-card-copy{padding:17px 18px 20px}
+.project-number{font-size:11px;letter-spacing:.15em;color:var(--rust)}
+.project-card h3{font:600 23px/1.4 var(--serif);margin:6px 0 6px;color:#372c23}
+.project-card p{margin:0;color:#5c534a;font-size:14px;line-height:1.75}
+.project-arrow{display:flex;justify-content:space-between;align-items:center;margin-top:15px;padding-top:11px;border-top:1px solid var(--line);font-size:13px;color:#7a553b}
+.project-section{padding-top:58px;border-top:1px solid var(--line)}
+.project-head{margin-bottom:24px}
+.project-head h2{font:500 clamp(30px,8vw,46px)/1.25 var(--serif);margin:9px 0 12px;letter-spacing:.035em}
+.project-head p{margin:0;font-size:15px;line-height:1.85;color:#5b534a}
+.role-pill{display:inline-flex;margin-top:13px;padding:6px 10px;border-left:2px solid var(--rust);background:#e8e0d5;color:#57473a;font-size:13px}
+.feature-image{margin:24px 0 0;background:#e3dbcf}
+.feature-image img{width:100%;max-height:460px;aspect-ratio:1.34;object-fit:cover}
+.feature-image figcaption{padding:9px 12px;color:#665c51;font-size:12px}
+.subhead{display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin:30px 0 12px;padding-bottom:9px;border-bottom:1px solid #cfc4b8}
+.subhead h3{margin:0;font:600 20px/1.35 var(--serif);color:#3b3027}
+.subhead span{font-size:10px;letter-spacing:.12em;color:#8a7766;text-align:right}
+.story-list{list-style:none;padding:0;margin:0;border-top:1px solid var(--line)}
+.story-list li{display:grid;grid-template-columns:38px 1fr;gap:10px;padding:16px 0;border-bottom:1px solid var(--line)}
+.story-list .num{font:700 13px/1.5 var(--sans);color:#9a6942}
+.story-list h4{font-size:16px;line-height:1.45;margin:0 0 4px;color:#3a3028}
+.story-list p{font-size:14px;line-height:1.75;color:#60574e;margin:0}
+.result-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:20px}
+.result-strip div{padding:12px 9px;background:#e8e1d7;text-align:center}
+.result-strip b{display:block;font:500 20px/1.2 var(--serif);color:var(--rust)}
+.result-strip span{display:block;margin-top:5px;font-size:11px;line-height:1.45;color:#675c50}
+.full-project-link{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:22px;padding:14px 0;border-top:1px solid #cfc4b8;border-bottom:1px solid #cfc4b8;font-size:14px;color:#80583d}
+.case-grid{display:grid;gap:14px;margin-top:18px}
+.case-card{overflow:hidden;border:1px solid var(--line);background:#ebe5dc}
+.case-card img{width:100%;aspect-ratio:1.55;object-fit:cover;background:#e3dbcf}
+.case-copy{padding:14px 16px 17px}
+.case-copy small{font-size:10px;letter-spacing:.12em;color:var(--rust)}
+.case-copy h3{font:600 19px/1.4 var(--serif);margin:5px 0;color:#372d25}
+.case-copy p{font-size:14px;line-height:1.75;color:#5d544a;margin:0}
+.about-card{display:grid;grid-template-columns:94px minmax(0,1fr);gap:16px;align-items:start;margin-top:22px;padding:17px;background:#29251f;color:#eee8df}
+.about-card img{width:94px;height:auto;object-fit:contain;background:#f5f2ed}
+.about-card h3{font:500 21px/1.35 var(--serif);margin:0 0 4px;color:#f4eee6}
+.about-card p{font-size:13px;line-height:1.75;color:#d1c6b9;margin:0}
+.about-card .about-role{font-size:11px;color:#d6ad83;margin-bottom:7px}
+.about-more{display:inline-block;margin-top:10px;color:#e2b88e;font-size:12px;border-bottom:1px solid #e2b88e66}
+.footer{padding:35px 20px calc(32px + env(safe-area-inset-bottom));background:#29251f;color:#d4c9bc;text-align:center}
+.footer h2{font:500 27px/1.3 var(--serif);color:#f2ece4;margin:0 0 6px}
+.footer p{font-size:13px;color:#c8b9a8;margin:0}
+.footer a{display:inline-flex;margin-top:16px;padding:10px 15px;border:1px solid #b18a64;color:#edcfaf;font-size:13px}
+.back-top{position:fixed;right:15px;bottom:16px;z-index:15;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#29251fe8;color:#f3eee7;font-size:20px;box-shadow:0 4px 16px #0002}
+@media(min-width:700px){.project-cards{grid-template-columns:1fr 1fr}.case-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.case-card:first-child{grid-column:1/-1}.about-card{grid-template-columns:112px 1fr;gap:20px;padding:20px}.about-card img{width:112px}.section{padding-top:82px;padding-bottom:82px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+</style>
+</head>
+<body id="top">
+<header class="mobile-bar">
+ <a class="wordmark" href="#top">杨祎娜<small>DESIGN PORTFOLIO</small></a>
+ <a class="full-link" href="index.html">完整横版作品集　↗</a>
+</header>
+<main>
+ <section class="hero" aria-label="作品集封面">
+  <img src="assets/fort-zhaojiashan.jpg" alt="庄浪赵家山堡航拍">
+  <div class="hero-content">
+   <div class="eyebrow">SELECTED WORKS / PORTFOLIO</div>
+   <h1>部分项目<br>展示合集</h1>
+   <p class="hero-lede">从遗址调查与数字保护，到宜川文化资源转译为产品体验。</p>
+   <div class="hero-meta"><span>文化遗产数字保护</span><span>地域文化创新</span><span>产品体验设计</span></div>
+   <a class="hero-cta" href="#projects">开始浏览 <b>↓</b></a>
+  </div>
+ </section>
+
+ <section class="section project-index" id="projects">
+  <div class="section-kicker">TWO PROJECTS / TWO DESIGN PATHS</div>
+  <h2 class="section-title">两个项目，两种设计路径</h2>
+  <p class="section-lede">一个从遗址出发，让古堡信息被看见、被理解；一个从地方文化出发，让资源进入当代产品与日常体验。</p>
+  <div class="project-cards">
+   <a class="project-card" href="#zhuanglang">
+    <img src="assets/fort-zhaojiashan.jpg" alt="庄浪赵家山堡遗址">
+    <div class="project-card-copy"><span class="project-number">PROJECT 01 / ZHUANGLANG</span><h3>庄浪县古城堡数字文化展</h3><p>参与各阶段设计工作，把遗址信息组织为公众可读的数字与展览内容。</p><span class="project-arrow">了解项目 <b>↗</b></span></div>
+   </a>
+   <a class="project-card" href="#yichuan">
+    <img src="assets/yichuan-quicksand-user.png" alt="壶口听涛流沙摆件设计效果图">
+    <div class="project-card-copy"><span class="project-number">PROJECT 02 / YICHUAN</span><h3>宜川文化创意产品设计</h3><p>作为项目负责人，全程参与调研、资源整理、数据库建设与产品方案设计。</p><span class="project-arrow">了解项目 <b>↗</b></span></div>
+   </a>
+  </div>
+ </section>
+
+ <section class="section project-section" id="zhuanglang">
+  <header class="project-head">
+   <div class="section-kicker">01 / DIGITAL HERITAGE</div>
+   <h2>让古堡从现场走进公共叙事</h2>
+   <p>项目围绕庄浪县古城堡展开。我参与各阶段设计工作，从现场资料梳理、数字采集，到信息可视化与展览表达。</p>
+   <span class="role-pill">我的参与　/　参与项目各阶段设计工作</span>
+  </header>
+  <figure class="feature-image"><img loading="lazy" src="assets/fort-zhaojiashan.jpg" alt="赵家山堡航拍全景"><figcaption>赵家山堡　/　项目现场影像</figcaption></figure>
+  <div class="subhead"><h3>项目推进</h3><span>FROM SITE TO PUBLIC EXPERIENCE</span></div>
+  <ol class="story-list">
+   <li><span class="num">01</span><div><h4>先理解遗址</h4><p>结合地形、聚落、历史与建筑形制，梳理古堡与地方生活之间的联系。</p></div></li>
+   <li><span class="num">02</span><div><h4>记录现场信息</h4><p>组合无人机影像、地面扫描与现场校核，建立后续建模所需的数据。</p></div></li>
+   <li><span class="num">03</span><div><h4>把数据变成叙事</h4><p>将点云、三维模型与历史资料组织成可视化内容，帮助观众理解古堡。</p></div></li>
+   <li><span class="num">04</span><div><h4>让内容进入展览</h4><p>参与展墙视觉与展览内容设计，把数字记录转化为现场可阅读的体验。</p></div></li>
+  </ol>
+  <div class="result-strip"><div><b>遗址</b><span>现场调查与记录</span></div><div><b>数据</b><span>影像、点云与模型</span></div><div><b>展览</b><span>视觉叙事与落地</span></div></div>
+  <a class="full-project-link" href="index.html#page=5"><span>查看庄浪项目完整横版内容</span><b>↗</b></a>
+ </section>
+
+ <section class="section project-section" id="yichuan">
+  <header class="project-head">
+   <div class="section-kicker">02 / CULTURAL CREATION</div>
+   <h2>把地方文化转译为产品体验</h2>
+   <p>作为项目负责人，我全程参与宜川项目各阶段：从文献与实地调研，到文化资源数据库，再到产品方案设计。</p>
+   <span class="role-pill">项目角色　/　项目负责人 · 全程参与</span>
+  </header>
+  <figure class="feature-image"><img loading="lazy" src="assets/yichuan-quicksand-user.png" alt="宜川壶口流沙摆件设计效果图"><figcaption>壶口听涛　/　宜川文化创意产品设计</figcaption></figure>
+  <div class="result-strip"><div><b>300</b><span>篇相关文献梳理</span></div><div><b>412</b><span>个文化元素整理</span></div><div><b>3</b><span>组产品案例</span></div></div>
+  <div class="subhead"><h3>案例展示</h3><span>THREE DESIGN DIRECTIONS</span></div>
+  <div class="case-grid">
+   <article class="case-card">
+    <img loading="lazy" src="assets/yichuan-wine-flavors.png" alt="宜川稠酒苹果、原味与猕猴桃风味包装">
+    <div class="case-copy"><small>01 / LIQUOR SERIES</small><h3>宜川稠酒系列</h3><p>从便携与礼赠场景出发，探索稠酒产品包装、酒具与使用体验。</p></div>
+   </article>
+   <article class="case-card">
+    <img loading="lazy" src="assets/yichuan-aroma-hero.jpg" alt="宜川地方物产香片挂件设计">
+    <div class="case-copy"><small>02 / LOCAL PRODUCTS</small><h3>宜川非遗物产系列</h3><p>以地方物产与果香为线索，设计可随身携带的香片挂件。</p></div>
+   </article>
+   <article class="case-card">
+    <img loading="lazy" src="assets/yichuan-red-keychain.jpg" alt="宜川红色文化主题纪念品设计">
+    <div class="case-copy"><small>03 / RED CULTURE</small><h3>宜川红色系列</h3><p>将地方红色记忆转化为可携带、可分享的纪念设计。</p></div>
+   </article>
+  </div>
+  <a class="full-project-link" href="index.html#page=22"><span>查看宜川项目完整横版内容</span><b>↗</b></a>
+ </section>
+
+ <section class="section" id="about">
+  <div class="section-kicker">ABOUT / DESIGN PRACTICE</div>
+  <h2 class="section-title">关于我</h2>
+  <div class="about-card">
+   <img loading="lazy" src="assets/profile-portrait.jpg" alt="杨祎娜证件照">
+   <div><h3>杨祎娜</h3><p class="about-role">工业设计工程硕士研究生 · 文化创意与用户体验设计</p><p>从用户与文化调研出发，梳理问题、定义体验，再把判断落实为产品与视觉方案。关注设计如何回应真实场景，并让地方文化更容易被理解和使用。</p><a class="about-more" href="index.html#page=2">查看完整个人简介 ↗</a></div>
+  </div>
+ </section>
+</main>
+<footer class="footer">
+ <h2>感谢浏览</h2>
+ <p>杨祎娜　/　文化创意与用户体验设计</p>
+ <a href="index.html">打开完整横版作品集　↗</a>
+</footer>
+<a class="back-top" href="#top" aria-label="回到顶部">↑</a>
+</body>
+</html>

@@ -6,6 +6,8 @@
 
 部署完成后可通过 GitHub Pages 访问。
 
+移动端阅读版：`mobile.html`。扫描 `assets/portfolio-mobile-qr.png` 可直接打开手机版。
+
 ## 发布说明
 
-页面使用纯 HTML 与本地素材。`assets/information-visualization.mp4` 通过 Git LFS 存储；GitHub Actions 会在发布时检出视频并一并部署到 Pages。
+页面使用纯 HTML 与本地素材。`assets/information-visualization.mp4` 通过 Git LFS 存储；GitHub Actions 会在发布时检出视频并一并部署到 Pages。Actions 同时发布 `index.html` 桌面版与 `mobile.html` 移动版。
